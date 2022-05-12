@@ -1,8 +1,82 @@
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+@font-face {
+    font-family: Oxygen;
+    src: url('assets/fonts/oxygen/Oxygen-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Oxygen;
+    src: url('assets/fonts/oxygen/Oxygen-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Oxygen;
+    src: url('assets/fonts/oxygen/Oxygen-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    /* brand foundation */
+    --brand-hue: 198;
+    --brand-saturation: 57%;
+    --brand-lightness: 40%;
+
+
+    /* dark */
+    --brand-dark: hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
+    --brand-hover-dark: hsl(var(--brand-hue) var(--brand-saturation) calc(var(--brand-lightness) - 3%));
+
+    --text-1-dark: hsl(195 54% 78%);
+    --text-2-dark: hsl(197 51% 69%);
+    --text-on-brand-dark: hsl(var(--brand-hue) 5% 95%);
+
+    --border-color-dark: hsl(var(--brand-hue) 10% 50% / 15%);
+
+    --surface-1-dark: hsl(206 97% 15%);
+    --surface-2-dark: hsl(205 98% 20%);
+    --surface-3-dark: hsl(205 98% 25%);
+    --surface-4-dark: hsl(205 99% 26%);
+}
+
+:root {
+    color-scheme: dark;
+
+    --brand: var(--brand-dark);
+    --brand-hover: var(--brand-hover-dark);
+    --text-1: var(--text-1-dark);
+    --text-2: var(--text-2-dark);
+    --text-on-brand: var(--text-on-brand-dark);
+
+    --surface-1: var(--surface-1-dark);
+    --surface-2: var(--surface-2-dark);
+    --surface-3: var(--surface-3-dark);
+    --surface-4: var(--surface-4-dark);
+
+    --border-radius: 1px;
+    --border-color: var(--border-color-dark);
+}
+
+html {
+    background-color: var(--surface-1);
+    color: var(--text-1);
+    font-size: 10px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+    font-family: Oxygen, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+html, body, #app {
+    height: 100%;
+}
