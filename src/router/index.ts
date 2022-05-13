@@ -21,7 +21,12 @@ const router = createRouter({
     {
       path: '/user/profile',
       name: 'PageUserProfile',
-      component: () => import('../pages/PageuserProfile.vue'),
+      component: () => import('../pages/PageUserProfile.vue'),
+    },
+    {
+      path: '/clan',
+      name: 'PageClan',
+      component: () => import('../pages/PageClan.vue')
     },
     {
       path: '/:catchAll(.*)',

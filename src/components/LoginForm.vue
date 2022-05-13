@@ -13,11 +13,13 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
+const router = useRouter()
 const formData = ref({})
 
 const submit = () => {
     console.log('login')
+    router.push('/user/profile')
 }
 </script>
 <style scoped>

@@ -17,10 +17,13 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { RouterLink, useRouter } from 'vue-router'
+const router = useRouter()
 const formData = ref({})
 
 const submit = () => {
     console.log('registration')
+    router.push('/user/profile')
 }
 </script>
 <style scoped>
