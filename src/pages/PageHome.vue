@@ -4,14 +4,38 @@
             <img alt="Character Artwork" src="../assets/artwork1.jpeg" class="artwork" />
         </div>
         <div class="right">
-            <div>Vland Portal</div>
+            <div class="title">Vland Portal</div>
+            <FormKit type="form" submit-label="Login" @submit="login">
+                <FormKit type="group" v-model="formData">
+                    <FormKit name="email" type="email" label="Email" placeholder="user@example.com" validation="required|email"
+                        validation-visibility="blur" />
+                    <FormKit type="password" name="password" label="Password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" 
+                        validation="required|length:8|matches:/[0-9]/" validation-visibility="blur"
+                        :validation-messages="{ matches: 'Passwords must include a number.' }" />
+                    <!--
+                    <FormKit type="password" name="password_confirm" label="Confirm password"
+                        help="Confirm your new password" validation="required|confirm" validation-visibility="blur"
+                        validation-label="Password confirmation" />
+                    -->
+                </FormKit>
+            </FormKit>
         </div>
     </div>
 </template>
 <script lang="ts" setup>
-import { defineAsyncComponent } from 'vue';
+import { ref } from 'vue';
+const formData = ref({})
+
+const login = () => {
+    console.log('login')
+}
 </script>
 <style scoped>
+.title {
+    font-size: 2.4rem;
+    padding-bottom: 2rem;
+}
+
 .grid {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -22,7 +46,6 @@ import { defineAsyncComponent } from 'vue';
 }
 
 .left {
-    height: 100%;
     box-shadow: 0px 0px 3px 1px #000000;
 }
 
@@ -33,8 +56,8 @@ import { defineAsyncComponent } from 'vue';
 }
 
 .right {
-    height: 100%;
     max-width: 300px;
+    width: 300px;
     padding: 2rem;
 }
 </style>
