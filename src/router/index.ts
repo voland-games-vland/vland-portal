@@ -7,6 +7,16 @@ const router = createRouter({
       path: '/',
       name: 'PageHome',
       component: () => import('../pages/PageHome.vue'),
+      children: [
+        {
+          path: '',
+          component: () => import('../components/LoginForm.vue'),
+        },
+        {
+          path: 'registration',
+          component: () => import('../components/RegistrationForm.vue'),
+        },
+      ],
     },
     {
       path: '/user/profile',

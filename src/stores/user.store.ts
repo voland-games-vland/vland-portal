@@ -14,7 +14,7 @@ export const useUserStore = defineStore(
     })
 
     return {
-        user
+        user,
     }
   },
 )
