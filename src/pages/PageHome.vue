@@ -1,7 +1,6 @@
 <template>
     <div class="grid">
         <div class="left">
-            <img alt="Character Artwork" src="../assets/artwork1.jpeg" class="artwork" />
         </div>
         <div class="right">
             <div class="title">Vland Portal</div>
@@ -28,12 +27,10 @@
 
 .left {
     box-shadow: 0px 0px 3px 1px #000000;
-}
-
-.artwork {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    background-image: url('../assets/artwork1.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .right {
