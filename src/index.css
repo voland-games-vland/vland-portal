@@ -26,6 +26,16 @@
     font-display: swap;
 }
 
+@layer base {
+    html,
+    body,
+    :root,
+    #app {
+        @apply h-full;
+        font-family: Proxima Nova, system-ui, sans-serif;
+    }
+}
+
 * {
     /* brand foundation */
     --brand-hue: 198;
@@ -50,9 +60,6 @@
 }
 
 :root {
-    color-scheme: dark;
-    
-    --font-family: Oxygen, Avenir, Helvetica, Arial, sans-serif;
     --brand: var(--brand-dark);
     --brand-hover: var(--brand-hover-dark);
     --text-1: var(--text-1-dark);
@@ -80,22 +87,4 @@
     --fk-border-radius-tr: 0;
     --fk-border-radius-bl: 0;
     --fk-border-radius-br: 0;
-}
-
-html {
-    background-color: var(--surface-1);
-    color: var(--text-1);
-    font-size: 10px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: var(--font-family);
-}
-
-body {
-    margin: 0;
-    font-size: 1.8rem;
-}
-
-html, body, #app {
-    height: 100%;
 }
