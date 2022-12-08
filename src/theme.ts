@@ -5,7 +5,7 @@ const textClassification = {
   label: 'block mb-1 font-bold text-sm formkit-invalid:text-red-500',
   inner: `
     max-w-md
-    border
+    border-2
     border-gray-400
     formkit-invalid:border-red-500
     rounded-sm mb-1
@@ -21,7 +21,7 @@ const boxClassification = {
   wrapper: 'flex items-center mb-1 cursor-pointer',
   help: 'mb-2',
   input:
-    'form-check-input appearance-none h-5 w-5 mr-2 border border-gray-500 rounded-sm bg-white checked:bg-gray-500 focus:outline-none focus:ring-0 transition duration-200',
+    'form-check-input appearance-none h-5 w-5 mr-2 border-2 border-gray-500 rounded-sm bg-white checked:bg-gray-500 focus:outline-none focus:ring-0 transition duration-200',
   label: 'text-sm text-gray-700 mt-1',
 }
 const buttonClassification = {

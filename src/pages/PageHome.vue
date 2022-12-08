@@ -3,7 +3,7 @@
         <div class="left">
         </div>
         <div class="right">
-            <div class="title">Vland Portal</div>
+            <div class="title">V-Land Portal</div>
             <router-view></router-view>
         </div>
     </div>
