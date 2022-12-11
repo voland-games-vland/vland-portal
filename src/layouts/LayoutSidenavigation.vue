@@ -2,7 +2,7 @@
 
     <div class="drawer drawer-mobile">
         <input id="sidenav" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content flex flex-col items-center bg-base-200">
+        <div class="drawer-content flex flex-col bg-base-200">
             <!-- Navbar -->
             <div class="w-full navbar bg-base-300 lg:hidden">
                 <div class="flex-none lg:hidden">
@@ -35,7 +35,9 @@
                 </div>
             </div>
             <!-- Page content here -->
-            <slot></slot>
+            <main>
+                <slot></slot>
+            </main>
         </div>
         <div class="drawer-side">
             <label for="sidenav" class="drawer-overlay"></label>

@@ -13,6 +13,7 @@ module.exports = {
     themes: ["emerald"],
   },
   plugins: [
+    require("@tailwindcss/typography"),
     require("daisyui"),
     formKitTailwind
   ],

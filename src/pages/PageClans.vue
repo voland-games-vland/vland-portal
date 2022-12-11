@@ -1,6 +1,6 @@
 <template>
 <LayoutSidenavigation>
-    <div>Page Clans</div>
+    <div class="p-4">Page Clans</div>
 </LayoutSidenavigation>
 </template>
 <script lang="ts" setup>

@@ -1,6 +1,6 @@
 <template>
 <LayoutSidenavigation>
-    <div>Page Market</div>
+    <div class="p-4">Page Market</div>
 </LayoutSidenavigation>
 </template>
 <script lang="ts" setup>
