@@ -32,6 +32,6 @@
     :root,
     #app {
         @apply h-full;
-        font-family: Proxima Nova, system-ui, sans-serif;
+        font-family: Oxygen, system-ui, sans-serif;
     }
 }

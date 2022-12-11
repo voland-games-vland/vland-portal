@@ -19,7 +19,7 @@ const formData = ref({})
 
 const submit = () => {
     console.log('login')
-    router.push('/user/profile')
+    router.push('/start')
 }
 </script>
 <style scoped>

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div>Page Not Found</div>
-        <RouterLink to="/">Back to Home</RouterLink>
+        <RouterLink to="/start">Back to Home</RouterLink>
     </div>
 </template>
 <script lang="ts" setup>
