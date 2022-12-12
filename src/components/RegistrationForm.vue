@@ -23,7 +23,7 @@
     <br />
     <div class="flex justify-center">
         
-    <router-link to="/"><button class="btn btn-ghost btn-xs">I already have a login</button></router-link>
+    <router-link to="/"><button class="btn btn-ghost btn-xs">I already have an account</button></router-link>
     </div>
 </template>
 <script lang="ts" setup>

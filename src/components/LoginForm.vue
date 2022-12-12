@@ -47,7 +47,7 @@
     <br />
     <br />
     <div class="flex justify-center">
-        <router-link to="/registration"><button class="btn btn-ghost btn-xs">I don't have a login</button></router-link>
+        <router-link to="/registration"><button class="btn btn-ghost btn-xs">I don't have an account</button></router-link>
     </div>
 </template>
 <script lang="ts" setup>
