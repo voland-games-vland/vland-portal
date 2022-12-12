@@ -1,4 +1,4 @@
-import { signInWithPopup, GoogleAuthProvider, getAuth, signOut } from 'firebase/auth'
+import { signInWithPopup, GoogleAuthProvider, getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router'
 
@@ -14,7 +14,27 @@ export const useUserStore = defineStore(
         router.push('/start')
         return result
       } catch {
-        console.log('popup closed')
+        console.log('Error: popup closed')
+      }
+    }
+
+    const signInWithEmailPassword = async (email: string, password: string) => {
+      try {
+        const result = await signInWithEmailAndPassword(getAuth(), email, password)
+        router.push('/start')
+        return result
+      } catch {
+        console.log('Error: Sign In With Email and Password')
+      }
+    }
+
+    const signUpWithEmailPassword = async (email: string, password: string) => {
+      try {
+        const result = await createUserWithEmailAndPassword(getAuth(), email, password)
+        router.push('/start')
+        return result
+      } catch {
+        console.log('Error: Sign Up with Email and Password')
       }
     }
     
@@ -29,6 +49,8 @@ export const useUserStore = defineStore(
 
     return {
         signInWithGoogle,
+        signInWithEmailPassword,
+        signUpWithEmailPassword,
         logout
     }
   },

@@ -3,14 +3,14 @@
     <FormKit type="form" :actions="false" id="login-form" @submit="submit">
         <FormKit type="group" v-model="formData">
             <FormKit name="email" type="email" label="Email" placeholder="user@example.com" validation="required|email"
-                validation-visibility="blur" />
+                validation-visibility="blur" :disabled="isLoggingIn" />
             <FormKit type="password" name="password" label="Password"
                 placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" validation="required"
-                validation-visibility="blur" />
+                validation-visibility="blur" :disabled="isLoggingIn" />
         </FormKit>
     </FormKit>
     <div class="flex">
-        <button class="btn btn-outline" @click="userStore.signInWithGoogle">
+        <button class="btn btn-outline" :class="{ 'btn-disabled': isLoggingIn }"  @click="userStore.signInWithGoogle">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 47 48"
                 version="1.1">
                 <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
@@ -40,8 +40,8 @@
     </div>
     <br />
     <div class="flex justify-center">
-        <button class="btn btn-lg btn-square btn-primary" @click="$formkit.submit('login-form')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <button class="btn btn-lg btn-square btn-primary" :class="{ loading: isLoggingIn}" @click="$formkit.submit('login-form')">
+            <svg v-if="!isLoggingIn" xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </button>
     </div>
     <br />
@@ -53,19 +53,18 @@
 <script lang="ts" setup>
 import { FormKit } from '@formkit/vue';
 import { ref } from 'vue'
-import { RouterLink, useRouter } from 'vue-router'
 import { useUserStore } from '../stores/user.store';
-const router = useRouter()
-const formData = ref({})
+const formData = ref({
+    email: '',
+    password: ''
+})
 const userStore = useUserStore()
 
-const submit = () => {
-    console.log('login')
-    router.push('/start')
+const isLoggingIn = ref(false)
+
+const submit = async () => {
+    isLoggingIn.value = true
+    await userStore.signInWithEmailPassword(formData.value.email, formData.value.password)
+    isLoggingIn.value = false
 }
 </script>
-<style scoped>
-.title {
-    padding-bottom: 1rem;
-}
-</style>

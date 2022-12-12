@@ -1,6 +1,6 @@
 <template>
-    <div class="title">Registration</div>
-    <FormKit type="form" submit-label="Sign up" @submit="submit">
+    <div class="text-xl text-center font-bold">Registration</div>
+    <FormKit type="form" :actions="false" id="sign-up-form"  @submit="submit">
         <FormKit type="group" v-model="formData">
             <FormKit name="email" type="email" label="Email" placeholder="user@example.com" validation="required|email"
                 validation-visibility="blur" />
@@ -13,21 +13,37 @@
                 validation="required|confirm" validation-visibility="blur" validation-label="Password confirmation" />
         </FormKit>
     </FormKit>
+    <br />
+    <div class="flex justify-center">
+        <button class="btn btn-lg btn-square btn-primary" :class="{ loading: isSigningUp}" @click="$formkit.submit('sign-up-form')">
+            <svg v-if="!isSigningUp" xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+    </div>
+    <br />
+    <br />
+    <div class="flex justify-center">
+        
     <router-link to="/"><button class="btn btn-ghost btn-xs">I already have a login</button></router-link>
+    </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { RouterLink, useRouter } from 'vue-router'
-const router = useRouter()
-const formData = ref({})
+import { useUserStore } from '../stores/user.store';
 
-const submit = () => {
-    console.log('registration')
-    router.push('/user/profile')
+const userStore = useUserStore()
+
+const formData = ref({
+    email: '',
+    password: '',
+    password_confirm: ''
+})
+
+const isSigningUp = ref(false)
+
+const submit = async () => {
+    isSigningUp.value = true
+    await userStore.signUpWithEmailPassword(formData.value.email, formData.value.password)
+    isSigningUp.value = false
 }
+
 </script>
-<style scoped>
-.title {
-    padding-bottom: 1rem;
-}
-</style>
