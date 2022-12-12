@@ -5,7 +5,7 @@
                 <div class="max-w-md">
                     <h1 class="text-3xl font-bold">Download V-Land Game Client</h1>
                     <br />
-                    <button class="btn btn-primary gap-2">
+                    <button class="btn btn-primary btn-disabled gap-2">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
@@ -17,7 +17,7 @@
                                 <line x1="12" y1="15" x2="12" y2="3" />
                             </svg>
                         </div>
-                        For Windows
+                        For Windows (soon)
                     </button>
                 </div>
             </div>
