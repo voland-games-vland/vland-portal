@@ -5,7 +5,6 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'PageHome',
       component: () => import('../pages/PageHome.vue'),
       children: [
         {
@@ -22,28 +21,58 @@ const router = createRouter({
     },
     {
       path: '/start',
-      name: 'PageStart',
-      component: () => import('../pages/PageStart.vue'),
+      component: () => import('../layouts/LayoutSidenavigation.vue'),
+      children: [
+        {
+          path: '',
+          name: 'PageStart',
+          component: () => import('../pages/PageStart.vue'),
+        },
+      ],
     },
     {
       path: '/play',
-      name: 'PagePlay',
-      component: () => import('../pages/PagePlay.vue'),
+      component: () => import('../layouts/LayoutSidenavigation.vue'),
+      children: [
+        {
+          path: '',
+          name: 'PagePlay',
+          component: () => import('../pages/PagePlay.vue'),
+        },
+      ],
     },
     {
       path: '/maps',
-      name: 'PageMaps',
-      component: () => import('../pages/PageMaps.vue'),
+      component: () => import('../layouts/LayoutSidenavigation.vue'),
+      children: [
+        {
+          path: '',
+          name: 'PageMaps',
+          component: () => import('../pages/PageMaps.vue'),
+        },
+      ],
     },
     {
       path: '/clans',
-      name: 'PageClans',
-      component: () => import('../pages/PageClans.vue'),
+      component: () => import('../layouts/LayoutSidenavigation.vue'),
+      children: [
+        {
+          path: '',
+          name: 'PageClans',
+          component: () => import('../pages/PageClans.vue'),
+        },
+      ],
     },
     {
       path: '/market',
-      name: 'PageMarket',
-      component: () => import('../pages/PageMarket.vue'),
+      component: () => import('../layouts/LayoutSidenavigation.vue'),
+      children: [
+        {
+          path: '',
+          name: 'PageMarket',
+          component: () => import('../pages/PageMarket.vue'),
+        },
+      ],
     },
     {
       path: '/user/profile',

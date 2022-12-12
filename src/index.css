@@ -31,7 +31,7 @@
     body,
     :root,
     #app {
-        @apply h-full;
+        @apply h-full bg-base-200;
         font-family: Oxygen, system-ui, sans-serif;
     }
 }

@@ -1,12 +1,12 @@
 <template>
-<LayoutSidenavigation>
-    <div class="p-4">Page Maps</div>
-</LayoutSidenavigation>
+    <div class="p-4">
+        <div class="prose">
+            <h1>Maps</h1>
+            <p>In V-Land you can create your own maps.</p>
+        </div>
+    </div>
 </template>
 <script lang="ts" setup>
-import { defineAsyncComponent } from 'vue';
-
-const LayoutSidenavigation = defineAsyncComponent(() => import('../layouts/LayoutSidenavigation.vue'))
 </script>
 <style scoped>
 </style>
