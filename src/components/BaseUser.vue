@@ -1,12 +1,12 @@
 <template>
     <div>User:</div>
-    <pre>{{ userStore.user }}</pre>
+    <pre>{{ user }}</pre>
     <div>Clan: <RouterLink to="/clan">Blaze Hood</RouterLink></div>
-    <input v-model="userStore.user.displayName" />
+    <input v-model="user?.displayName" />
 </template>
 <script lang="ts" setup>
-import { useUserStore } from '../stores/user.store';
-import { RouterLink } from 'vue-router';
 
-const userStore = useUserStore()
+import { getAuth } from 'firebase/auth'
+import { useAuth } from '@vueuse/firebase/useAuth'
+const { user } = useAuth(getAuth())
 </script>
