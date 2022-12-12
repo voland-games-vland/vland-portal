@@ -23,14 +23,14 @@
                     </label>
                     <ul tabindex="0"
                         class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                        <li>
+                        <li class="disabled">
                             <a class="justify-between">
                                 Profile
                                 <span class="badge">New</span>
                             </a>
                         </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
+                        <li class="disabled"><a>Settings</a></li>
+                        <li><a @click="userStore.logout">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -237,15 +237,19 @@
                         <div>720</div>
                     </div>
                 </div>
-                <div class="flex mt-auto font-normal text-xs normal-case">© {{ currentYear }} Jonas Voland</div>
+                <button class="btn btn-block btn-sm btn-ghost mt-auto" @click="userStore.logout">Logout</button>
+                <div class="flex font-normal text-xs normal-case justify-center">© {{ currentYear }} Jonas Voland</div>
             </ul>
         </div>
     </div>
 </template>
 <script lang="ts" setup>
 import { computed, defineAsyncComponent } from 'vue';
+import { useUserStore } from '../stores/user.store';
 
 const SidenavMenuItem = defineAsyncComponent(() => import('../components/SidenavMenuItem.vue'))
+
+const userStore = useUserStore()
 
 const currentYear = computed(() => {
     return new Date().getFullYear();

@@ -13,7 +13,7 @@
                 validation="required|confirm" validation-visibility="blur" validation-label="Password confirmation" />
         </FormKit>
     </FormKit>
-    <router-link :to="'/'">Sign in</router-link>
+    <router-link to="/"><button class="btn btn-ghost btn-xs">I already have a login</button></router-link>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
