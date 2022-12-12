@@ -43,7 +43,7 @@
             <label for="sidenav" class="drawer-overlay"></label>
             <ul class="menu p-4 w-80 bg-base-300 text-base-content font-bold uppercase gap-2">
                 <RouterLink to="/start">
-                    <div class="p-4 font-bold text-4xl uppercase">V-Land</div>
+                    <div class="p-4 font-bold text-4xl uppercase">V-Land e</div>
                 </RouterLink>
                 <!-- Sidebar content here -->
                 <SidenavMenuItem to="/play">
