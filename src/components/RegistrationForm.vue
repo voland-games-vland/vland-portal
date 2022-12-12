@@ -1,5 +1,5 @@
 <template>
-    <div class="text-xl text-center font-bold">Registration</div>
+    <div class="text-xl text-center font-bold">Sign Up</div>
     <FormKit type="form" :actions="false" id="sign-up-form"  @submit="submit">
         <FormKit type="group" v-model="formData">
             <FormKit name="email" type="email" label="Email" placeholder="user@example.com" validation="required|email"
