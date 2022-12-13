@@ -1,4 +1,12 @@
+import { getAuth } from '@firebase/auth'
+import { useAuth } from '@vueuse/firebase'
 import { createRouter, createWebHistory } from 'vue-router'
+
+declare module 'vue-router' {
+  interface RouteMeta {
+    requiresAuth?: boolean
+  }
+}
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,6 +35,7 @@ const router = createRouter({
           path: '',
           name: 'PageStart',
           component: () => import('../pages/PageStart.vue'),
+          meta: { requiresAuth: true }
         },
       ],
     },
@@ -38,6 +47,7 @@ const router = createRouter({
           path: '',
           name: 'PagePlay',
           component: () => import('../pages/PagePlay.vue'),
+          meta: { requiresAuth: true }
         },
       ],
     },
@@ -49,6 +59,7 @@ const router = createRouter({
           path: '',
           name: 'PageMaps',
           component: () => import('../pages/PageMaps.vue'),
+          meta: { requiresAuth: true }
         },
       ],
     },
@@ -60,6 +71,7 @@ const router = createRouter({
           path: '',
           name: 'PageClans',
           component: () => import('../pages/PageClans.vue'),
+          meta: { requiresAuth: true }
         },
       ],
     },
@@ -71,6 +83,7 @@ const router = createRouter({
           path: '',
           name: 'PageMarket',
           component: () => import('../pages/PageMarket.vue'),
+          meta: { requiresAuth: true }
         },
       ],
     },
@@ -78,11 +91,13 @@ const router = createRouter({
       path: '/user/profile',
       name: 'PageUserProfile',
       component: () => import('../pages/PageUserProfile.vue'),
+      meta: { requiresAuth: true }
     },
     {
       path: '/clan',
       name: 'PageClan',
-      component: () => import('../pages/PageClan.vue')
+      component: () => import('../pages/PageClan.vue'),
+      meta: { requiresAuth: true }
     },
     {
       path: '/:catchAll(.*)',
@@ -90,6 +105,21 @@ const router = createRouter({
       component: () => import('../pages/PageNotFound.vue'),
     },
   ],
+})
+
+router.beforeEach((to, from) => {
+  const { isAuthenticated } = useAuth(getAuth())
+  // instead of having to check every route record with
+  // to.matched.some(record => record.meta.requiresAuth)
+  if (to.meta.requiresAuth && !isAuthenticated.value) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    return {
+      path: '/',
+      // save the location we were at to come back later
+      // query: { redirect: to.fullPath },
+    }
+  }
 })
 
 
