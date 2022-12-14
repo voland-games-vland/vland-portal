@@ -1,0 +1,10 @@
+<template>
+    <div class="p-4">
+        <NavigationBack toBack="/maps">Map Settings</NavigationBack>
+    </div>
+</template>
+<script lang="ts" setup>
+import { defineAsyncComponent } from 'vue';
+
+const NavigationBack = defineAsyncComponent(() => import('../components/NavigationBack.vue'))
+</script>

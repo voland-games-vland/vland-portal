@@ -8,12 +8,12 @@ const textClassification = {
     border-2
     border-gray-400
     formkit-invalid:border-red-500
-    rounded-sm mb-1
+    rounded-lg mb-1
     overflow-hidden
     focus-within:border-gray-500
   `,
   input:
-    'w-full h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400',
+    'w-full h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400 rounded-lg',
 }
 const boxClassification = {
   fieldset: 'max-w-md border border-gray-400 rounded-sm px-2 pb-1',

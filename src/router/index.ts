@@ -74,6 +74,12 @@ const router = createRouter({
           name: 'PageMapsNew',
           component: () => import('../pages/PageMapsNew.vue'),
           meta: { requiresAuth: true }
+        },
+        {
+          path: 'edit/:id/settings',
+          name: 'PageMapsEditSettings',
+          component: () => import('../pages/PageMapsEditSettings.vue'),
+          meta: { requiresAuth: true }
         }
       ],
     },
