@@ -69,6 +69,12 @@ const router = createRouter({
           component: () => import('../pages/PageMaps.vue'),
           meta: { requiresAuth: true }
         },
+        {
+          path: 'new',
+          name: 'PageMapsNew',
+          component: () => import('../pages/PageMapsNew.vue'),
+          meta: { requiresAuth: true }
+        }
       ],
     },
     {

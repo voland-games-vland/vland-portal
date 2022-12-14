@@ -1,6 +1,6 @@
 <template>
     <div class="p-4">
-        <NavigationBack toBack="/start">Clans</NavigationBack>
+        <NavigationBack toBack="/maps">New Map</NavigationBack>
     </div>
 </template>
 <script lang="ts" setup>
