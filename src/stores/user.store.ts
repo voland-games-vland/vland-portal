@@ -1,5 +1,6 @@
 import { signInWithPopup, GoogleAuthProvider, getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 // useStore could be anything like useUser, useCart
@@ -8,6 +9,10 @@ export const useUserStore = defineStore(
   'user',
   () => {
     const router = useRouter()
+
+    const coins = ref(400)
+    const banknotes = ref(720)
+
     const signInWithGoogle = async () => {
       try {
         const result = await signInWithPopup(getAuth(), new GoogleAuthProvider())
@@ -48,6 +53,8 @@ export const useUserStore = defineStore(
     }
 
     return {
+        coins,
+        banknotes,
         signInWithGoogle,
         signInWithEmailPassword,
         signUpWithEmailPassword,

@@ -26,6 +26,14 @@ const router = createRouter({
           component: () => import('../components/RegistrationForm.vue'),
         },
       ],
+      beforeEnter: () => {
+        const { isAuthenticated } = useAuth(getAuth())
+        if (isAuthenticated.value) {
+          return {
+            path: '/start'
+          }
+        }
+      }
     },
     {
       path: '/start',
