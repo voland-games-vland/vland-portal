@@ -10,6 +10,21 @@
                 </div>
             </FormKit>
         </FormKit>
+        <div class="text-xl text-center font-bold">Size</div>
+        <br />
+        <div class="flex justify-center">
+            <div class="btn-group">
+                <button
+                    v-for="size in sizes"
+                    class="btn btn-lg btn-outline btn-square"
+                    :class="{'btn-active': formData.size == size}"
+                    @click="formData.size = size"
+                >
+                    {{size}}
+                </button>
+            </div>
+        </div>
+        <br />
         <br />
         <div class="flex justify-center">
             <button class="btn btn-primary" :class="{ loading: isLoading}" @click="$formkit.submit('formMapNew')">
@@ -27,7 +42,10 @@ const mapsStore = useMapsStore()
 
 const formData = ref({
     name: 'My Map',
+    size: 'm'
 })
+
+const sizes = ['s', 'm', 'l', 'xl']
 
 const isLoading = ref(false)
 
