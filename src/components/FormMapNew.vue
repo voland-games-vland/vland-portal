@@ -42,10 +42,10 @@ const mapsStore = useMapsStore()
 
 const formData = ref({
     name: 'My Map',
-    size: 'm'
+    size: 'M'
 })
 
-const sizes = ['s', 'm', 'l', 'xl']
+const sizes = ['XS', 'S', 'M', 'L', 'XL']
 
 const isLoading = ref(false)
 
