@@ -5,10 +5,9 @@
         <div class="modal" @click="cancel()">
             <div class="modal-box">
                 <h3 class="font-bold text-lg">Confirm delete map?</h3>
-                <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for
-                    free!</p>
+                <p class="py-4">This can not be undone!</p>
                 <div class="modal-action">
-                    <button class="btn" @click="confirm()">Yes</button>
+                    <button class="btn btn-ghost" @click="confirm()">Yes</button>
                     <button class="btn" @click="cancel()">No</button>
                 </div>
             </div>
