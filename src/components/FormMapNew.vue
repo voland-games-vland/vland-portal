@@ -36,22 +36,23 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { Size } from '../apis/vland.api';
 import { useMapsStore } from '../stores/maps.store';
 
 const mapsStore = useMapsStore()
 
 const formData = ref({
     name: 'My Map',
-    size: 'M'
+    size: Size.M
 })
 
-const sizes = ['XS', 'S', 'M', 'L', 'XL']
+const sizes: Size[] = [Size.XS, Size.S, Size.M, Size.L, Size.XL]
 
 const isLoading = ref(false)
 
 const submit = async () => {
     isLoading.value = true
-    await mapsStore.createNewMap()
+    await mapsStore.createNewMap(formData.value)
     isLoading.value = false
 }
 </script>

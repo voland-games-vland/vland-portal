@@ -3,6 +3,16 @@ import axios from "axios"
 const baseUrl = `${import.meta.env.VITE_VLAND_API_URL}`
 
 export default {
+    maps: {
+        post: async (body: CreateMapDto, token: string) => {
+            const { data } = await axios.post<Map>(`${baseUrl}/maps`, body, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            return data
+        }
+    },
     users: {
         me: {
             get: async (token: string) => {
@@ -16,8 +26,9 @@ export default {
         },
         id: {
             maps: {
-                get: (id: string) => {
-
+                get: async (id: string) => {
+                    const { data } = await axios.get<Map[]>(`${baseUrl}/users/${id}/maps`)
+                    return data
                 }
             }
         }

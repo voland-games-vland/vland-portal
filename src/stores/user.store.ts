@@ -58,8 +58,9 @@ export const useUserStore = defineStore(
     }
 
     const loadUserData = async (uid: string) => {
-      if(!token.value) return
-      user.value = await vlandApi.users.me.get(token.value)
+      const token = await auth.currentUser?.getIdToken()
+      if(!token) return
+      user.value = await vlandApi.users.me.get(token)
     }
 
     auth.onAuthStateChanged(async (authUser) => {
