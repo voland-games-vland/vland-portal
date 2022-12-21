@@ -15,8 +15,17 @@ export const useMapsStore = defineStore(
       const data = await vlandApi.maps.post(body, token)
       router.push(`/maps/edit/${data._id}/settings`)
     }
+    
+    const deleteMap = async (id: string) => {
+      const token = await auth.currentUser?.getIdToken()
+      if(!token) return
+      await vlandApi.maps.id.delete(id, token)
+      router.push(`/maps`)
+    }
+
     return {
-        createNewMap
+        createNewMap,
+        deleteMap
     }
   },
 )

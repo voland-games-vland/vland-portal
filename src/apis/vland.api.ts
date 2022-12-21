@@ -11,6 +11,20 @@ export default {
                 }
             })
             return data
+        },
+        id: {
+            get: async (id: string) => {
+                const { data } = await axios.get<Map>(`${baseUrl}/maps/${id}`)
+                return data
+            },
+            delete: async (id: string, token: string) => {
+                const { data } = await axios.delete<Map>(`${baseUrl}/maps/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                return data
+            }
         }
     },
     users: {
