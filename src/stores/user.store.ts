@@ -57,10 +57,17 @@ export const useUserStore = defineStore(
       }
     }
 
-    const loadUserData = async (uid: string) => {
+    const loadUserData = async () => {
       const token = await auth.currentUser?.getIdToken()
       if(!token) return
       user.value = await vlandApi.users.me.get(token)
+      return user.value
+    }
+
+    const loadUserId = async (): Promise<string | undefined> => {
+      if (!!user.value?._id) return user.value._id
+      const data = await loadUserData()
+      return data?._id
     }
 
     auth.onAuthStateChanged(async (authUser) => {
@@ -71,7 +78,7 @@ export const useUserStore = defineStore(
         return
       }
 
-      loadUserData(authUser.uid)
+      loadUserData()
     })
 
     return {
@@ -80,7 +87,8 @@ export const useUserStore = defineStore(
         signUpWithEmailPassword,
         logout,
         token,
-        user
+        user,
+        loadUserId
     }
   },
 )

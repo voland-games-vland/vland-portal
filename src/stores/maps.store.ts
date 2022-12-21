@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import vlandApi, { CreateMapDto } from '../apis/vland.api'
 
 export const useMapsStore = defineStore(
-  'map',
+  'maps',
   () => {
     const auth = getAuth()
     const router = useRouter()
