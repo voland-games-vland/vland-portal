@@ -1,8 +1,7 @@
 <template>
-    <div class="p-4">
+    <div class="p-4 grid gap-4">
         <NavigationBack toBack="/maps">Map Settings</NavigationBack>
         <div v-if="map">
-            <br />
             <div class="font-bold text-sm">Map name</div>
             <div><span class="text-4xl font-bold">{{ map?.name }}</span> <span class="font-bold text-sm">{{ map.width
             }}x{{ map.height }}</span></div>
