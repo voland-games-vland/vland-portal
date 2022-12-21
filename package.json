@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "dev:localhost": "vite --mode localhost",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
@@ -11,6 +12,7 @@
     "@formkit/themes": "^1.0.0-beta.8",
     "@formkit/vue": "^1.0.0-beta.8",
     "@vueuse/firebase": "^9.6.0",
+    "axios": "^1.2.1",
     "daisyui": "^2.43.0",
     "firebase": "^9.15.0",
     "pinia": "^2.0.14",

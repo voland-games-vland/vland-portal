@@ -1,17 +1,21 @@
+import { useAuth } from '@vueuse/firebase'
 import { signInWithPopup, GoogleAuthProvider, getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import vlandApi, { User } from '../apis/vland.api'
 
 // useStore could be anything like useUser, useCart
 // the first argument is a unique id of the store across your application
 export const useUserStore = defineStore(
   'user',
   () => {
+    const auth = getAuth()
     const router = useRouter()
 
-    const coins = ref(400)
-    const banknotes = ref(720)
+    const user = ref<User | undefined>()
+
+    const token = ref<string | undefined>()
 
     const signInWithGoogle = async () => {
       try {
@@ -26,6 +30,7 @@ export const useUserStore = defineStore(
     const signInWithEmailPassword = async (email: string, password: string) => {
       try {
         const result = await signInWithEmailAndPassword(getAuth(), email, password)
+        token.value = await result.user.getIdToken()
         router.push('/start')
         return result
       } catch {
@@ -46,19 +51,36 @@ export const useUserStore = defineStore(
     const logout = async () => {
       try {
         await signOut(getAuth())
+        token.value = ''
         router.push('/')
       } catch {
         console.log('Error: logout')
       }
     }
 
+    const loadUserData = async (uid: string) => {
+      if(!token.value) return
+      user.value = await vlandApi.users.me.get(token.value)
+    }
+
+    auth.onAuthStateChanged(async (authUser) => {
+      token.value = await authUser?.getIdToken()
+
+      if(!authUser) {
+        user.value = undefined
+        return
+      }
+
+      loadUserData(authUser.uid)
+    })
+
     return {
-        coins,
-        banknotes,
         signInWithGoogle,
         signInWithEmailPassword,
         signUpWithEmailPassword,
-        logout
+        logout,
+        token,
+        user
     }
   },
 )

@@ -202,7 +202,7 @@
                                 <g></g>
                             </svg>
                         </div>
-                        <div>{{userStore.coins}}</div>
+                        <div>{{userStore.user?.coins}}</div>
                     </div>
                     <div class="flex items-center gap-2 bg-slate-400 py-2 px-4 rounded-lg">
                         <div>
@@ -234,7 +234,7 @@
                                     fill="black" />
                             </svg>
                         </div>
-                        <div>{{userStore.banknotes}}</div>
+                        <div>{{userStore.user?.banknotes}}</div>
                     </div>
                 </div>
                 <button class="btn btn-block btn-sm btn-ghost mt-auto" @click="userStore.logout">Logout</button>
