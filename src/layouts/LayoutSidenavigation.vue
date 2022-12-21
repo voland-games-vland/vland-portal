@@ -237,7 +237,8 @@
                         <div>{{userStore.user?.banknotes}}</div>
                     </div>
                 </div>
-                <button class="btn btn-block btn-sm btn-ghost mt-auto" @click="userStore.logout">Logout</button>
+                <div class="mt-auto text-xs text-center lowercase">{{user?.email}}</div>
+                <button class="btn btn-block btn-sm btn-ghost" @click="userStore.logout">Logout</button>
                 <div class="flex font-normal text-xs normal-case justify-center">© {{ currentYear }} Jonas Voland</div>
             </ul>
         </div>
@@ -245,10 +246,13 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineAsyncComponent } from 'vue';
+import { getAuth } from 'firebase/auth'
+import { useAuth } from '@vueuse/firebase/useAuth'
 import { useUserStore } from '../stores/user.store';
 
 const SidenavMenuItem = defineAsyncComponent(() => import('../components/SidenavMenuItem.vue'))
 
+const { user } = useAuth(getAuth())
 const userStore = useUserStore()
 
 const currentYear = computed(() => {
