@@ -1,4 +1,3 @@
-import { useAuth } from '@vueuse/firebase'
 import { signInWithPopup, GoogleAuthProvider, getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
