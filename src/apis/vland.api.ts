@@ -24,6 +24,12 @@ export default {
                     }
                 })
                 return data
+            },
+            blocks: {
+                get: async (id: string) => {
+                    const { data } = await axios.get<Block[]>(`${baseUrl}/maps/${id}/blocks`)
+                    return data
+                }
             }
         }
     },
@@ -57,6 +63,17 @@ export enum Size {
     XL = 'XL'
 }
 
+export enum Blocks {
+    Stone = 'Stone',
+    Grass = 'Grass',
+    Dirt = 'Dirt',
+    Wood = 'Wodd',
+    Bridge = 'Bridge',
+    Snow = 'Snow',
+    Sand = 'Sand',
+    Water = 'Water'
+}
+
 export type CreateMapDto = {
     name: string
     size: Size
@@ -76,6 +93,19 @@ export type Map = {
     }
     width: number
     height: number
+}
+
+export type Position = {
+    x: number
+    y: number
+    z: number
+}
+
+export type Block = {
+    _id: string
+    type: Blocks
+    position: Position
+    map: string
 }
 
 export type User = {
