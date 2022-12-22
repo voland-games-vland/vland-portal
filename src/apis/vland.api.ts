@@ -33,6 +33,25 @@ export default {
             }
         }
     },
+    blocks: {
+        put: async (body: PutBlockDto, token: string) => {
+            const { data } = await axios.put<Block>(`${baseUrl}/blocks`, body, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            return data
+        },
+        delete: async (body: DeleteBlockDto, token: string) => {
+            const { data } = await axios.delete<Block>(`${baseUrl}/blocks`, {
+                data: body,
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            return data
+        }
+    },
     users: {
         me: {
             get: async (token: string) => {
@@ -106,6 +125,17 @@ export type Block = {
     type: Blocks
     position: Position
     map: string
+}
+
+export type PutBlockDto = {
+    type: Blocks
+    position: Position
+    mapId: string
+}
+
+export type DeleteBlockDto = {
+    position: Position
+    mapId: string
 }
 
 export type User = {
