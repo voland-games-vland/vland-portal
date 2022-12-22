@@ -13,7 +13,7 @@ export const useMapsStore = defineStore(
       const token = await auth.currentUser?.getIdToken()
       if(!token) return
       const data = await vlandApi.maps.post(body, token)
-      router.push(`/maps/edit/${data._id}/settings`)
+      router.push(`/maps/edit/${data._id}/grid`)
     }
     
     const deleteMap = async (id: string) => {
