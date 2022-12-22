@@ -1,6 +1,6 @@
 <template>
     <div class="flex gap-1 bg-slate-800 p-1 rounded-lg h-fit">
-        <div class="btn btn-sm btn-square btn-primary btn-active">
+        <div class="btn btn-sm btn-square btn-primary btn-active relative">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="12"
                 height="12" id="Capa_1" x="0px" y="0px" viewBox="0 0 297 297" style="enable-background:new 0 0 297 297;"
                 xml:space="preserve" fill="currentColor">
@@ -22,8 +22,9 @@
                 <g></g>
                 <g></g>
             </svg>
+            <div class="absolute bottom-0 right-[3px] text-[7px]">1</div>
         </div>
-        <div class="btn btn-sm btn-square">
+        <div class="btn btn-sm btn-square relative">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                 id="Layer_1" x="0px" y="0px" viewBox="0 0 100.75 100.75" width="18" height="18"
                 style="enable-background:new 0 0 100.75 100.75;" xml:space="preserve" fill="currentColor">
@@ -32,14 +33,16 @@
                 <path
                     d="M97.11,31.695c0-0.734-0.528-1.343-1.225-1.472L62.051,7.826c-0.027-0.018-0.057-0.028-0.084-0.044  c-0.046-0.026-0.091-0.052-0.14-0.073c-0.046-0.02-0.092-0.036-0.138-0.051c-0.045-0.015-0.089-0.029-0.135-0.039  c-0.05-0.011-0.1-0.018-0.151-0.024c-0.045-0.005-0.09-0.011-0.136-0.012c-0.052-0.001-0.103,0.002-0.155,0.006  c-0.045,0.003-0.09,0.007-0.136,0.014c-0.053,0.009-0.105,0.023-0.157,0.038c-0.031,0.009-0.062,0.012-0.093,0.022L13.258,24.372  c-0.767,0.27-1.173,1.1-0.928,1.869v8.902c0,0.17,0.034,0.331,0.087,0.483c0.007,0.479,0.242,0.947,0.671,1.231l34.168,22.618  c0.255,0.168,0.542,0.249,0.827,0.249c0.298,0,0.586-0.098,0.836-0.267l47.074-16.708c0.552-0.196,0.911-0.683,0.98-1.227  c0.086-0.189,0.137-0.398,0.137-0.619V31.695z M61.018,10.74l31.039,20.547L48.288,46.821l-31.165-20.63L61.018,10.74z   M15.33,28.602l31.254,20.689v6.14L15.33,34.742V28.602z M49.584,49.544L94.11,33.741v6.491L49.584,56.036V49.544z" />
             </svg>
+            <div class="absolute bottom-0 right-[3px] text-[7px]">2</div>
         </div>
-        <div class="btn btn-sm btn-square">
+        <div class="btn btn-sm btn-square relative">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="18" height="18" fill="currentColor">
                 <g id="Layer_4" data-name="Layer 4">
                     <path
                         d="M57.74,17.94A1.51,1.51,0,0,0,57,16.7L32.75,2.7a1.49,1.49,0,0,0-1.5,0L7,16.7A1.58,1.58,0,0,0,6.25,18V46A1.51,1.51,0,0,0,7,47.3l24.25,14a1.54,1.54,0,0,0,1.5,0L57,47.3a1.51,1.51,0,0,0,.75-1.3C57.74,45.94,57.76,18,57.74,17.94ZM32,5.73,53.25,18,32,30.27,10.75,18ZM9.25,20.6,30.5,32.87V57.4L9.25,45.13ZM33.5,57.4V32.87L54.75,20.6V45.13Z" />
                 </g>
             </svg>
+            <div class="absolute bottom-0 right-[3px] text-[7px]">3</div>
         </div>
     </div>
 </template>
