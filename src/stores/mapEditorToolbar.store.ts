@@ -11,7 +11,7 @@ export enum Tools {
 export const useMapEditorToolbarStore = defineStore(
   'mapEditorToolbar',
   () => {
-    const selectedTool = ref<Tools>(Tools.Block)
+    const selectedTool = ref<Tools>(Tools.Select)
 
     return {
         selectedTool
