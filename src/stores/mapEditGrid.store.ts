@@ -1,10 +1,15 @@
+import { getAuth } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import vlandApi, { Block, Map } from '../apis/vland.api'
+import vlandApi, { Block, Blocks, DeleteBlockDto, Map, PutBlockDto } from '../apis/vland.api'
+import { Tools, useMapEditorToolbarStore } from './mapEditorToolbar.store'
 
 export const useMapEditGridStore = defineStore(
   'mapEditGrid',
   () => {
+    const auth = getAuth()
+    const mapEditorToolbarStore = useMapEditorToolbarStore()
+
     const mapId = ref('')
     const isOpeningEditGrid = ref(false)
 
@@ -60,6 +65,68 @@ export const useMapEditGridStore = defineStore(
         return axis
     }
 
+    const paintToIndex = async (index: number) => {
+        console.log('grid item click', index)
+        console.log('cords', getAxisFromIndex(index))
+        const axis = getAxisFromIndex(index)
+        
+        switch(mapEditorToolbarStore.selectedTool) {
+            case Tools.Select: {
+                console.log(Tools.Select)
+                break;
+            }
+            case Tools.Block: {
+                console.log(Tools.Block)
+                const keyBlocksStore = `${axis.x}_0_${axis.z}`
+                const putBlockDto: PutBlockDto = {
+                    type: Blocks.Stone,
+                    position: {
+                        x: axis.x,
+                        y: 0,
+                        z: axis.z
+                    },
+                    map: mapId.value
+                }
+
+                blocks.value[keyBlocksStore] = {
+                    ...putBlockDto,
+                    _id: ''
+                }
+                
+                const token = await auth.currentUser?.getIdToken()
+                if(!token) return
+                const result = await vlandApi.blocks.put(putBlockDto, token)
+                blocks.value[keyBlocksStore]._id = result._id
+                break;
+            }
+            case Tools.Object: {
+                console.log(Tools.Object)
+                break;
+            }
+            case Tools.Eraser: {
+                console.log(Tools.Eraser)
+                const keyBlocksStore = `${axis.x}_0_${axis.z}`
+                const hasAlreadyBlockOnPaintIndex = !!blocks.value[keyBlocksStore]
+                console.log(hasAlreadyBlockOnPaintIndex)
+                if (hasAlreadyBlockOnPaintIndex) {
+                    delete blocks.value[keyBlocksStore]
+                    const deleteBlockDto: DeleteBlockDto = {
+                        position: {
+                            x: axis.x,
+                            y: 0,
+                            z: axis.z
+                        },
+                        map: mapId.value
+                    }
+                    const token = await auth.currentUser?.getIdToken()
+                    if(!token) return
+                    await vlandApi.blocks.delete(deleteBlockDto, token)
+                }
+                break;
+            }
+        }
+    }
+
     return {
         isOpeningEditGrid,
         resetMapEditGrid,
@@ -72,7 +139,8 @@ export const useMapEditGridStore = defineStore(
         getAxisFromIndex,
         gridWidth,
         gridHeigth,
-        showCoordinates
+        showCoordinates,
+        paintToIndex
     }
   },
 )

@@ -130,12 +130,12 @@ export type Block = {
 export type PutBlockDto = {
     type: Blocks
     position: Position
-    mapId: string
+    map: string
 }
 
 export type DeleteBlockDto = {
     position: Position
-    mapId: string
+    map: string
 }
 
 export type User = {
