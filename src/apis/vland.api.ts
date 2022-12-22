@@ -86,7 +86,7 @@ export enum Blocks {
     Stone = 'Stone',
     Grass = 'Grass',
     Dirt = 'Dirt',
-    Wood = 'Wodd',
+    Wood = 'Wood',
     Bridge = 'Bridge',
     Snow = 'Snow',
     Sand = 'Sand',

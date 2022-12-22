@@ -2,6 +2,7 @@ import { getAuth } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import vlandApi, { Block, Blocks, DeleteBlockDto, Map, PutBlockDto } from '../apis/vland.api'
+import { useMapEditorBlockbarStore } from './mapEditorBlockbar.store'
 import { Tools, useMapEditorToolbarStore } from './mapEditorToolbar.store'
 
 export const useMapEditGridStore = defineStore(
@@ -9,6 +10,7 @@ export const useMapEditGridStore = defineStore(
   () => {
     const auth = getAuth()
     const mapEditorToolbarStore = useMapEditorToolbarStore()
+    const mapEditorBlockbar = useMapEditorBlockbarStore()
 
     const mapId = ref('')
     const isOpeningEditGrid = ref(false)
@@ -79,7 +81,7 @@ export const useMapEditGridStore = defineStore(
                 console.log(Tools.Block)
                 const keyBlocksStore = `${axis.x}_0_${axis.z}`
                 const putBlockDto: PutBlockDto = {
-                    type: Blocks.Stone,
+                    type: mapEditorBlockbar.selectedBlock,
                     position: {
                         x: axis.x,
                         y: 0,

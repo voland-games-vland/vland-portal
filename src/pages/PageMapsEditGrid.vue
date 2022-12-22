@@ -35,6 +35,9 @@
                     mapEditGridStore.map?.width}}x{{ mapEditGridStore.map?.height}}</div>
             </div>
         </div>
+        <div class="absolute top-16 left-4 z-10">
+            <MapEditorBlockbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Block" />
+        </div>
         <div class="h-full w-full overflow-auto flex">
             <div class="pt-16 px-4 pb-4 inline-block m-auto">
                 <MapEditorGrid v-if="!mapEditGridStore.isOpeningEditGrid" />
@@ -49,13 +52,16 @@
 import { useRouteParams } from '@vueuse/router';
 import { computed, defineAsyncComponent, onMounted } from 'vue';
 import { useMapEditGridStore } from '../stores/mapEditGrid.store';
+import { Tools, useMapEditorToolbarStore } from '../stores/mapEditorToolbar.store';
 
 const MapEditorGridToolbar = defineAsyncComponent(() => import('../components/MapEditorGridToolbar.vue'))
 const MapEditorButtonGridEditSettings = defineAsyncComponent(() => import('../components/MapEditorButtonGridEditSettings.vue'))
+const MapEditorBlockbar = defineAsyncComponent(() => import('../components/MapEditorBlockbar.vue'))
 const MapEditorGrid = defineAsyncComponent(() => import('../components/MapEditorGrid.vue'))
 const mapId = useRouteParams<string>('id')
 
 const mapEditGridStore = useMapEditGridStore()
+const mapEditorGridToolbarStore = useMapEditorToolbarStore()
 
 const showLoadingScreen = computed(() => mapEditGridStore.isOpeningEditGrid)
 
