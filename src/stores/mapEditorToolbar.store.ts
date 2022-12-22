@@ -17,4 +17,9 @@ export const useMapEditorToolbarStore = defineStore(
         selectedTool
     }
   },
+  {
+    persist: {
+      paths: ['selectedTool']
+    }
+  }
 )

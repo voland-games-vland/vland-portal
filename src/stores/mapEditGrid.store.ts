@@ -143,4 +143,9 @@ export const useMapEditGridStore = defineStore(
         paintToIndex
     }
   },
+  {
+    persist: {
+      paths: ['showCoordinates']
+    }
+  }
 )

@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import { plugin as formkitPlugin, defaultConfig as formkitDefaultConfig} from '@formkit/vue'
 import router from './router'
@@ -20,7 +21,9 @@ async function bootstrap() {
         measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
     })
     const app = createApp(App)
-    app.use(createPinia())
+    const pinia = createPinia()
+    pinia.use(piniaPluginPersistedstate)
+    app.use(pinia)
     app.use(router)
     app.use(formkitPlugin, formkitDefaultConfig({
         config: {
