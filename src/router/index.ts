@@ -76,12 +76,6 @@ const router = createRouter({
           meta: { requiresAuth: true }
         },
         {
-          path: 'edit/:id/settings',
-          name: 'PageMapsEditSettings',
-          component: () => import('../pages/PageMapsEditSettings.vue'),
-          meta: { requiresAuth: true }
-        },
-        {
           path: 'edit/:id/grid',
           name: 'PageMapsEditGrid',
           component: () => import('../pages/PageMapsEditGrid.vue'),
