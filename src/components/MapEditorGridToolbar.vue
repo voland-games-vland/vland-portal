@@ -1,6 +1,13 @@
 <template>
     <div class="flex gap-1 bg-slate-800 p-1 rounded-lg h-fit">
-        <div class="btn btn-sm btn-square btn-primary btn-active relative">
+        <div class="btn btn-sm btn-square relative"
+            @click="mapEditorToolbarStore.selectedTool = Tools.Select" 
+            :class="{
+                'btn-active': mapEditorToolbarStore.selectedTool == Tools.Select,
+                'btn-primary': mapEditorToolbarStore.selectedTool == Tools.Select
+            }"
+        >
+
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="12"
                 height="12" id="Capa_1" x="0px" y="0px" viewBox="0 0 297 297" style="enable-background:new 0 0 297 297;"
                 xml:space="preserve" fill="currentColor">
@@ -24,7 +31,13 @@
             </svg>
             <div class="absolute bottom-0 right-[3px] text-[7px]">1</div>
         </div>
-        <div class="btn btn-sm btn-square relative">
+        <div class="btn btn-sm btn-square relative"
+            @click="mapEditorToolbarStore.selectedTool = Tools.Block" 
+            :class="{
+                'btn-active': mapEditorToolbarStore.selectedTool == Tools.Block,
+                'btn-primary': mapEditorToolbarStore.selectedTool == Tools.Block
+            }"
+        >
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                 id="Layer_1" x="0px" y="0px" viewBox="0 0 100.75 100.75" width="18" height="18"
                 style="enable-background:new 0 0 100.75 100.75;" xml:space="preserve" fill="currentColor">
@@ -35,7 +48,13 @@
             </svg>
             <div class="absolute bottom-0 right-[3px] text-[7px]">2</div>
         </div>
-        <div class="btn btn-sm btn-square relative">
+        <div class="btn btn-sm btn-square relative"
+            @click="mapEditorToolbarStore.selectedTool = Tools.Object" 
+            :class="{
+                'btn-active': mapEditorToolbarStore.selectedTool == Tools.Object,
+                'btn-primary': mapEditorToolbarStore.selectedTool == Tools.Object
+            }"
+        >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="18" height="18" fill="currentColor">
                 <g id="Layer_4" data-name="Layer 4">
                     <path
@@ -44,7 +63,13 @@
             </svg>
             <div class="absolute bottom-0 right-[3px] text-[7px]">3</div>
         </div>
-        <div class="btn btn-sm btn-square relative">
+        <div class="btn btn-sm btn-square relative"
+            @click="mapEditorToolbarStore.selectedTool = Tools.Eraser" 
+            :class="{
+                'btn-active': mapEditorToolbarStore.selectedTool == Tools.Eraser,
+                'btn-primary': mapEditorToolbarStore.selectedTool == Tools.Eraser
+            }"
+        >
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18" fill="none" stroke="currentColor" version="1.1" id="Icons" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
                 <path class="st0" d="M28,12.5c0.8-0.8,0.8-2,0-2.8L22.4,4c-0.8-0.8-2-0.8-2.8,0L5,18.5c-0.8,0.8-0.8,2,0,2.8l3.8,3.8h6.6L28,12.5z"/>
                 <line class="st0" x1="12.5" y1="11.1" x2="20.9" y2="19.5"/>
@@ -54,4 +79,31 @@
         </div>
     </div>
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { onKeyStroke } from '@vueuse/core';
+import { Tools, useMapEditorToolbarStore } from '../stores/mapEditorToolbar.store';
+
+const mapEditorToolbarStore = useMapEditorToolbarStore()
+
+onKeyStroke('1', (e) => {
+  e.preventDefault()
+  if (mapEditorToolbarStore.selectedTool == Tools.Select) return
+  mapEditorToolbarStore.selectedTool = Tools.Select
+})
+onKeyStroke('2', (e) => {
+  e.preventDefault()
+  if (mapEditorToolbarStore.selectedTool == Tools.Block) return
+  mapEditorToolbarStore.selectedTool = Tools.Block
+})
+
+onKeyStroke('3', (e) => {
+  e.preventDefault()
+  if (mapEditorToolbarStore.selectedTool == Tools.Object) return
+  mapEditorToolbarStore.selectedTool = Tools.Object
+})
+onKeyStroke('0', (e) => {
+  e.preventDefault()
+  if (mapEditorToolbarStore.selectedTool == Tools.Eraser) return
+  mapEditorToolbarStore.selectedTool = Tools.Eraser
+})
+</script>
