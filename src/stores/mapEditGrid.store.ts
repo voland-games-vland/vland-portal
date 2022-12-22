@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import vlandApi, { Map } from '../apis/vland.api'
 
 export const useMapEditGridStore = defineStore(
@@ -9,6 +9,11 @@ export const useMapEditGridStore = defineStore(
     const isOpeningEditGrid = ref(false)
 
     const map = ref<Map>()
+    const gridWidth = computed(() => map.value?.width || 0)
+    const gridHeigth = computed(() => map.value?.height || 0)
+    const gridItemSize = ref(30)
+    const gridItemsCount = computed(() => gridWidth.value * gridHeigth.value)
+
 
     const blocks = ref()
 
@@ -20,6 +25,8 @@ export const useMapEditGridStore = defineStore(
 
         map.value = await vlandApi.maps.id.get(mapId.value)
 
+        blocks.value = await vlandApi.maps.id.blocks.get(mapId.value)
+
         isOpeningEditGrid.value = false
     }
 
@@ -27,6 +34,18 @@ export const useMapEditGridStore = defineStore(
         console.log('reset map edit grid')
         mapId.value = ''
         map.value = undefined
+        blocks.value = undefined
+    }
+
+    const getAxisFromIndex = (index: number) => {
+        const width = gridWidth.value
+        const x = Math.ceil(index / width);
+        const z = ((index - 1) % width) + 1;
+        const axis = {
+            x,
+            z
+        }
+        return axis
     }
 
     return {
@@ -35,7 +54,12 @@ export const useMapEditGridStore = defineStore(
         mapId,
         openMapEditGrid,
         blocks,
-        map
+        map,
+        gridItemsCount,
+        gridItemSize,
+        getAxisFromIndex,
+        gridWidth,
+        gridHeigth
     }
   },
 )
