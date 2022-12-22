@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen max-h-screen relative bg-slate-300">
+    <div class="h-screen max-h-[calc(100vh_-_64px)] lg:max-h-screen relative bg-slate-300 overflow-hidden">
         <div class="absolute top-4 left-4 right-4 inline-grid grid-cols-[1fr_2fr_1fr] z-10">
             <div class="flex items-center gap-1">
                 <div>
@@ -19,8 +19,10 @@
                 <div v-if="!mapEditGridStore.isOpeningEditGrid" class="font-bold text-xs bg-neutral text-neutral-content p-1 rounded-lg">{{ mapEditGridStore.map?.width}}x{{ mapEditGridStore.map?.height}}</div>
             </div>
         </div>
-        <div class="max-h-screen h-screen grid justify-items-center content-center overflow-scroll">
-            <MapEditorGrid v-if="!mapEditGridStore.isOpeningEditGrid" />
+        <div class="h-full w-full overflow-auto flex">
+            <div class="pt-16 px-4 pb-4 inline-block m-auto">
+                <MapEditorGrid v-if="!mapEditGridStore.isOpeningEditGrid" />
+            </div>
         </div>
     </div>
 </template>

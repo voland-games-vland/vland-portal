@@ -4,7 +4,7 @@
         :style="gridStyle"
     >
         <div v-for="index in mapEditGridStore.gridItemsCount" :key="index" class="bg-slate-300 hover:bg-slate-400 overflow-hidden relative">
-            <div class="text-xs font-thin absolute bottom-0 right-0 select-none">{{ mapEditGridStore.getAxisFromIndex(index).x }},{{ mapEditGridStore.getAxisFromIndex(index).z }}</div>
+            <div class="font-thin absolute bottom-0 right-0 select-none text-[9px] text-gray-600">{{ mapEditGridStore.getAxisFromIndex(index).x }},{{ mapEditGridStore.getAxisFromIndex(index).z }}</div>
         </div>
     </div>
 </template>
