@@ -31,7 +31,7 @@
             <div v-for="map in myMapsStore.maps" :key="map._id">
                 <RouterLink :to="`/maps/edit/${map._id}/settings`">
                     <div
-                        class="px-4 py-10 text-center bg-slate-900 text-gray-200 font-bold transition-all duration-300 text-2xl truncate border-4 border-slate-900 hover:bg-slate-800  hover:border-gray-400">
+                        class="px-4 py-10 rounded-lg text-center bg-slate-900 text-gray-200 font-bold transition-all duration-300 text-2xl truncate border-4 border-slate-900 hover:bg-slate-800  hover:border-gray-400">
                         {{ map.name }}</div>
                 </RouterLink>
             </div>

@@ -80,6 +80,12 @@ const router = createRouter({
           name: 'PageMapsEditSettings',
           component: () => import('../pages/PageMapsEditSettings.vue'),
           meta: { requiresAuth: true }
+        },
+        {
+          path: 'edit/:id/grid',
+          name: 'PageMapsEditGrid',
+          component: () => import('../pages/PageMapsEditGrid.vue'),
+          meta: { requiresAuth: true }
         }
       ],
     },
