@@ -12,6 +12,7 @@ export const useMapEditGridStore = defineStore(
     const gridWidth = computed(() => map.value?.width || 0)
     const gridHeigth = computed(() => map.value?.height || 0)
     const gridItemSize = ref(30)
+    const showCoordinates = ref(false)
     const gridItemsCount = computed(() => gridWidth.value * gridHeigth.value)
 
 
@@ -70,7 +71,8 @@ export const useMapEditGridStore = defineStore(
         gridItemSize,
         getAxisFromIndex,
         gridWidth,
-        gridHeigth
+        gridHeigth,
+        showCoordinates
     }
   },
 )

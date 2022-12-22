@@ -3,7 +3,7 @@
         <div v-for="index in mapEditGridStore.gridItemsCount" :key="index" :style="getGridItemStyles(index)"
             class="bg-slate-300 hover:opacity-75 overflow-hidden relative"
             :class="['grid-item', getGridItemTypeClass(index)]">
-            <div class="font-thin absolute bottom-0 right-0 select-none text-[9px] text-gray-600">{{
+            <div v-if="mapEditGridStore.showCoordinates" class="font-thin absolute bottom-0 right-0 select-none text-[9px] text-gray-600">{{
                     mapEditGridStore.getAxisFromIndex(index).x
             }},{{ mapEditGridStore.getAxisFromIndex(index).z }}</div>
         </div>
