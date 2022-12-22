@@ -29,7 +29,7 @@
                 <MapEditorGridToolbar />
             </div>
             <div class="flex flex-row-reverse items-center gap-1">
-                <ButtonGridEditSettings />
+                <MapEditorButtonGridEditSettings />
                 <div v-if="!mapEditGridStore.isOpeningEditGrid"
                     class="font-bold text-xs bg-neutral text-neutral-content p-1 rounded-lg">{{
                     mapEditGridStore.map?.width}}x{{ mapEditGridStore.map?.height}}</div>
@@ -51,7 +51,7 @@ import { computed, defineAsyncComponent, onMounted } from 'vue';
 import { useMapEditGridStore } from '../stores/mapEditGrid.store';
 
 const MapEditorGridToolbar = defineAsyncComponent(() => import('../components/MapEditorGridToolbar.vue'))
-const ButtonGridEditSettings = defineAsyncComponent(() => import('../components/ButtonGridEditSettings.vue'))
+const MapEditorButtonGridEditSettings = defineAsyncComponent(() => import('../components/MapEditorButtonGridEditSettings.vue'))
 const MapEditorGrid = defineAsyncComponent(() => import('../components/MapEditorGrid.vue'))
 const mapId = useRouteParams<string>('id')
 
