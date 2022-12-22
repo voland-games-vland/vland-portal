@@ -24,5 +24,5 @@
 <script lang="ts" setup>
 import { defineAsyncComponent } from 'vue';
 
-const MapEditorGridSettings = defineAsyncComponent(() => import('../components/MapEditorGridSettings.vue'))
+const MapEditorGridSettings = defineAsyncComponent(() => import('./MapEditorGridSettings.vue'))
 </script>
