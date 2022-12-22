@@ -44,6 +44,14 @@
             </svg>
             <div class="absolute bottom-0 right-[3px] text-[7px]">3</div>
         </div>
+        <div class="btn btn-sm btn-square relative">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18" fill="none" stroke="currentColor" version="1.1" id="Icons" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+                <path class="st0" d="M28,12.5c0.8-0.8,0.8-2,0-2.8L22.4,4c-0.8-0.8-2-0.8-2.8,0L5,18.5c-0.8,0.8-0.8,2,0,2.8l3.8,3.8h6.6L28,12.5z"/>
+                <line class="st0" x1="12.5" y1="11.1" x2="20.9" y2="19.5"/>
+                <line class="st0" x1="5" y1="29" x2="24" y2="29"/>
+            </svg>
+            <div class="absolute bottom-0 right-[3px] text-[7px]">0</div>
+        </div>
     </div>
 </template>
 <script lang="ts" setup></script>

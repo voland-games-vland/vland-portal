@@ -20,7 +20,7 @@
                         </svg>
                     </RouterLink>
                 </div>
-                <div class="text-center font-bold">
+                <div class="font-bold text-sm bg-neutral text-neutral-content py-1 px-2 rounded-lg">
                     <span v-if="mapEditGridStore.isOpeningEditGrid">Loading...</span>
                     <span v-if="!mapEditGridStore.isOpeningEditGrid">{{ mapEditGridStore.map?.name}}</span>
                 </div>
@@ -31,7 +31,7 @@
             <div class="flex flex-row-reverse items-center gap-1">
                 <MapEditorButtonGridEditSettings />
                 <div v-if="!mapEditGridStore.isOpeningEditGrid"
-                    class="font-bold text-xs bg-neutral text-neutral-content p-1 rounded-lg">{{
+                    class="font-bold text-xs bg-neutral text-neutral-content py-1 px-2 rounded-lg">{{
                     mapEditGridStore.map?.width}}x{{ mapEditGridStore.map?.height}}</div>
             </div>
         </div>
