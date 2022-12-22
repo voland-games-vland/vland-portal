@@ -1,5 +1,6 @@
 <template>
     <div class="p-2 bg-slate-800 rounded-lg grid gap-1">
+        <div class="font-bold text-neutral-content">Blocks</div>
         <div
             v-for="block in mapEditorBlockbarStore.blocks"
             :key="block"
