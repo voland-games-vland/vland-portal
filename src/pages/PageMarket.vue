@@ -1,7 +1,7 @@
 <template>
     <div class="p-4">
         <NavigationBack toBack="/start">Market</NavigationBack>
-        Currently no offers
+        Currently no offers :(
     </div>
 </template>
 <script lang="ts" setup>
