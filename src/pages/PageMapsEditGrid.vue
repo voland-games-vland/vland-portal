@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="grid justify-center">
-                <GridToolbar />
+                <MapEditorGridToolbar />
             </div>
             <div class="flex flex-row-reverse items-center gap-1">
                 <ButtonGridEditSettings />
@@ -50,7 +50,7 @@ import { useRouteParams } from '@vueuse/router';
 import { computed, defineAsyncComponent, onMounted } from 'vue';
 import { useMapEditGridStore } from '../stores/mapEditGrid.store';
 
-const GridToolbar = defineAsyncComponent(() => import('../components/GridToolbar.vue'))
+const MapEditorGridToolbar = defineAsyncComponent(() => import('../components/MapEditorGridToolbar.vue'))
 const ButtonGridEditSettings = defineAsyncComponent(() => import('../components/ButtonGridEditSettings.vue'))
 const MapEditorGrid = defineAsyncComponent(() => import('../components/MapEditorGrid.vue'))
 const mapId = useRouteParams<string>('id')
