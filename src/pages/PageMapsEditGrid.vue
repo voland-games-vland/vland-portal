@@ -15,8 +15,15 @@
 </template>
 <script lang="ts" setup>
 import { useRouteParams } from '@vueuse/router';
-import { defineAsyncComponent } from 'vue';
-const ButtonBack = defineAsyncComponent(() => import('../components/ButtonBack.vue'))
+import { defineAsyncComponent, onMounted } from 'vue';
+import { useMapEditGridStore } from '../stores/mapEditGrid.store';
+
 const GridToolbar = defineAsyncComponent(() => import('../components/GridToolbar.vue'))
 const mapId = useRouteParams<string>('id')
+
+const mapEditGridStore = useMapEditGridStore()
+
+onMounted(() => {
+    mapEditGridStore.openMapEditGrid(mapId.value)
+})
 </script>
