@@ -147,4 +147,6 @@ export type User = {
     coins: number
     banknotes: number
     nickname: string
+    xp: number
+    level: number
 }
