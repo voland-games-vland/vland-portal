@@ -1,8 +1,8 @@
 <template>
     <div class="h-screen max-h-[calc(100vh_-_64px)] lg:max-h-screen relative bg-slate-300 overflow-hidden" v-if="!showLoadingScreen">
-        <div class="absolute top-4 left-4 right-4 inline-grid grid-cols-[1fr_2fr_1fr] z-10">
+        <div class="absolute top-4 left-4 right-4 inline-grid grid-cols-[1fr_2fr_1fr] z-10 pointer-events-none">
             <div class="flex items-center gap-1">
-                <div>
+                <div class="pointer-events-auto">
                     <RouterLink :to="`/maps`" @click="mapEditGridStore.resetMapEditGrid"
                         class="btn btn-square btn-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20"
@@ -20,18 +20,22 @@
                         </svg>
                     </RouterLink>
                 </div>
-                <div class="font-bold text-sm bg-neutral text-neutral-content py-1 px-2 rounded-lg">
+                <div class="font-bold text-sm bg-neutral text-neutral-content py-1 px-2 rounded-lg pointer-events-auto">
                     <span v-if="mapEditGridStore.isOpeningEditGrid">Loading...</span>
                     <span v-if="!mapEditGridStore.isOpeningEditGrid">{{ mapEditGridStore.map?.name}}</span>
                 </div>
             </div>
             <div class="grid justify-center">
-                <MapEditorGridToolbar />
+                <div class="pointer-events-auto">
+                    <MapEditorGridToolbar />
+                </div>
             </div>
             <div class="flex flex-row-reverse items-center gap-1">
-                <MapEditorButtonGridEditSettings />
+                <div class="pointer-events-auto">
+                    <MapEditorButtonGridEditSettings />
+                </div>
                 <div v-if="!mapEditGridStore.isOpeningEditGrid"
-                    class="font-bold text-xs bg-neutral text-neutral-content py-1 px-2 rounded-lg">{{
+                    class="font-bold text-xs bg-neutral text-neutral-content py-1 px-2 rounded-lg pointer-events-auto">{{
                     mapEditGridStore.map?.width}}x{{ mapEditGridStore.map?.height}}</div>
             </div>
         </div>
