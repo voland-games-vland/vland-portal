@@ -42,12 +42,13 @@
         <div class="drawer-side">
             <label for="sidenav" class="drawer-overlay"></label>
             <ul class="menu p-4 w-80 bg-base-300 text-base-content font-bold uppercase gap-2">
-                <RouterLink to="/start" class="rounded-lg btn-ghost [&.active]:bg-primary transition-colors duration-300 ease-in-out " active-class="active">
-                    <div class="p-4 font-bold text-4xl uppercase">V-Land</div>
-                </RouterLink>
+                
                 <div>
                     <UserBadge :name="userStore.user?.nickname || ''" :level="userStore.user?.level.toString() || ''" />
                 </div>
+                <RouterLink to="/start" class="rounded-lg btn-ghost [&.active]:bg-primary transition-colors duration-300 ease-in-out " active-class="active">
+                    <div class="p-4 font-bold text-4xl uppercase">V-Land</div>
+                </RouterLink>
                 <!-- Sidebar content here -->
                 <SidenavMenuItem to="/play">
                     <template v-slot:icon>
