@@ -249,14 +249,11 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineAsyncComponent } from 'vue';
-import { getAuth } from 'firebase/auth'
-import { useAuth } from '@vueuse/firebase/useAuth'
 import { useUserStore } from '../stores/user.store';
 
 const SidenavMenuItem = defineAsyncComponent(() => import('../components/SidenavMenuItem.vue'))
 const UserBadge = defineAsyncComponent(() => import('../components/UserBadge.vue'))
 
-const { user } = useAuth(getAuth())
 const userStore = useUserStore()
 
 const currentYear = computed(() => {
