@@ -18,7 +18,8 @@ export const useMapEditGridStore = defineStore(
     const map = ref<Map>()
     const gridWidth = computed(() => map.value?.width || 0)
     const gridHeigth = computed(() => map.value?.height || 0)
-    const gridItemSize = ref(30)
+    const zoomLevel = ref(100)
+    const gridItemSize = computed(() => 30 * (zoomLevel.value / 100))
     const showCoordinates = ref(false)
     const gridItemsCount = computed(() => gridWidth.value * gridHeigth.value)
 
@@ -129,6 +130,20 @@ export const useMapEditGridStore = defineStore(
         }
     }
 
+    const zoomOut = () => {
+        const newZoomLevel = zoomLevel.value - 10
+        if (newZoomLevel < 10) return
+        zoomLevel.value = newZoomLevel
+    }
+
+    const zoomIn = () => {
+        zoomLevel.value = zoomLevel.value + 10
+    }
+
+    const zoomReset = () => {
+        zoomLevel.value = 100
+    }
+
     return {
         isOpeningEditGrid,
         resetMapEditGrid,
@@ -142,12 +157,16 @@ export const useMapEditGridStore = defineStore(
         gridWidth,
         gridHeigth,
         showCoordinates,
-        paintToIndex
+        paintToIndex,
+        zoomLevel,
+        zoomIn,
+        zoomOut,
+        zoomReset
     }
   },
   {
     persist: {
-      paths: ['showCoordinates']
+      paths: ['showCoordinates', 'zoomLevel']
     }
   }
 )

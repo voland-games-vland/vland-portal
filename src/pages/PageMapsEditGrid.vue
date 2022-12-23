@@ -38,8 +38,11 @@
         <div class="absolute top-16 left-4 z-10">
             <MapEditorBlockbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Block" />
         </div>
+        <div class="absolute bottom-4 left-4 z-10">
+            <MapEditorButtonZoom />
+        </div>
         <div class="h-full w-full overflow-auto flex">
-            <div class="pt-16 px-4 pb-4 inline-block m-auto">
+            <div class="pt-16 px-28 pb-12 inline-block m-auto">
                 <MapEditorGrid v-if="!mapEditGridStore.isOpeningEditGrid" />
             </div>
         </div>
@@ -57,6 +60,7 @@ import { Tools, useMapEditorToolbarStore } from '../stores/mapEditorToolbar.stor
 const MapEditorGridToolbar = defineAsyncComponent(() => import('../components/MapEditorGridToolbar.vue'))
 const MapEditorButtonGridEditSettings = defineAsyncComponent(() => import('../components/MapEditorButtonGridEditSettings.vue'))
 const MapEditorBlockbar = defineAsyncComponent(() => import('../components/MapEditorBlockbar.vue'))
+const MapEditorButtonZoom = defineAsyncComponent(() => import('../components/MapEditorButtonZoom.vue'))
 const MapEditorGrid = defineAsyncComponent(() => import('../components/MapEditorGrid.vue'))
 const mapId = useRouteParams<string>('id')
 
