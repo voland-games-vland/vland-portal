@@ -45,6 +45,9 @@
                 <RouterLink to="/start" class="rounded-lg btn-ghost [&.active]:bg-primary transition-colors duration-300 ease-in-out " active-class="active">
                     <div class="p-4 font-bold text-4xl uppercase">V-Land</div>
                 </RouterLink>
+                <div>
+                    <UserBadge :name="userStore.user?.nickname || ''" :level="userStore.user?.level.toString() || ''" />
+                </div>
                 <!-- Sidebar content here -->
                 <SidenavMenuItem to="/play">
                     <template v-slot:icon>
@@ -251,6 +254,7 @@ import { useAuth } from '@vueuse/firebase/useAuth'
 import { useUserStore } from '../stores/user.store';
 
 const SidenavMenuItem = defineAsyncComponent(() => import('../components/SidenavMenuItem.vue'))
+const UserBadge = defineAsyncComponent(() => import('../components/UserBadge.vue'))
 
 const { user } = useAuth(getAuth())
 const userStore = useUserStore()
