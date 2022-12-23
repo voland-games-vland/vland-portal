@@ -39,7 +39,7 @@
                     mapEditGridStore.map?.width}}x{{ mapEditGridStore.map?.height}}</div>
             </div>
         </div>
-        <div class="absolute top-16 left-4 z-10">
+        <div class="absolute top-20 left-4 z-10">
             <MapEditorSelectbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Select" />
             <MapEditorBlockbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Block" />
         </div>
