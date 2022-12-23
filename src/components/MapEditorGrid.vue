@@ -1,7 +1,7 @@
 <template>
     <div class="grid gap-px bg-black border border-black" :style="getGridStyle">
         <div v-for="index in mapEditGridStore.gridItemsCount" :key="index" :style="getGridItemStyles(index)"
-            class="bg-slate-300 hover:opacity-75 overflow-hidden relative"
+            class="bg-base-200 hover:opacity-75 overflow-hidden relative"
             :class="[
                 'grid-item',
                 getGridItemTypeClass(index),

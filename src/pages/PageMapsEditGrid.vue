@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen max-h-[calc(100vh_-_64px)] lg:max-h-screen relative bg-slate-300 overflow-hidden" v-if="!showLoadingScreen">
+    <div class="h-screen max-h-[calc(100vh_-_64px)] lg:max-h-screen relative bg-base-200 overflow-hidden" v-if="!showLoadingScreen">
         <div class="absolute top-4 left-4 right-4 inline-grid grid-cols-[1fr_2fr_1fr] z-10 pointer-events-none">
             <div class="flex items-center gap-1">
                 <div class="pointer-events-auto">
