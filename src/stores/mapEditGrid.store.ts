@@ -22,6 +22,11 @@ export const useMapEditGridStore = defineStore(
     const gridItemSize = computed(() => 30 * (zoomLevel.value / 100))
     const showCoordinates = ref(false)
     const gridItemsCount = computed(() => gridWidth.value * gridHeigth.value)
+    const selectedField = ref<{x: number, z: number} | null>(null)
+    const selectedBlock = computed(() => {
+        if (!selectedField) return undefined
+        return blocks.value[`${selectedField.value?.x}_0_${selectedField.value?.z}`]
+    })
 
 
     const blocks = ref<{
@@ -55,6 +60,7 @@ export const useMapEditGridStore = defineStore(
         mapId.value = ''
         map.value = undefined
         blocks.value = {}
+        selectedField.value = null
     }
 
     const getAxisFromIndex = (index: number) => {
@@ -76,6 +82,7 @@ export const useMapEditGridStore = defineStore(
         switch(mapEditorToolbarStore.selectedTool) {
             case Tools.Select: {
                 console.log(Tools.Select)
+                selectedField.value = axis
                 break;
             }
             case Tools.Block: {
@@ -161,7 +168,9 @@ export const useMapEditGridStore = defineStore(
         zoomLevel,
         zoomIn,
         zoomOut,
-        zoomReset
+        zoomReset,
+        selectedField,
+        selectedBlock
     }
   },
   {

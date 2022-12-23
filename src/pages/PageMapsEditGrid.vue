@@ -36,6 +36,7 @@
             </div>
         </div>
         <div class="absolute top-16 left-4 z-10">
+            <MapEditorSelectbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Select" />
             <MapEditorBlockbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Block" />
         </div>
         <div class="absolute bottom-4 left-4 z-10">
@@ -60,6 +61,7 @@ import { Tools, useMapEditorToolbarStore } from '../stores/mapEditorToolbar.stor
 const MapEditorGridToolbar = defineAsyncComponent(() => import('../components/MapEditorGridToolbar.vue'))
 const MapEditorButtonGridEditSettings = defineAsyncComponent(() => import('../components/MapEditorButtonGridEditSettings.vue'))
 const MapEditorBlockbar = defineAsyncComponent(() => import('../components/MapEditorBlockbar.vue'))
+const MapEditorSelectbar = defineAsyncComponent(() => import('../components/MapEditorSelectbar.vue'))
 const MapEditorButtonZoom = defineAsyncComponent(() => import('../components/MapEditorButtonZoom.vue'))
 const MapEditorGrid = defineAsyncComponent(() => import('../components/MapEditorGrid.vue'))
 const mapId = useRouteParams<string>('id')

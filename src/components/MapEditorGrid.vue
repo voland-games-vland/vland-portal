@@ -2,7 +2,13 @@
     <div class="grid gap-px bg-black border border-black" :style="getGridStyle">
         <div v-for="index in mapEditGridStore.gridItemsCount" :key="index" :style="getGridItemStyles(index)"
             class="bg-slate-300 hover:opacity-75 overflow-hidden relative"
-            :class="['grid-item', getGridItemTypeClass(index)]"
+            :class="[
+                'grid-item',
+                getGridItemTypeClass(index),
+                {
+                    'border-2 border-secondary-focus': mapEditorToolbar.selectedTool == Tools.Select && isGridItemSelected(index)
+                }
+            ]"
             @click="mapEditGridStore.paintToIndex(index)"
         >
             <div v-if="mapEditGridStore.showCoordinates" class="font-thin absolute bottom-0 right-0 select-none text-[9px] text-gray-600">{{
@@ -20,7 +26,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { useMapEditGridStore } from '../stores/mapEditGrid.store';
+import { Tools, useMapEditorToolbarStore } from '../stores/mapEditorToolbar.store';
 const mapEditGridStore = useMapEditGridStore()
+const mapEditorToolbar = useMapEditorToolbarStore()
 
 const width = computed(() => mapEditGridStore.gridWidth)
 const height = computed(() => mapEditGridStore.gridHeigth)
@@ -49,6 +57,11 @@ const getGridItemTypeClass = (index: number) => {
         ? block.type.toLocaleLowerCase()
         : ''
 };
+
+const isGridItemSelected = (index: number) => {
+    const axis = mapEditGridStore.getAxisFromIndex(index);
+    return (mapEditGridStore.selectedField?.x == axis.x) && (mapEditGridStore.selectedField.z == axis.z)
+}
 </script>
 <style scoped>
 .grid-item.stone {
