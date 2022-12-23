@@ -6,7 +6,7 @@
                 'grid-item',
                 getGridItemTypeClass(index),
                 {
-                    'border-2 border-secondary-focus rounded-md': mapEditorToolbar.selectedTool == Tools.Select && isGridItemSelected(index)
+                    'border-2 border-secondary-focus': mapEditorToolbar.selectedTool == Tools.Select && isGridItemSelected(index)
                 }
             ]"
             @click="mapEditGridStore.paintToIndex(index)"
