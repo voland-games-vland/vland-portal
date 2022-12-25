@@ -30,7 +30,7 @@ export const useMapEditGridStore = defineStore(
 
 
     const blocks = ref<{
-        [key: string]: Block
+        [key: string]: Block | undefined
     }>({})
 
     const openMapEditGrid = async (mapIdToOpen: string) => {
@@ -88,6 +88,8 @@ export const useMapEditGridStore = defineStore(
             case Tools.Block: {
                 console.log(Tools.Block)
                 const keyBlocksStore = `${axis.x}_0_${axis.z}`
+                const currentBlock = blocks.value[keyBlocksStore]
+                if (!!currentBlock && (currentBlock.type == mapEditorBlockbar.selectedBlock)) return
                 const putBlockDto: PutBlockDto = {
                     type: mapEditorBlockbar.selectedBlock,
                     position: {
