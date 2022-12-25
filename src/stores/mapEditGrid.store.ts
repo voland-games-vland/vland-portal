@@ -30,7 +30,7 @@ export const useMapEditGridStore = defineStore(
 
 
     const blocks = ref<{
-        [key: string]: Block | undefined
+        [key: string]: Block
     }>({})
 
     const openMapEditGrid = async (mapIdToOpen: string) => {
