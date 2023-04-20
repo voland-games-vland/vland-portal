@@ -21,6 +21,6 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy from the stage 1
 COPY --from=builder /web-client/dist /usr/share/nginx/html
 
-EXPOSE 80
+ARG EnvironmentVariable
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
