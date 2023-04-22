@@ -4,6 +4,7 @@ import { computed, ref } from 'vue'
 import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto } from '../apis/vland.api'
 import { useMapEditorBlockbarStore } from './mapEditorBlockbar.store'
 import { Tools, useMapEditorToolbarStore } from './mapEditorToolbar.store'
+import { useMapEditorBuildingbarStore } from './mapEditorBuildingbar.store'
 
 export const useMapEditGridStore = defineStore(
   'mapEditGrid',
@@ -11,6 +12,7 @@ export const useMapEditGridStore = defineStore(
     const auth = getAuth()
     const mapEditorToolbarStore = useMapEditorToolbarStore()
     const mapEditorBlockbar = useMapEditorBlockbarStore()
+    const mapEditorBuildingbar = useMapEditorBuildingbarStore()
 
     const mapId = ref('')
     const isOpeningEditGrid = ref(false)
