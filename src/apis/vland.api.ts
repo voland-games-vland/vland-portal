@@ -30,6 +30,12 @@ export default {
                     const { data } = await axios.get<Block[]>(`${baseUrl}/maps/${id}/blocks`)
                     return data
                 }
+            },
+            buildings: {
+                get: async (id: string) => {
+                    const { data } = await axios.get<Building[]>(`${baseUrl}/maps/${id}/buildings`)
+                    return data
+                }
             }
         }
     },
