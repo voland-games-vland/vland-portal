@@ -52,6 +52,25 @@ export default {
             return data
         }
     },
+    buildings: {
+        put: async (body: BuildingPutDto, token: string) => {
+            const { data } = await axios.put<Building>(`${baseUrl}/buildings`, body, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            return data
+        },
+        delete: async (body: BuildingDeleteDto, token: string) => {
+            const { data } = await axios.delete<Building>(`${baseUrl}/buildings`, {
+                data: body,
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            return data
+        }
+    },
     users: {
         me: {
             get: async (token: string) => {
