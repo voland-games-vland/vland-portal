@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import vlandApi, { Block, Blocks, BlockDeleteDto, Map, BlockPutDto } from '../apis/vland.api'
+import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto } from '../apis/vland.api'
 import { useMapEditorBlockbarStore } from './mapEditorBlockbar.store'
 import { Tools, useMapEditorToolbarStore } from './mapEditorToolbar.store'
 

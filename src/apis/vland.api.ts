@@ -74,7 +74,7 @@ export default {
     }
 }
 
-export enum Size {
+export enum SIZE {
     XS = 'XS',
     S = 'S',
     M = 'M',
@@ -82,7 +82,7 @@ export enum Size {
     XL = 'XL'
 }
 
-export enum Blocks {
+export enum BLOCK {
     Stone = 'Stone',
     Grass = 'Grass',
     Dirt = 'Dirt',
@@ -93,9 +93,16 @@ export enum Blocks {
     Water = 'Water'
 }
 
+export enum BUILDING {
+    Spawn = 'Spawn',
+    CapturePoint = 'CapturePoint',
+    Teleporter = 'Teleporter',
+    Spawner = 'Spawner'
+}
+
 export type MapCreateDto = {
     name: string
-    size: Size
+    size: SIZE
 }
 
 export type Map = {
@@ -124,18 +131,36 @@ export type Position = {
 
 export type Block = {
     _id: string
-    type: Blocks
+    type: BLOCK
     position: Position
     map: string
 }
 
 export type BlockPutDto = {
-    type: Blocks
+    type: BLOCK
     position: Position
     map: string
 }
 
 export type BlockDeleteDto = {
+    position: Position
+    map: string
+}
+
+export type Building = {
+    _id: string
+    type: BUILDING
+    position: Position
+    map: string
+}
+
+export type BuildingPutDto = {
+    type: BUILDING
+    position: Position
+    map: string
+}
+
+export type BuildingDeleteDto = {
     position: Position
     map: string
 }

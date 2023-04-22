@@ -36,17 +36,17 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { Size } from '../apis/vland.api';
+import { SIZE } from '../apis/vland.api';
 import { useMapsStore } from '../stores/maps.store';
 
 const mapsStore = useMapsStore()
 
 const formData = ref({
     name: 'My Map',
-    size: Size.M
+    size: SIZE.M
 })
 
-const sizes: Size[] = [Size.XS, Size.S, Size.M, Size.L, Size.XL]
+const sizes: SIZE[] = [SIZE.XS, SIZE.S, SIZE.M, SIZE.L, SIZE.XL]
 
 const isLoading = ref(false)
 

@@ -1,21 +1,21 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { Blocks } from '../apis/vland.api'
+import { BLOCK } from '../apis/vland.api'
 
 export const useMapEditorBlockbarStore = defineStore(
   'mapEditorBlockbar',
   () => {
-    const blocks = ref<Blocks[]>([
-        Blocks.Stone,
-        Blocks.Grass,
-        Blocks.Dirt,
-        Blocks.Wood,
-        Blocks.Bridge,
-        Blocks.Snow,
-        Blocks.Sand,
-        Blocks.Water
+    const blocks = ref<BLOCK[]>([
+        BLOCK.Stone,
+        BLOCK.Grass,
+        BLOCK.Dirt,
+        BLOCK.Wood,
+        BLOCK.Bridge,
+        BLOCK.Snow,
+        BLOCK.Sand,
+        BLOCK.Water
     ])
-    const selectedBlock = ref<Blocks>(Blocks.Stone)
+    const selectedBlock = ref<BLOCK>(BLOCK.Stone)
 
     return {
         blocks,
