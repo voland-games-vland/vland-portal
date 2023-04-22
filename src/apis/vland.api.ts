@@ -4,7 +4,7 @@ const baseUrl = `${import.meta.env.VITE_VLAND_API_URL}`
 
 export default {
     maps: {
-        post: async (body: CreateMapDto, token: string) => {
+        post: async (body: MapCreateDto, token: string) => {
             const { data } = await axios.post<Map>(`${baseUrl}/maps`, body, {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -34,7 +34,7 @@ export default {
         }
     },
     blocks: {
-        put: async (body: PutBlockDto, token: string) => {
+        put: async (body: BlockPutDto, token: string) => {
             const { data } = await axios.put<Block>(`${baseUrl}/blocks`, body, {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -42,7 +42,7 @@ export default {
             })
             return data
         },
-        delete: async (body: DeleteBlockDto, token: string) => {
+        delete: async (body: BlockDeleteDto, token: string) => {
             const { data } = await axios.delete<Block>(`${baseUrl}/blocks`, {
                 data: body,
                 headers: {
@@ -93,7 +93,7 @@ export enum Blocks {
     Water = 'Water'
 }
 
-export type CreateMapDto = {
+export type MapCreateDto = {
     name: string
     size: Size
 }
@@ -105,13 +105,15 @@ export type Map = {
     updatedAt: string
     name: string
     owner?: string
-    settings: {
-        teams: number
-        scoreToWin: number
-        timeLimitInSeconds: number
-    }
+    settings: MapSettings
     width: number
     height: number
+}
+
+export type MapSettings = {
+    teams: number
+    scoreToWin: number
+    timeLimitInSeconds: number
 }
 
 export type Position = {
@@ -127,13 +129,13 @@ export type Block = {
     map: string
 }
 
-export type PutBlockDto = {
+export type BlockPutDto = {
     type: Blocks
     position: Position
     map: string
 }
 
-export type DeleteBlockDto = {
+export type BlockDeleteDto = {
     position: Position
     map: string
 }
