@@ -1,5 +1,11 @@
 <template>
-    <div class="grid gap-px bg-black border border-black" :style="getGridStyle">
+    <div
+        class="grid gap-px bg-black border border-black"
+        :style="getGridStyle"
+        @mousedown.left="isLeftMouseButtonPressed = true"
+        @mouseup.left="isLeftMouseButtonPressed = false"
+        @mouseleave="isLeftMouseButtonPressed = false"
+    >
         <div v-for="index in mapEditGridStore.gridItemsCount" :key="index" :style="getGridItemStyles(index)"
             class="bg-base-200 hover:opacity-75 overflow-hidden relative"
             :class="[
@@ -10,7 +16,7 @@
                 }
             ]"
             @click="mapEditGridStore.paintToIndex(index)"
-            @mousemove="pressed && mapEditGridStore.paintToIndex(index)"
+            @mousemove="isLeftMouseButtonPressed && mapEditGridStore.paintToIndex(index)"
         >
             <div v-if="mapEditGridStore.showCoordinates" class="font-thin absolute bottom-0 right-0 select-none text-[9px] text-gray-600">{{
                     mapEditGridStore.getAxisFromIndex(index).x
@@ -25,15 +31,14 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useMapEditGridStore } from '../stores/mapEditGrid.store';
 import { Tools, useMapEditorToolbarStore } from '../stores/mapEditorToolbar.store';
-import { useMousePressed } from '@vueuse/core';
 
 const mapEditGridStore = useMapEditGridStore()
 const mapEditorToolbar = useMapEditorToolbarStore()
 
-const { pressed } = useMousePressed()
+const isLeftMouseButtonPressed = ref(false);
 
 const width = computed(() => mapEditGridStore.gridWidth)
 const height = computed(() => mapEditGridStore.gridHeigth)
