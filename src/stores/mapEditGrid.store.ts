@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto } from '../apis/vland.api'
+import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto, Building, Position } from '../apis/vland.api'
 import { useMapEditorBlockbarStore } from './mapEditorBlockbar.store'
 import { Tools, useMapEditorToolbarStore } from './mapEditorToolbar.store'
 import { useMapEditorBuildingbarStore } from './mapEditorBuildingbar.store'
@@ -35,6 +35,10 @@ export const useMapEditGridStore = defineStore(
         [key: string]: Block
     }>({})
 
+    const buildings = ref<{
+        [key: string]: Building
+    }>({})
+
     const openMapEditGrid = async (mapIdToOpen: string) => {
         isOpeningEditGrid.value = true
         resetMapEditGrid()
@@ -44,16 +48,30 @@ export const useMapEditGridStore = defineStore(
         map.value = await vlandApi.maps.id.get(mapId.value)
 
         await loadBlocks()
+        await loadBuildings()
 
         isOpeningEditGrid.value = false
     }
 
+    const getKeyFromPosition = (position: Position) => {
+        return `${position.x}_${position.y}_${position.z}`
+    }
+
     const loadBlocks = async () => {
-        if(!mapId.value) return
+        if (!mapId.value) return
         const blocksData = await vlandApi.maps.id.blocks.get(mapId.value)
 
-        for(let block of blocksData) {
-            blocks.value[`${block.position.x}_${block.position.y}_${block.position.z}`] = block
+        for (let block of blocksData) {
+            blocks.value[getKeyFromPosition(block.position)] = block
+        }
+    }
+
+    const loadBuildings = async () => {
+        if (!mapId.value) return
+        const buildingsData = await vlandApi.maps.id.buildings.get(mapId.value)
+
+        for (let building of buildingsData) {
+            buildings.value[getKeyFromPosition(building.position)] = building
         }
     }
 
@@ -62,6 +80,7 @@ export const useMapEditGridStore = defineStore(
         mapId.value = ''
         map.value = undefined
         blocks.value = {}
+        buildings.value = {}
         selectedField.value = null
     }
 
@@ -161,6 +180,7 @@ export const useMapEditGridStore = defineStore(
         mapId,
         openMapEditGrid,
         blocks,
+        buildings,
         map,
         gridItemsCount,
         gridItemSize,
