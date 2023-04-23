@@ -28,11 +28,12 @@
             </RouterLink>
         </div>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(242px,1fr))] gap-4">
-            <div v-for="map in myMapsStore.maps" :key="map._id">
+            <div v-for="map in myMapsStore.maps" :key="map._id" class="group">
                 <RouterLink :to="`/maps/edit/${map._id}/grid`">
                     <div
-                        class="px-4 py-10 rounded-lg text-center bg-slate-900 text-gray-200 font-bold transition-all duration-300 text-2xl truncate border-4 border-slate-900 hover:bg-slate-800  hover:border-gray-400">
-                        {{ map.name }}</div>
+                        class="px-4 py-10 text-center bg-slate-900 text-slate-200 group-hover:text-slate-50 font-bold transition-all duration-300 text-2xl truncate border-4 border-slate-700 hover:bg-slate-800  hover:border-slate-800">
+                        {{ map.name }}
+                    </div>
                 </RouterLink>
             </div>
         </div>

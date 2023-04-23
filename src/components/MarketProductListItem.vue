@@ -6,17 +6,19 @@
                 <div>{{ priceInBills }}</div>
                 <IconBill />
             </div>
-            <div class="w-px bg-slate-700 group-hover:bg-slate-600 transition-colors" v-if="priceInBills && priceInCoins"></div>
+            <div class="w-px bg-slate-700 group-hover:bg-slate-600 transition-colors my-1" v-if="priceInBills && priceInCoins"></div>
             <div class="flex items-center justify-end gap-1" v-if="priceInCoins">
                 <div>{{ priceInCoins }}</div>
                 <IconCoin />
             </div>
         </div>
         <div class="absolute bottom-0 w-full h-full flex-row py-1 px-2 grid grid-rows-[1fr_auto_auto] gap-1">
-            <div class="border-l border-slate-900 group-hover:border-slate-500 transition-colors duration-500"></div>
-            <div class="inline-block text-xl font-bold text-slate-100 group-hover:pl-2 transition-all">{{ title }}</div>
-            <div>
-                <hr class="border-slate-900 group-hover:border-slate-500 transition-colors duration-500" />
+            <div class="border-l border-slate-900 group-hover:border-slate-500 transition-all duration-500 mt-20 group-hover:mt-2"></div>
+            <div class="inline-block text-xl font-bold text-slate-200 group-hover:text-slate-50 group-hover:pl-2 transition-all">{{ title }}</div>
+            <div class="pl-0 group-hover:pl-2 transition-all">
+                <div class="pr-10 transition-all group-hover:pr-0 duration-500">
+                    <hr class="border-slate-900 group-hover:border-slate-500 transition duration-500" />
+                </div>
             </div>
         </div>
     </div>
