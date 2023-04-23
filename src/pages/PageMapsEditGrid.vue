@@ -42,6 +42,7 @@
         <div class="absolute top-20 left-4 z-10">
             <MapEditorSelectbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Select" />
             <MapEditorBlockbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Block" />
+            <MapEditorBuildingbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Object" />
         </div>
         <div class="absolute bottom-4 left-4 z-10">
             <MapEditorButtonZoom />
@@ -61,11 +62,13 @@ import { useRouteParams } from '@vueuse/router';
 import { computed, defineAsyncComponent, onMounted } from 'vue';
 import { useMapEditGridStore } from '../stores/mapEditGrid.store';
 import { Tools, useMapEditorToolbarStore } from '../stores/mapEditorToolbar.store';
+import { useMapEditorBuildingbarStore } from '../stores/mapEditorBuildingbar.store';
 
 const MapEditorGridToolbar = defineAsyncComponent(() => import('../components/MapEditorGridToolbar.vue'))
 const MapEditorButtonGridEditSettings = defineAsyncComponent(() => import('../components/MapEditorButtonGridEditSettings.vue'))
 const MapEditorBlockbar = defineAsyncComponent(() => import('../components/MapEditorBlockbar.vue'))
 const MapEditorSelectbar = defineAsyncComponent(() => import('../components/MapEditorSelectbar.vue'))
+const MapEditorBuildingbar = defineAsyncComponent(() => import('../components/MapEditorBuildingbar.vue'))
 const MapEditorButtonZoom = defineAsyncComponent(() => import('../components/MapEditorButtonZoom.vue'))
 const MapEditorGrid = defineAsyncComponent(() => import('../components/MapEditorGrid.vue'))
 const mapId = useRouteParams<string>('id')
