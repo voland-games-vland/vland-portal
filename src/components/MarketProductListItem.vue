@@ -14,7 +14,7 @@
         </div>
         <div class="absolute bottom-0 w-full h-full flex-row py-1 px-2 grid grid-rows-[1fr_auto_auto] gap-1">
             <div class="border-l border-slate-900 group-hover:border-slate-500 transition-all duration-500 mt-20 group-hover:mt-2"></div>
-            <div class="inline-block text-xl font-bold text-slate-200 group-hover:text-slate-50 group-hover:pl-2 transition-all">{{ title }}</div>
+            <div class="inline-block text-xl font-bold text-slate-300 group-hover:text-slate-50 group-hover:pl-2 transition-all">{{ title }}</div>
             <div class="pl-0 group-hover:pl-2 transition-all">
                 <div class="pr-10 transition-all group-hover:pr-0 duration-500">
                     <hr class="border-slate-900 group-hover:border-slate-500 transition duration-500" />
