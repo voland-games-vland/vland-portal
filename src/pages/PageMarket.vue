@@ -19,8 +19,7 @@ const listProducts = ref([
     },
     {
         title: 'Product 562',
-        priceInCoins: 2000,
-        priceInBills: 120
+        priceInCoins: 2000
     },
     {
         title: 'Product 734',
@@ -34,7 +33,6 @@ const listProducts = ref([
     },
     {
         title: 'Product 3442',
-        priceInCoins: 6800,
         priceInBills: 550
     },
     {

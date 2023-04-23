@@ -16,8 +16,8 @@ const MarketProductListItem = defineAsyncComponent(() => import('./MarketProduct
 defineProps<{
     list: {
         title: string
-        priceInCoins: number
-        priceInBills: number
+        priceInCoins?: number
+        priceInBills?: number
     }[]
 }>()
 </script>

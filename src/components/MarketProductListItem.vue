@@ -28,7 +28,7 @@ const IconCoin = defineAsyncComponent(() => import('./IconCoin.vue'))
 const IconBill = defineAsyncComponent(() => import('./IconBill.vue'))
 defineProps<{
     title: string
-    priceInCoins: number
-    priceInBills: number
+    priceInCoins?: number
+    priceInBills?: number
 }>()
 </script>
