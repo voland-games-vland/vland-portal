@@ -56,6 +56,7 @@
     <div class="h-screen max-h-[calc(100vh_-_64px)] lg:max-h-screen grid" v-if="showLoadingScreen">
         <div class="text-center font-bold m-auto grid gap-2">
             <p>Loading Map Editor</p>
+            <SpinnerRound />
             <p class="text-xs font-light">- {{ mapEditGridStore.loadingMessage }} -</p>
         </div>
     </div>
@@ -73,6 +74,7 @@ const MapEditorSelectbar = defineAsyncComponent(() => import('../components/MapE
 const MapEditorBuildingbar = defineAsyncComponent(() => import('../components/MapEditorBuildingbar.vue'))
 const MapEditorButtonZoom = defineAsyncComponent(() => import('../components/MapEditorButtonZoom.vue'))
 const MapEditorGrid = defineAsyncComponent(() => import('../components/MapEditorGrid.vue'))
+const SpinnerRound = defineAsyncComponent(() => import('../components/SpinnerRound.vue'))
 const mapId = useRouteParams<string>('id')
 
 const mapEditGridStore = useMapEditGridStore()
