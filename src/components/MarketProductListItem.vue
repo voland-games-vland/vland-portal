@@ -12,9 +12,12 @@
                 <IconCoin />
             </div>
         </div>
-        <div class="absolute bottom-0 w-full flex-row pb-1 px-2">
+        <div class="absolute bottom-0 w-full h-full flex-row py-1 px-2 grid grid-rows-[1fr_auto_auto]">
+            <div class="border-l border-slate-900"></div>
             <div class="inline-block text-xl font-bold text-slate-100">{{ title }}</div>
-            <hr class="border-slate-900" />
+            <div>
+                <hr class="border-slate-900" />
+            </div>
         </div>
     </div>
 </template>
