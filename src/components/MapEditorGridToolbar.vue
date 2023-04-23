@@ -1,5 +1,5 @@
 <template>
-    <div class="flex gap-1 bg-slate-800 p-1 rounded-lg h-fit">
+    <div class="flex gap-1 bg-slate-800 p-1 rounded-btn h-fit">
         <div class="btn btn-sm btn-square relative"
             @click="mapEditorToolbarStore.selectedTool = Tools.Select" 
             :class="{

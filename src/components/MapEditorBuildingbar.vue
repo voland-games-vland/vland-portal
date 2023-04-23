@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2 bg-slate-800 rounded-lg grid gap-1">
+    <div class="p-2 bg-slate-800 rounded-btn grid gap-1">
         <div class="font-bold text-neutral-content">Building</div>
         <div
             v-for="building in mapEditorBuildingbarStore.buildings"

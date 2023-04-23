@@ -10,7 +10,16 @@ module.exports = {
     extend: {},
   },
   daisyui: {
-    themes: ["emerald"],
+    themes: [
+      {
+        emerald: {
+          ...require('daisyui/src/colors/themes')['[data-theme=emerald]'],
+          "--rounded-box": "0",
+          "--rounded-btn:": "0",
+          "--rounded-badge": "0",
+        }
+      }
+    ],
   },
   plugins: [
     require("@tailwindcss/typography"),

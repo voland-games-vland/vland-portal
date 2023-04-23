@@ -1,7 +1,7 @@
 <template>
     <div v-if="mapEditGridStore.selectedField" class="indicator">
         <div class="indicator-item">
-            <button class="btn btn-sm btn-circle" @click="mapEditGridStore.selectedField = null">
+            <button class="btn btn-sm btn-square" @click="mapEditGridStore.selectedField = null">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20"
                     height="20" enable-background="new 0 0 32 32" id="Слой_1" version="1.1" viewBox="0 0 32 32"
                     xml:space="preserve">
@@ -17,7 +17,7 @@
                 </svg>
             </button>
         </div>
-        <div class="p-2 bg-slate-800 rounded-lg grid gap-1 text-neutral-content">
+        <div class="p-2 bg-slate-800 rounded-btn grid gap-1 text-neutral-content">
             <div>
                 <div class="font-bold">Field selected:</div>
                 <div>{{ mapEditGridStore.selectedField.x }},{{ mapEditGridStore.selectedField.z }}</div>

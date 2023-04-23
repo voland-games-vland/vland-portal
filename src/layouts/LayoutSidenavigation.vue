@@ -46,7 +46,7 @@
                 <div>
                     <UserBadge :name="userStore.user?.nickname || ''" :level="userStore.user?.level.toString() || ''" />
                 </div>
-                <RouterLink to="/start" class="rounded-lg btn-ghost [&.active]:bg-primary transition-colors duration-300 ease-in-out " active-class="active">
+                <RouterLink to="/start" class="rounded-btn btn-ghost [&.active]:bg-primary transition-colors duration-300 ease-in-out " active-class="active">
                     <div class="p-4 font-bold text-4xl uppercase">V-Land</div>
                 </RouterLink>
                 <!-- Sidebar content here -->
@@ -156,13 +156,13 @@
                     </template>
                 </SidenavMenuItem>
                 <div class="flex flex-col gap-2">
-                    <div class="flex items-center gap-2 bg-slate-400 py-2 px-4 rounded-lg">
+                    <div class="flex items-center gap-2 bg-slate-400 py-2 px-4 rounded-btn">
                         <div>
                             <IconCoin />
                         </div>
                         <div>{{userStore.user?.coins}}</div>
                     </div>
-                    <div class="flex items-center gap-2 bg-slate-400 py-2 px-4 rounded-lg">
+                    <div class="flex items-center gap-2 bg-slate-400 py-2 px-4 rounded-btn">
                         <div>
                             <IconBill />
                         </div>
