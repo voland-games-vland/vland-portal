@@ -16,6 +16,7 @@ export const useMapEditGridStore = defineStore(
 
     const mapId = ref('')
     const isOpeningEditGrid = ref(false)
+    const loadingMessage = ref('')
 
     const map = ref<Map>()
     const gridWidth = computed(() => map.value?.width || 0)
@@ -41,16 +42,20 @@ export const useMapEditGridStore = defineStore(
 
     const openMapEditGrid = async (mapIdToOpen: string) => {
         isOpeningEditGrid.value = true
+        loadingMessage.value = ''
         resetMapEditGrid()
         console.log('open Map edit Grid', mapIdToOpen)
         mapId.value = mapIdToOpen
 
+        loadingMessage.value = 'Metadata'
         map.value = await vlandApi.maps.id.get(mapId.value)
-
+        loadingMessage.value = 'Blocks'
         await loadBlocks()
+        loadingMessage.value = 'Buildings'
         await loadBuildings()
 
         isOpeningEditGrid.value = false
+        loadingMessage.value = ''
     }
 
     const getKeyFromPosition = (position: Position) => {
@@ -219,6 +224,7 @@ export const useMapEditGridStore = defineStore(
 
     return {
         isOpeningEditGrid,
+        loadingMessage,
         resetMapEditGrid,
         mapId,
         openMapEditGrid,

@@ -54,7 +54,10 @@
         </div>
     </div>
     <div class="h-screen max-h-[calc(100vh_-_64px)] lg:max-h-screen grid" v-if="showLoadingScreen">
-        <div class="text-center font-bold inline-block m-auto">Loading Map Editor...</div>
+        <div class="text-center font-bold inline-block m-auto">
+            <p>Loading Map Editor</p>
+            <p>- {{ mapEditGridStore.loadingMessage }} -</p>
+        </div>
     </div>
 </template>
 <script lang="ts" setup>
@@ -62,7 +65,6 @@ import { useRouteParams } from '@vueuse/router';
 import { computed, defineAsyncComponent, onMounted } from 'vue';
 import { useMapEditGridStore } from '../stores/mapEditGrid.store';
 import { Tools, useMapEditorToolbarStore } from '../stores/mapEditorToolbar.store';
-import { useMapEditorBuildingbarStore } from '../stores/mapEditorBuildingbar.store';
 
 const MapEditorGridToolbar = defineAsyncComponent(() => import('../components/MapEditorGridToolbar.vue'))
 const MapEditorButtonGridEditSettings = defineAsyncComponent(() => import('../components/MapEditorButtonGridEditSettings.vue'))
