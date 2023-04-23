@@ -28,6 +28,10 @@
                 gridRow: block.position.x,
             }"></div>
         -->
+        <div v-for="(building, index) in mapEditGridStore.buildings" :key="index" :style="{
+            gridColumn: building.position.z,
+            gridRow: building.position.x
+        }" class="text-black z-50 grid justify-center font-bold pointer-events-none building" :class="building.type.toLocaleLowerCase()"></div>
     </div>
 </template>
 <script lang="ts" setup>
@@ -97,5 +101,18 @@ const isGridItemSelected = (index: number) => {
 }
 .grid-item.water {
     @apply bg-blue-500;
+}
+
+.building.spawn::before {
+    content: "S";
+}
+.building.capturepoint::before {
+    content: "CP";
+}
+.building.teleporter::before {
+    content: "TP";
+}
+.building.spawner::before {
+    content: "SR";
 }
 </style>
