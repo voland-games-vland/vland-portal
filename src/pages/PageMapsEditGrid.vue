@@ -54,9 +54,9 @@
         </div>
     </div>
     <div class="h-screen max-h-[calc(100vh_-_64px)] lg:max-h-screen grid" v-if="showLoadingScreen">
-        <div class="text-center font-bold inline-block m-auto">
+        <div class="text-center font-bold m-auto grid gap-2">
             <p>Loading Map Editor</p>
-            <p>- {{ mapEditGridStore.loadingMessage }} -</p>
+            <p class="text-xs font-light">- {{ mapEditGridStore.loadingMessage }} -</p>
         </div>
     </div>
 </template>
