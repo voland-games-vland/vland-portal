@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto, Building, Position } from '../apis/vland.api'
+import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto, Building, Position, BuildingPutDto, BuildingDeleteDto } from '../apis/vland.api'
 import { useMapEditorBlockbarStore } from './mapEditorBlockbar.store'
 import { Tools, useMapEditorToolbarStore } from './mapEditorToolbar.store'
 import { useMapEditorBuildingbarStore } from './mapEditorBuildingbar.store'
@@ -108,16 +108,17 @@ export const useMapEditGridStore = defineStore(
             }
             case Tools.Block: {
                 console.log(Tools.Block)
-                const keyBlocksStore = `${axis.x}_0_${axis.z}`
+                const position: Position = {
+                    x: axis.x,
+                    y: 0,
+                    z: axis.z
+                }
+                const keyBlocksStore = getKeyFromPosition(position)
                 const currentBlock = blocks.value[keyBlocksStore]
                 if (!!currentBlock && (currentBlock.type == mapEditorBlockbar.selectedBlock)) return
                 const blockPutDto: BlockPutDto = {
                     type: mapEditorBlockbar.selectedBlock,
-                    position: {
-                        x: axis.x,
-                        y: 0,
-                        z: axis.z
-                    },
+                    position: position,
                     map: mapId.value
                 }
 
@@ -134,30 +135,72 @@ export const useMapEditGridStore = defineStore(
             }
             case Tools.Object: {
                 console.log(Tools.Object)
+                const position: Position = {
+                    x: axis.x,
+                    y: 0,
+                    z: axis.z
+                }
+                const keyBuildingsStore = getKeyFromPosition(position)
+                const currentBuilding = buildings.value[keyBuildingsStore]
+                if (!!currentBuilding && (currentBuilding.type == mapEditorBuildingbar.selectedBuilding)) return
+                const buildingPutDto: BuildingPutDto = {
+                    type: mapEditorBuildingbar.selectedBuilding,
+                    position: position,
+                    map: mapId.value
+                }
+
+                buildings.value[keyBuildingsStore] = {
+                    ...buildingPutDto,
+                    _id: ''
+                }
+
+                const token = await auth.currentUser?.getIdToken()
+                if(!token) return
+                const result = await vlandApi.buildings.put(buildingPutDto, token)
+                buildings.value[keyBuildingsStore]._id = result._id
                 break;
             }
             case Tools.Eraser: {
                 console.log(Tools.Eraser)
-                const keyBlocksStore = `${axis.x}_0_${axis.z}`
-                const hasAlreadyBlockOnPaintIndex = !!blocks.value[keyBlocksStore]
-                console.log(hasAlreadyBlockOnPaintIndex)
-                if (hasAlreadyBlockOnPaintIndex) {
-                    delete blocks.value[keyBlocksStore]
-                    const blockDeleteDto: BlockDeleteDto = {
-                        position: {
-                            x: axis.x,
-                            y: 0,
-                            z: axis.z
-                        },
-                        map: mapId.value
-                    }
-                    const token = await auth.currentUser?.getIdToken()
-                    if(!token) return
-                    await vlandApi.blocks.delete(blockDeleteDto, token)
+                const position: Position = {
+                    x: axis.x,
+                    y: 0,
+                    z: axis.z
                 }
+                await Promise.all([eraseBlock(position), eraseBuilding(position)])
                 break;
             }
         }
+    }
+
+    const eraseBlock = async (position: Position) => {
+        const keyBlocksStore = getKeyFromPosition(position)
+        const hasAlreadyBlockOnPaintIndex = !!blocks.value[keyBlocksStore]
+        if (!hasAlreadyBlockOnPaintIndex) return
+
+        delete blocks.value[keyBlocksStore]
+        const blockDeleteDto: BlockDeleteDto = {
+            position: position,
+            map: mapId.value
+        }
+        const token = await auth.currentUser?.getIdToken()
+        if(!token) return
+        await vlandApi.blocks.delete(blockDeleteDto, token)
+    }
+
+    const eraseBuilding = async (position: Position) => {
+        const keyBuildingsStore = getKeyFromPosition(position)
+        const hasAlreadyBuildingOnPaintIndex = !!buildings.value[keyBuildingsStore]
+        if (!hasAlreadyBuildingOnPaintIndex) return
+
+        delete buildings.value[keyBuildingsStore]
+        const buildingDeleteDto: BuildingDeleteDto = {
+            position: position,
+            map: mapId.value
+        }
+        const token = await auth.currentUser?.getIdToken()
+        if(!token) return
+        await vlandApi.buildings.delete(buildingDeleteDto, token)
     }
 
     const zoomOut = () => {
