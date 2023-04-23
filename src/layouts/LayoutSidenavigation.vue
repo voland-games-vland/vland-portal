@@ -16,7 +16,7 @@
                 </div>
                 <div class="flex-1 px-2 mx-2 font-bold text-xl uppercase">V-Land</div>
                 <div class="dropdown dropdown-end">
-                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                    <label tabindex="0" class="btn btn-ghost btn-square avatar">
                         <div class="w-10 rounded-full">
                             <img src="https://placeimg.com/80/80/people" />
                         </div>
@@ -46,7 +46,7 @@
                 <div>
                     <UserBadge :name="userStore.user?.nickname || ''" :level="userStore.user?.level.toString() || ''" />
                 </div>
-                <RouterLink to="/start" class="rounded-btn btn-ghost [&.active]:bg-primary transition-colors duration-300 ease-in-out " active-class="active">
+                <RouterLink to="/start" class="rounded-btn btn-ghost [&.active]:bg-primary transition-colors duration-300 ease-in-out border border-slate-400 [&.active]:border-primary" active-class="active">
                     <div class="p-4 font-bold text-4xl uppercase">V-Land</div>
                 </RouterLink>
                 <!-- Sidebar content here -->

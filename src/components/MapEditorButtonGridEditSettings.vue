@@ -15,7 +15,7 @@
         <input type="checkbox" id="grid-edit-modal" class="modal-toggle" />
         <label for="grid-edit-modal" class="modal cursor-pointer">
             <label class="modal-box relative" for="">
-                <label for="grid-edit-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                <label for="grid-edit-modal" class="btn btn-sm btn-square absolute right-2 top-2">✕</label>
                 <MapEditorGridSettings />
             </label>
         </label>
