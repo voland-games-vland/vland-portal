@@ -33,7 +33,7 @@
                     <div
                         class="px-4 py-10 text-center bg-slate-900 text-slate-300 group-hover:text-slate-50 font-bold transition-all duration-300 text-xl truncate border-4 border-slate-700 hover:bg-slate-800  hover:border-slate-800 flex justify-between">
                         <div class="border-l border-slate-900 group-hover:border-slate-500 mb-5 group-hover:mb-0 transition-all duration-500"></div>
-                        <div class="rotate-0 scale-100 group-hover:scale-110 group-hover:rotate-2 transition-transform">{{ map.name }}</div>
+                        <div class="scale-100 group-hover:scale-110 transition-transform">{{ map.name }}</div>
                         <div class="border-r border-slate-900 group-hover:border-slate-500 mt-5 group-hover:mt-0 transition-all duration-500"></div>
                     </div>
                 </RouterLink>
