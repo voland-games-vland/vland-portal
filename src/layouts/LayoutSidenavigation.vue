@@ -46,8 +46,11 @@
                 <div>
                     <UserBadge :name="userStore.user?.nickname || ''" :level="userStore.user?.level.toString() || ''" />
                 </div>
-                <RouterLink to="/start" class="rounded-btn btn-ghost [&.active]:bg-primary transition-colors duration-300 ease-in-out border border-slate-400 [&.active]:border-primary" active-class="active">
-                    <div class="p-4 font-bold text-4xl uppercase">V-Land</div>
+                <RouterLink to="/start" class="group rounded-btn btn-ghost [&.active]:bg-primary transition-colors duration-300 ease-in-out border border-slate-400 [&.active]:border-primary" active-class="active">
+                    <div class="p-4 font-bold text-4xl uppercase grid grid-cols-[auto_1fr]">
+                        <div>V-Land</div>
+                        <div class="border-r-4 mt-4 border-transparent group-hover:mt-0 group-[&.active]:mt-0 group-hover:border-primary-content group-[&.active]:border-primary-focus transition-all duration-500"></div>
+                    </div>
                 </RouterLink>
                 <!-- Sidebar content here -->
                 <SidenavMenuItem to="/play">
