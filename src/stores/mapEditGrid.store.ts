@@ -99,6 +99,7 @@ export const useMapEditGridStore = defineStore(
         blocks.value = {}
         buildings.value = {}
         selectedField.value = null
+        mapEditorToolbarStore.selectedTool = Tools.Select
     }
 
     const getAxisFromIndex = (index: number) => {
