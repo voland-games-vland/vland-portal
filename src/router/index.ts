@@ -120,6 +120,18 @@ const router = createRouter({
       ]
     },
     {
+      path: '/playbook',
+      component: () => import('../layouts/LayoutSidenavigation.vue'),
+      children: [
+        {
+          path: '',
+          name: 'PagePlaybook',
+          component: () => import('../pages/PagePlaybook.vue'),
+          meta: { requiresAuth: true}
+        }
+      ]
+    },
+    {
       path: '/user/profile',
       name: 'PageUserProfile',
       component: () => import('../pages/PageUserProfile.vue'),
