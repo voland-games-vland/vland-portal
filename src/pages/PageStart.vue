@@ -11,6 +11,3 @@
 import { useUserStore } from '../stores/user.store';
 const userStore = useUserStore()
 </script>
-<style scoped>
-
-</style>

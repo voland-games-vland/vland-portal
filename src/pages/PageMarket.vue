@@ -42,4 +42,3 @@ const listProducts = ref([
     },
 ])
 </script>
-<style scoped></style>

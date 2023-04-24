@@ -11,5 +11,3 @@ import { defineAsyncComponent } from 'vue';
 const NavigationBack = defineAsyncComponent(() => import('../components/NavigationBack.vue'))
 const FormMapNew = defineAsyncComponent(() => import('../components/FormMapNew.vue'))
 </script>
-<style scoped>
-</style>

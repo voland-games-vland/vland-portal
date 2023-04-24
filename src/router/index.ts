@@ -108,6 +108,18 @@ const router = createRouter({
       ],
     },
     {
+      path: '/profile-me',
+      component: () => import('../layouts/LayoutSidenavigation.vue'),
+      children: [
+        {
+          path: '',
+          name: 'PageProfileMe',
+          component: () => import('../pages/PageProfileMe.vue'),
+          meta: { requiresAuth: true}
+        }
+      ]
+    },
+    {
       path: '/user/profile',
       name: 'PageUserProfile',
       component: () => import('../pages/PageUserProfile.vue'),
