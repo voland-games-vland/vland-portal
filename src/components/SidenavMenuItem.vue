@@ -1,7 +1,7 @@
 <template>
     <li>
         <RouterLink :to="to"
-            class="text-xl group transition-all duration-300 ease-in-out border border-slate-400 border-transparent hover:border-gray-400 [&.active]:border-primary-focus grid grid-cols-[auto_auto_1fr] grid-rows-1"
+            class="text-xl group transition-all duration-300 ease-in-out border border-slate-400 hover:border-gray-400 [&.active]:border-primary-focus grid grid-cols-[auto_auto_1fr] grid-rows-1"
             active-class="active">
             <div>
                 <slot name="icon"></slot>
