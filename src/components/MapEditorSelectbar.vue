@@ -23,6 +23,8 @@
                 <div>{{ mapEditGridStore.selectedField.x }},{{ mapEditGridStore.selectedField.z }}</div>
                 <div class="font-bold">Floor Type:</div>
                 <div>{{ mapEditGridStore.selectedBlock?.type || 'None' }}</div>
+                <div class="font-bold">Building Type:</div>
+                <div>{{ mapEditGridStore.selectedBuilding?.type || 'None' }}</div>
             </div>
         </div>
     </div>

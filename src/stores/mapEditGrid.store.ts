@@ -27,8 +27,20 @@ export const useMapEditGridStore = defineStore(
     const gridItemsCount = computed(() => gridWidth.value * gridHeigth.value)
     const selectedField = ref<{x: number, z: number} | null>(null)
     const selectedBlock = computed(() => {
-        if (!selectedField) return undefined
-        return blocks.value[`${selectedField.value?.x}_0_${selectedField.value?.z}`]
+        if (!selectedField.value) return undefined
+        return blocks.value[getKeyFromPosition({
+            x: selectedField.value?.x,
+            y: 0,
+            z: selectedField.value?.z
+        })]
+    })
+    const selectedBuilding = computed(() => {
+        if (!selectedField.value) return undefined
+        return buildings.value[getKeyFromPosition({
+            x: selectedField.value?.x,
+            y: 0,
+            z: selectedField.value?.z
+        })]
     })
 
 
@@ -243,7 +255,8 @@ export const useMapEditGridStore = defineStore(
         zoomOut,
         zoomReset,
         selectedField,
-        selectedBlock
+        selectedBlock,
+        selectedBuilding
     }
   },
   {
