@@ -1,9 +1,9 @@
 <template>
-    <button class="btn btn-outline btn-error" @click="deleteMap">Delete Map</button>
+    <label for="modal-delete-map" class="btn btn-outline btn-error">Delete Map</label>
     <teleport to="body">
-        <input type="checkbox" id="my-modal" v-model="isRevealed" class="modal-toggle" />
-        <div class="modal">
-            <div class="modal-box">
+        <input type="checkbox" id="modal-delete-map" class="modal-toggle" />
+        <label for="modal-delete-map" class="modal cursor-pointer">
+            <label class="modal-box realtive" for="">
                 <h3 class="font-bold text-lg">Confirm delete map?</h3>
                 <p class="py-4">This can not be undone!</p>
                 <div class="flex gap-2">
@@ -11,15 +11,14 @@
                     <p>Unlock Yes Button</p>
                 </div>
                 <div class="modal-action">
-                    <button class="btn btn-error" :disabled="!canClickYesButton" @click="confirm()">Yes</button>
-                    <button class="btn" @click="cancel()">No</button>
+                    <button class="btn btn-error" :disabled="!canClickYesButton" @click="deleteMap()">Yes</button>
+                    <label for="modal-delete-map" class="btn">No</label>
                 </div>
-            </div>
-        </div>
+            </label>
+        </label>
     </teleport>
 </template>
 <script lang="ts" setup>
-import { useConfirmDialog } from '@vueuse/core'
 import { useMapsStore } from '../stores/maps.store';
 import { ref } from 'vue';
 
@@ -28,18 +27,10 @@ const props = defineProps<{
 }>()
 
 const mapsStore = useMapsStore()
-const {
-    isRevealed,
-    reveal,
-    confirm,
-    cancel,
-} = useConfirmDialog()
 
 const canClickYesButton = ref(false)
 
 const deleteMap = async () => {
-    const { isCanceled } = await reveal()
-    if (isCanceled) return
     await mapsStore.deleteMap(props.mapId)
 }
 </script>
