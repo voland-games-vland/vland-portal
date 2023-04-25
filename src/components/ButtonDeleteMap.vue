@@ -2,12 +2,16 @@
     <button class="btn btn-outline btn-error" @click="deleteMap">Delete Map</button>
     <teleport to="body">
         <input type="checkbox" id="my-modal" v-model="isRevealed" class="modal-toggle" />
-        <div class="modal" @click="cancel()">
+        <div class="modal">
             <div class="modal-box">
                 <h3 class="font-bold text-lg">Confirm delete map?</h3>
                 <p class="py-4">This can not be undone!</p>
+                <div class="flex gap-2">
+                    <input type="checkbox" v-model="canClickYesButton" class="checkbox" />
+                    <p>Unlock Yes Button</p>
+                </div>
                 <div class="modal-action">
-                    <button class="btn btn-ghost" @click="confirm()">Yes</button>
+                    <button class="btn btn-error" :disabled="!canClickYesButton" @click="confirm()">Yes</button>
                     <button class="btn" @click="cancel()">No</button>
                 </div>
             </div>
@@ -17,6 +21,7 @@
 <script lang="ts" setup>
 import { useConfirmDialog } from '@vueuse/core'
 import { useMapsStore } from '../stores/maps.store';
+import { ref } from 'vue';
 
 const props = defineProps<{
     mapId: string
@@ -29,6 +34,8 @@ const {
     confirm,
     cancel,
 } = useConfirmDialog()
+
+const canClickYesButton = ref(false)
 
 const deleteMap = async () => {
     const { isCanceled } = await reveal()
