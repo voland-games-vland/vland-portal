@@ -166,12 +166,14 @@
                         </div>
                         <div>{{userStore.user?.coins}}</div>
                     </div>
-                    <div class="flex items-center gap-2 bg-slate-400 py-2 px-4 rounded-btn">
-                        <div>
-                            <IconBill />
+                    <RouterLink to="/payment/stripe" class="group">
+                        <div class="flex items-center gap-2 bg-slate-400 group-hover:bg-slate-300 py-2 px-4 rounded-btn transition-colors">
+                            <div>
+                                <IconBill class="rotate-0 group-hover:rotate-45 transition-transform duration-500" />
+                            </div>
+                            <div class="pl-0 group-hover:pl-2 transition-all">{{moneyStore.money?.money}}</div>
                         </div>
-                        <div>{{moneyStore.money?.money}}</div>
-                    </div>
+                    </RouterLink>
                 </div>
                 <button class="btn btn-block btn-sm btn-ghost mt-auto" @click="userStore.logout">Logout</button>
                 <div class="flex font-normal text-xs normal-case justify-center">© {{ currentYear }} Jonas Voland</div>

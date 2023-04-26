@@ -132,6 +132,18 @@ const router = createRouter({
       ]
     },
     {
+      path: '/payment/stripe',
+      component: () => import('../layouts/LayoutSidenavigation.vue'),
+      children: [
+        {
+          path: '',
+          name: 'PagePaymentStripe',
+          component: () => import('../pages/PagePaymentStripe.vue'),
+          meta: { requiresAuth: true}
+        }
+      ]
+    },
+    {
       path: '/user/profile',
       name: 'PageUserProfile',
       component: () => import('../pages/PageUserProfile.vue'),
@@ -142,6 +154,14 @@ const router = createRouter({
       name: 'PageClan',
       component: () => import('../pages/PageClan.vue'),
       meta: { requiresAuth: true }
+    },
+    {
+      path: '/cancel-payment-strip',
+      redirect: '/market'
+    },
+    {
+      path: '/success-payment-strip',
+      redirect: '/market'
     },
     {
       path: '/:catchAll(.*)',
