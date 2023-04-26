@@ -166,7 +166,7 @@
                         </div>
                         <div>{{userStore.user?.coins}}</div>
                     </div>
-                    <RouterLink to="/payment/stripe" class="group">
+                    <RouterLink to="/payment/credit-card" class="group">
                         <div class="flex items-center gap-2 bg-slate-400 group-hover:bg-slate-300 py-2 px-4 rounded-btn transition-colors">
                             <div>
                                 <IconBill class="rotate-0 group-hover:rotate-45 transition-transform duration-500" />

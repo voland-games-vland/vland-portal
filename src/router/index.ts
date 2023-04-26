@@ -132,13 +132,13 @@ const router = createRouter({
       ]
     },
     {
-      path: '/payment/stripe',
+      path: '/payment/credit-card',
       component: () => import('../layouts/LayoutSidenavigation.vue'),
       children: [
         {
           path: '',
-          name: 'PagePaymentStripe',
-          component: () => import('../pages/PagePaymentStripe.vue'),
+          name: 'PagePaymentCreditCard',
+          component: () => import('../pages/PagePaymentCreditCard.vue'),
           meta: { requiresAuth: true}
         }
       ]
