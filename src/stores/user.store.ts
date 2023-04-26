@@ -61,7 +61,7 @@ export const useUserStore = defineStore(
       const token = await auth.currentUser?.getIdToken()
       if(!token) return
       // TODO: remove
-      localStorage.setItem('token-example', token)
+      sessionStorage.setItem('token-example', token)
       user.value = await vlandApi.users.me.get(token)
       return user.value
     }
