@@ -1,11 +1,11 @@
 <template>
     <a @click="startCheckout" class="group">
         <div class="relative inline-block cursor-pointer w-full">
-            <div class="bg-slate-900 group-hover:bg-slate-800 h-40 grid justify-center items-center transition-colors">
+            <div class="bg-gradient-to-tr from-slate-900 to-teal-900 bg-[position:_0%_0%] group-hover:bg-[position:_100%_100%] bg-[size:_500%] h-40 grid justify-center items-center transition-all duration-700">
                 <div class="text-2xl text-green-300
                  font-bold">{{ name }}</div>
             </div>
-            <div class="bg-slate-700 p-3 group-hover:bg-slate-600 transition-colors">
+            <div class="bg-slate-700 group-hover:bg-slate-800 p-3 transition-all duration-700">
                 <div class="text-xs font-bold text-center text-slate-400">{{ description }}</div>
             </div>
             <div class="absolute top-0 right-0 p-3 text-slate-100 font-bold">€{{ amount / 100 }}</div>
