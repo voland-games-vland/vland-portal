@@ -144,6 +144,18 @@ const router = createRouter({
       ]
     },
     {
+      path: '/payment-success',
+      component: () => import('../layouts/LayoutSidenavigation.vue'),
+      children: [
+        {
+          path: '',
+          name: 'PagePaymentSuccess',
+          component: () => import('../pages/PagePaymentSuccess.vue'),
+          meta: { requiresAuth: true}
+        }
+      ]
+    },
+    {
       path: '/user/profile',
       name: 'PageUserProfile',
       component: () => import('../pages/PageUserProfile.vue'),
@@ -161,7 +173,7 @@ const router = createRouter({
     },
     {
       path: '/success-payment-strip',
-      redirect: '/market'
+      redirect: '/payment-success'
     },
     {
       path: '/:catchAll(.*)',
