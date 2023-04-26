@@ -157,7 +157,7 @@ const router = createRouter({
     },
     {
       path: '/cancel-payment-strip',
-      redirect: '/market'
+      redirect: '/payment/credit-card'
     },
     {
       path: '/success-payment-strip',

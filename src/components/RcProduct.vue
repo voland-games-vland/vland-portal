@@ -1,11 +1,12 @@
 <template>
     <a @click="startCheckout" class="group">
         <div class="relative inline-block cursor-pointer w-full">
-            <div class="bg-slate-700 group-hover:bg-slate-600 h-40 grid justify-center items-center">
-                <div class="text-2xl text-teal-100 font-bold">{{ name }}</div>
+            <div class="bg-slate-900 group-hover:bg-slate-800 h-40 grid justify-center items-center transition-colors">
+                <div class="text-2xl text-green-300
+                 font-bold">{{ name }}</div>
             </div>
-            <div class="bg-slate-500 p-3 group-hover:bg-slate-400">
-                <div class="text-xs font-bold text-center">{{ description }}</div>
+            <div class="bg-slate-700 p-3 group-hover:bg-slate-600 transition-colors">
+                <div class="text-xs font-bold text-center text-slate-400">{{ description }}</div>
             </div>
             <div class="absolute top-0 right-0 p-3 text-slate-100 font-bold">€{{ amount / 100 }}</div>
         </div>
