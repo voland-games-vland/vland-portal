@@ -170,7 +170,7 @@
                         <div>
                             <IconBill />
                         </div>
-                        <div>{{userStore.user?.banknotes}}</div>
+                        <div>{{moneyStore.money?.money}}</div>
                     </div>
                 </div>
                 <button class="btn btn-block btn-sm btn-ghost mt-auto" @click="userStore.logout">Logout</button>
@@ -182,6 +182,7 @@
 <script lang="ts" setup>
 import { computed, defineAsyncComponent } from 'vue';
 import { useUserStore } from '../stores/user.store';
+import { useMoneyStore } from '../stores/money.store';
 
 const SidenavMenuItem = defineAsyncComponent(() => import('../components/SidenavMenuItem.vue'))
 const UserBadge = defineAsyncComponent(() => import('../components/UserBadge.vue'))
@@ -189,8 +190,11 @@ const IconCoin = defineAsyncComponent(() => import('../components/IconCoin.vue')
 const IconBill = defineAsyncComponent(() => import('../components/IconBill.vue'))
 
 const userStore = useUserStore()
+const moneyStore = useMoneyStore()
 
 const currentYear = computed(() => {
     return new Date().getFullYear();
 })
+
+moneyStore.loadUserMeMoney()
 </script>

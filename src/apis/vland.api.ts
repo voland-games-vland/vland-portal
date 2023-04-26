@@ -86,6 +86,16 @@ export default {
                     }
                 })
                 return data
+            },
+            money: {
+                get: async (token: string) => {
+                    const { data } = await axios.get<Money>(`${baseUrl}/users/me/money`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    })
+                    return data
+                }
             }
         },
         id: {
@@ -201,4 +211,13 @@ export type User = {
     nickname: string
     xp: number
     level: number
+}
+
+export type Money = {
+    _id: string
+    __v: string
+    createdAt: string
+    updatedAt: string
+    uid: string
+    money: number
 }
