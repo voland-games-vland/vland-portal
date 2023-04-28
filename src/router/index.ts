@@ -156,6 +156,10 @@ const router = createRouter({
       ]
     },
     {
+      path: '/terms-of-service',
+      component: () => import('../pages/PageTermsOfService.vue')
+    },
+    {
       path: '/user/profile',
       name: 'PageUserProfile',
       component: () => import('../pages/PageUserProfile.vue'),
