@@ -16,7 +16,7 @@
                 <tbody>
                     <tr v-for="payment in payments">
                         <th>{{ payment._id }}</th>
-                        <th>{{ useDateFormat(payment.createdAt, 'DD.MM.YYYY HH.mm').value }}</th>
+                        <th>{{ useDateFormat(payment.createdAt, 'DD.MM.YYYY').value }}</th>
                         <th>{{ payment.price / 100 }}</th>
                         <th>{{ payment.currency }}</th>
                         <th>{{ payment.method }}</th>
