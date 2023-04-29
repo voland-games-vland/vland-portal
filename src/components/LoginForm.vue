@@ -1,4 +1,5 @@
 <template>
+    <div class="flex flex-col gap-2">
     <div class="text-xl text-center font-bold">Sign In</div>
     <FormKit type="form" :actions="false" id="login-form" @submit="submit">
         <FormKit type="group" v-model="formData">
@@ -38,17 +39,17 @@
             </svg>
         </button>
     </div>
-    <br />
+    <div class="text-red-500 text-xs">{{ userStore.error }}</div>
     <div class="flex justify-center">
         <button class="btn btn-lg btn-square btn-primary" :class="{ loading: isLoggingIn}" @click="$formkit.submit('login-form')">
             <svg v-if="!isLoggingIn" xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </button>
     </div>
     <br />
-    <br />
     <div class="flex justify-center">
         <router-link to="/registration"><button class="btn btn-ghost btn-xs">I don't have an account</button></router-link>
     </div>
+</div>
 </template>
 <script lang="ts" setup>
 import { FormKit } from '@formkit/vue';

@@ -16,34 +16,45 @@ export const useUserStore = defineStore(
 
     const token = ref<string | undefined>()
 
+    const error = ref('')
+
     const signInWithGoogle = async () => {
+      error.value = ''
       try {
         const result = await signInWithPopup(getAuth(), new GoogleAuthProvider())
         router.push('/start')
         return result
       } catch {
-        console.log('Error: popup closed')
+        const msg = 'Error: On sign in with Google. Popup closed'
+        error.value = msg
+        console.error(msg)
       }
     }
 
     const signInWithEmailPassword = async (email: string, password: string) => {
+      error.value = ''
       try {
         const result = await signInWithEmailAndPassword(getAuth(), email, password)
         token.value = await result.user.getIdToken()
         router.push('/start')
         return result
       } catch {
-        console.log('Error: Sign In With Email and Password')
+        const msg = 'Error: On sign in with Email and Password'
+        error.value = msg
+        console.error(msg)
       }
     }
 
     const signUpWithEmailPassword = async (email: string, password: string) => {
+      error.value = ''
       try {
         const result = await createUserWithEmailAndPassword(getAuth(), email, password)
         router.push('/start')
         return result
       } catch {
-        console.log('Error: Sign Up with Email and Password')
+        const msg = 'Error: On sign up with Email and Password'
+        error.value = msg
+        console.error(msg)
       }
     }
     
@@ -90,7 +101,8 @@ export const useUserStore = defineStore(
         logout,
         token,
         user,
-        loadUserId
+        loadUserId,
+        error
     }
   },
 )
