@@ -156,6 +156,18 @@ const router = createRouter({
       ]
     },
     {
+      path: '/payment/history',
+      component: () => import('../layouts/LayoutSidenavigation.vue'),
+      children: [
+        {
+          path: '',
+          name: 'PagePaymentHistory',
+          component: () => import('../pages/PagePaymentHistory.vue'),
+          meta: { requiresAuth: true}
+        }
+      ]
+    },
+    {
       path: '/terms-of-service',
       component: () => import('../pages/PageTermsOfService.vue')
     },

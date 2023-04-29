@@ -16,6 +16,9 @@
       </div>
     </div>
     <PaymentInfo class="text-center" />
+    <div class="text-center text-blue-400">
+      <RouterLink to="/payment/history">Payment History</RouterLink>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>

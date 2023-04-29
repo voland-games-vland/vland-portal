@@ -11,6 +11,8 @@ declare module '*.vue' {
 interface ImportMetaEnv
   extends Readonly<Record<string, string | boolean | undefined>> {
   readonly VITE_VLAND_API_URL: string
+  readonly VITE_VLAND_API_STRIPE_URL: string
+  readonly VITE_VLAND_API_PAYMENTS_URL: string
   readonly VITE_FIREBASE_API_KEY: string
   readonly VITE_FIREBASE_AUTH_DOMAIN: string
   readonly VITE_FIREBASE_PROJECT_ID: string
