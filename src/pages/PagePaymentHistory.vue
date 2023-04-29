@@ -2,7 +2,7 @@
     <div class="p-4 grid gap-4">
         <NavigationBack to-back="/payment/credit-card">Payment History</NavigationBack>
         <div class="max-w-5xl mx-auto w-full">
-            <div v-if="payments == null">Loading...</div>
+            <div v-if="payments == null" class="text-center">Loading...</div>
             <div v-if="payments != null">
                 <table class="table table-compact mx-auto">
                     <thead>
