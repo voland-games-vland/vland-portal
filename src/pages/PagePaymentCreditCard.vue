@@ -3,17 +3,15 @@
     <NavigationBack toBack="/start">Payment - Credit Card</NavigationBack>
     <div class="text-4xl font-bold text-center">SELECT V-Land POINTS</div>
     <div class="font-bold text-center text-blue-500">(ALL PRICES ARE INCLUSIVE OF VAT IF APPLICABLE)</div>
-    <div>
-      <div class="max-w-4xl mx-auto grid gap-4 grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))] ">
-          <div v-for="product in products">
-              <suspense>
-                  <template #default>
-                      <PointsProduct :amount="product.amount" :name="product.name" :description="product.description" :descriptionHighlighted="product.descriptionHighlighted"
-                          :id="product.id"></PointsProduct>
-                  </template>
-              </suspense>
-          </div>
-      </div>
+    <div class="max-w-4xl w-full mx-auto grid gap-4 grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))] overflow-hidden">
+        <div v-for="product in products">
+            <suspense >
+                <template #default>
+                    <PointsProduct :amount="product.amount" :name="product.name" :description="product.description" :descriptionHighlighted="product.descriptionHighlighted"
+                        :id="product.id"></PointsProduct>
+                </template>
+            </suspense>
+        </div>
     </div>
     <PaymentInfo class="text-center" />
     <div class="text-center text-blue-400">

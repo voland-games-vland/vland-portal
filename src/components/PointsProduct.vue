@@ -1,6 +1,6 @@
 <template>
     <a @click="startCheckout" class="group">
-        <div class="relative inline-block cursor-pointer w-full">
+        <div class="relative cursor-pointer w-full">
             <div class="bg-gradient-to-tr from-slate-900 to-teal-900 bg-[position:_0%_0%] group-hover:bg-[position:_100%_100%] bg-[size:_500%] h-40 grid justify-center items-center transition-all duration-700">
                 <div>
                     <IconBill height="54" width="54" class="mx-auto"/>
