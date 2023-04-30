@@ -66,6 +66,14 @@
                         Play
                     </template>
                 </SidenavMenuItem>
+                <SidenavMenuItem to="/profile-me">
+                    <template v-slot:icon>
+                        <IconProfile  width="32" height="32" fill="currentColor" />
+                    </template>
+                    <template v-slot:label>
+                        Profile
+                    </template>
+                </SidenavMenuItem>
                 <SidenavMenuItem to="/maps">
                     <template v-slot:icon>
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" id="outline"
@@ -190,6 +198,7 @@ const SidenavMenuItem = defineAsyncComponent(() => import('../components/Sidenav
 const UserBadge = defineAsyncComponent(() => import('../components/UserBadge.vue'))
 const IconCoin = defineAsyncComponent(() => import('../components/IconCoin.vue'))
 const IconBill = defineAsyncComponent(() => import('../components/IconBill.vue'))
+const IconProfile = defineAsyncComponent(() => import('../components/IconProfile.vue'))
 
 const userStore = useUserStore()
 const moneyStore = useMoneyStore()
