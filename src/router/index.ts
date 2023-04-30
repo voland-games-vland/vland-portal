@@ -84,6 +84,18 @@ const router = createRouter({
       ],
     },
     {
+      path: '/characters',
+      component: () => import('../layouts/LayoutSidenavigation.vue'),
+      children: [
+        {
+          path: '',
+          name: 'PageCharacters',
+          component: () => import('../pages/PageCharacters.vue'),
+          meta: { requiresAuth: true }
+        },
+      ],
+    },
+    {
       path: '/clans',
       component: () => import('../layouts/LayoutSidenavigation.vue'),
       children: [

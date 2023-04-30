@@ -66,12 +66,12 @@
                         Play
                     </template>
                 </SidenavMenuItem>
-                <SidenavMenuItem to="/profile-me">
+                <SidenavMenuItem to="/characters">
                     <template v-slot:icon>
                         <IconProfile  width="32" height="32" fill="currentColor" />
                     </template>
                     <template v-slot:label>
-                        Profile
+                        Characters
                     </template>
                 </SidenavMenuItem>
                 <SidenavMenuItem to="/maps">
