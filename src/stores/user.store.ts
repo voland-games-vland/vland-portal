@@ -57,7 +57,7 @@ export const useUserStore = defineStore(
         console.error(msg)
       }
     }
-    
+
     const logout = async () => {
       try {
         await signOut(getAuth())
@@ -70,7 +70,7 @@ export const useUserStore = defineStore(
 
     const loadUserData = async () => {
       const token = await auth.currentUser?.getIdToken()
-      if(!token) return
+      if (!token) return
       // TODO: remove
       sessionStorage.setItem('token-example', token)
       user.value = await vlandApi.users.me.get(token)
@@ -83,10 +83,19 @@ export const useUserStore = defineStore(
       return data?._id
     }
 
+    const updateUserNickname = async (nickname: string) => {
+      const token = await auth.currentUser?.getIdToken()
+      if (!token) return
+      const response = await vlandApi.users.me.nickname.put({
+        nickname: nickname
+      }, token)
+      user.value = response
+    }
+
     auth.onAuthStateChanged(async (authUser) => {
       token.value = await authUser?.getIdToken()
 
-      if(!authUser) {
+      if (!authUser) {
         user.value = undefined
         return
       }
@@ -95,14 +104,15 @@ export const useUserStore = defineStore(
     })
 
     return {
-        signInWithGoogle,
-        signInWithEmailPassword,
-        signUpWithEmailPassword,
-        logout,
-        token,
-        user,
-        loadUserId,
-        error
+      signInWithGoogle,
+      signInWithEmailPassword,
+      signUpWithEmailPassword,
+      logout,
+      token,
+      user,
+      loadUserId,
+      error,
+      updateUserNickname
     }
   },
 )
