@@ -86,10 +86,14 @@ export const useUserStore = defineStore(
     const updateUserNickname = async (nickname: string) => {
       const token = await auth.currentUser?.getIdToken()
       if (!token) return
-      const response = await vlandApi.users.me.nickname.put({
-        nickname: nickname
-      }, token)
-      user.value = response
+      try {
+        const response = await vlandApi.users.me.nickname.put({
+          nickname: nickname
+        }, token)
+        user.value = response
+      } catch {
+        alert('Nickname must be between 3 to 30 Characters')
+      }
     }
 
     auth.onAuthStateChanged(async (authUser) => {

@@ -6,10 +6,10 @@
                 <label class="font-bold">Nickname</label>
                 <input :disabled="!isUserLoaded" type="text" placeholder="..." v-model="nickname" class="input w-full" />
                 <div v-if="isUserLoaded && isNicknameDirty" class="flex gap-2">
-                    <button class="btn btn-square btn-primary" @click="onSubmitClick">
-                        <IconCheckmark class="h-6 w-6"></IconCheckmark>
+                    <button class="btn btn-square btn-primary" :class="{ loading: isSubmitingNickname }" @click="onSubmitClick" >
+                        <IconCheckmark v-if="!isSubmitingNickname" class="h-6 w-6"></IconCheckmark>
                     </button>
-                    <button class="btn btn-square btn-outline" @click="onCancelClick">
+                    <button class="btn btn-square btn-outline" @click="onCancelClick" :disabled="isSubmitingNickname">
                         <IconCancel class="h-6 w-6"></IconCancel>
                     </button>
                 </div>
@@ -32,12 +32,16 @@ const nickname = ref('')
 const isNicknameDirty = computed(() => userStore.user?.nickname != nickname.value)
 const isUserLoaded = computed(() => !!userStore.user)
 
+const isSubmitingNickname = ref(false)
+
 const onCancelClick = () => {
     nickname.value = userStore.user?.nickname || ''
 }
 
-const onSubmitClick = () => {
-    userStore.updateUserNickname(nickname.value)
+const onSubmitClick = async () => {
+    isSubmitingNickname.value = true
+    await userStore.updateUserNickname(nickname.value)
+    isSubmitingNickname.value = false
 }
 
 onMounted(async () => {
