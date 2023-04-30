@@ -40,7 +40,10 @@ const onCancelClick = () => {
 
 const onSubmitClick = async () => {
     isSubmitingNickname.value = true
-    await userStore.updateUserNickname(nickname.value)
+    const trimmed = nickname.value.trim()
+    console.log(trimmed)
+    nickname.value = trimmed
+    await userStore.updateUserNickname(trimmed)
     isSubmitingNickname.value = false
 }
 
