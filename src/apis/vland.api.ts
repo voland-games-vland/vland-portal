@@ -96,6 +96,16 @@ export default {
                     })
                     return data
                 }
+            },
+            nickname: {
+                put: async (body: UserNicknamePutDto, token: string) => {
+                    const { data } = await axios.put<User>(`${baseUrl}/users/me/nickname`, body, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    })
+                    return data
+                }
             }
         },
         id: {
@@ -104,6 +114,38 @@ export default {
                     const { data } = await axios.get<Map[]>(`${baseUrl}/users/${id}/maps`)
                     return data
                 }
+            }
+        }
+    },
+    characters: {
+        post: async (body: CharacterCreateDto, token: string) => {
+            const { data } = await axios.post<Character>(`${baseUrl}/characters`, body, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            return data
+        },
+        id: {
+            get: async (id: string) => {
+                const { data } = await axios.get<Character>(`${baseUrl}/characters/${id}`)
+                return data
+            },
+            patch: async (id: string, body: CharacterPatchDto, token: string) => {
+                const { data } = await axios.patch<Character>(`${baseUrl}/characters/${id}`, body, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                return data
+            },
+            delete: async (id: string, token: string) => {
+                const { data } = await axios.delete<Character>(`${baseUrl}/characters/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                return data
             }
         }
     }
@@ -133,6 +175,16 @@ export enum BUILDING {
     CapturePoint = 'CapturePoint',
     Teleporter = 'Teleporter',
     Spawner = 'Spawner'
+}
+
+export enum Weapon {
+    Sword = 'Sword',
+    Daggers = 'Daggers',
+    Hammer = 'Hammer',
+    Spear = 'Spear',
+    Bow = 'Bow',
+    Pistols = 'Pistols',
+    Sniper = 'Sniper'
 }
 
 export type MapCreateDto = {
@@ -213,6 +265,10 @@ export type User = {
     level: number
 }
 
+export type UserNicknamePutDto = {
+    nickname: string
+}
+
 export type Money = {
     _id: string
     __v: string
@@ -220,4 +276,23 @@ export type Money = {
     updatedAt: string
     uid: string
     money: number
+} 
+
+export type Character = {
+    _id: string
+    __v: string
+    createdAt: string
+    updatedAt: string
+    userId: string
+    name: string
+    weaponType: Weapon
+}
+
+export type CharacterCreateDto = {
+    name: string
+}
+
+export type CharacterPatchDto = {
+    name?: string
+    weaponType?: Weapon
 }
