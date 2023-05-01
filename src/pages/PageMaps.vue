@@ -1,7 +1,6 @@
 <template>
     <div class="p-4 grid gap-4">
         <NavigationBack toBack="/start">Maps</NavigationBack>
-        <div class="font-bold text-4xl">My Maps</div>
         <div>
             <RouterLink to="/maps/new" class="btn btn-ghost btn-sm">
                 <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
