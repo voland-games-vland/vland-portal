@@ -114,6 +114,12 @@ export default {
                     const { data } = await axios.get<Map[]>(`${baseUrl}/users/${id}/maps`)
                     return data
                 }
+            },
+            characters: {
+                get: async (id: string) => {
+                    const { data } = await axios.get<Character[]>(`${baseUrl}/users/${id}/characters`)
+                    return data
+                }
             }
         }
     },
