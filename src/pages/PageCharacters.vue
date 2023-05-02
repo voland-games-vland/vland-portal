@@ -3,7 +3,7 @@
         <NavigationBack toBack="/start">Characters</NavigationBack>
         <div>
             <label class="btn btn-ghost btn-sm" for="modal-character-new">
-                <IconPlus class="mr-2"  width="12" height="12" />
+                <IconPlus class="mr-2" width="12" height="12" />
                 <span>New Character</span>
             </label>
             <teleport to="body">
