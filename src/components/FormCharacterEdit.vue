@@ -19,11 +19,11 @@
             validation="required"
         />
         <div class="flex gap-2">
-            <button type="button" :disabled="isSaving" class="btn btn-error btn-outline" @click="$emit('delete')">
-                Delete
-            </button>
             <button type="submit" class="btn btn-primary" :class="{ loading: isSaving}">
                 Save
+            </button>
+            <button type="button" :disabled="isSaving" class="btn btn-error btn-outline" @click="$emit('delete')">
+                Delete
             </button>
         </div>
     </FormKit>
