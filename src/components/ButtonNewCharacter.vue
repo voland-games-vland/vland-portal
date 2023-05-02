@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label class="btn btn-ghost btn-sm" for="modal-character-new">
+        <label class="btn btn-ghost btn-sm" for="modal-character-new" @click="formCharacterNew?.resetForm">
             <IconPlus class="mr-2" width="12" height="12" />
             <span>New Character</span>
         </label>
