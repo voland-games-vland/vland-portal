@@ -32,11 +32,15 @@ const formCharacterNew = ref<InstanceType<typeof FormCharacterNew> | null>(null)
 const isModalCharacterNewOpen = ref(false)
 const isLoadingSubmitNewCharcter = ref(false)
 const onSubmitNewCharacter = async (data: { name: string }) => {
-    isLoadingSubmitNewCharcter.value = true
-    await charactersStore.createNewCharacter(data)
-    await charactersMyStore.loadMyCharacters()
-    formCharacterNew.value?.resetForm()
-    isLoadingSubmitNewCharcter.value = false
-    isModalCharacterNewOpen.value = false
+    try {
+        isLoadingSubmitNewCharcter.value = true
+        await charactersStore.createNewCharacter(data)
+        await charactersMyStore.loadMyCharacters()
+        formCharacterNew.value?.resetForm()
+        isLoadingSubmitNewCharcter.value = false
+        isModalCharacterNewOpen.value = false
+    } catch {
+        isLoadingSubmitNewCharcter.value = false
+    }
 }
 </script>
