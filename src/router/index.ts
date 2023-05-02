@@ -93,6 +93,12 @@ const router = createRouter({
           component: () => import('../pages/PageCharacters.vue'),
           meta: { requiresAuth: true }
         },
+        {
+          path: 'edit/:id',
+          name: 'PageCharactersEdit',
+          component: () => import('../pages/PageCharactersEdit.vue'),
+          meta: { requiresAuth: true }
+        }
       ],
     },
     {
