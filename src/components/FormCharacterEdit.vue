@@ -22,9 +22,7 @@
             <button type="submit" class="btn btn-primary" :class="{ loading: isSaving}">
                 Save
             </button>
-            <button type="button" :disabled="isSaving" class="btn btn-error btn-outline" @click="$emit('delete')">
-                Delete
-            </button>
+            <ButtonDelete :disabled="isSaving" @delete="$emit('delete')">Delete</ButtonDelete>
         </div>
     </FormKit>
 </template>
@@ -32,6 +30,8 @@
 import { computed, defineAsyncComponent, ref } from 'vue';
 import { Weapon } from '../apis/vland.api';
 import { FormKit } from '@formkit/vue';
+
+const ButtonDelete = defineAsyncComponent(() => import('../components/ButtonDelete.vue'))
 
 const props = withDefaults(defineProps<{
     data?: {
