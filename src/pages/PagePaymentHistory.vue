@@ -1,6 +1,6 @@
 <template>
     <div class="p-4 grid gap-4">
-        <NavigationBack to-back="/payment/credit-card">Payment History</NavigationBack>
+        <NavigationBack to-back="/payment/credit-card">Payment_History</NavigationBack>
         <div class="max-w-5xl mx-auto w-full">
             <div v-if="payments == null" class="text-center">Loading...</div>
             <div v-if="payments != null">

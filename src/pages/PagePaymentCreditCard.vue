@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 grid gap-4">
-    <NavigationBack toBack="/start">Payment - Credit Card</NavigationBack>
+    <NavigationBack toBack="/start">Payment_Credit-Card</NavigationBack>
     <div class="text-4xl font-bold text-center">SELECT V-Land POINTS</div>
     <div class="font-bold text-center text-blue-500">(ALL PRICES ARE INCLUSIVE OF VAT IF APPLICABLE)</div>
     <div class="max-w-4xl w-full mx-auto grid gap-4 grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))] overflow-hidden">

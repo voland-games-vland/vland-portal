@@ -1,6 +1,6 @@
 <template>
     <div class="p-4">
-        <NavigationBack toBack="/maps">New Map</NavigationBack>
+        <NavigationBack toBack="/maps">Maps_New</NavigationBack>
         <br />
         <FormMapNew />
     </div>
