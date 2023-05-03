@@ -18,6 +18,9 @@
             :options="weaponTypeOptions"
             validation="required"
         />
+        <div>
+            <AttributeSpender :pointsToSpend="15" :attributes="attributes" />
+        </div>
         <div class="flex gap-2">
             <button type="submit" class="btn btn-primary" :class="{ loading: isSaving}">
                 Save
@@ -32,6 +35,7 @@ import { Weapon } from '../apis/vland.api';
 import { FormKit } from '@formkit/vue';
 
 const ButtonDelete = defineAsyncComponent(() => import('../components/ButtonDelete.vue'))
+const AttributeSpender = defineAsyncComponent(() => import('../components/AttributeSpender.vue'))
 
 const props = withDefaults(defineProps<{
     data?: {
@@ -57,6 +61,25 @@ const weaponTypeOptions = ref<Weapon[]>([
     Weapon.Spear,
     Weapon.Pistols,
     Weapon.Sniper
+])
+
+const attributes = ref([
+    {
+        label: 'Max Health',
+        value: 0
+    },
+    {
+        label: 'Max Shield',
+        value: 0
+    },
+    {
+        label: 'Attack Damage',
+        value: 0
+    },
+    {
+        label: 'Move Speed',
+        value: 0
+    }
 ])
 
 const emit = defineEmits<{
