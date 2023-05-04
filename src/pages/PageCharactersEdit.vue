@@ -34,7 +34,13 @@ const isSaving = ref(false)
 
 const formData = ref({
     name: '',
-    weaponType: Weapon.Sword
+    weaponType: Weapon.Sword,
+    attributes: {
+        attackDamage: 0,
+        maxHealth: 0,
+        maxShield: 0,
+        moveSpeed: 0
+    }
 })
 
 const loadCharacter = async () => {
@@ -43,6 +49,7 @@ const loadCharacter = async () => {
     character.value = response
     formData.value.name = response.name
     formData.value.weaponType = response.weaponType as Weapon
+    formData.value.attributes = response.attributes
     isPageLoading.value = false
 }
 

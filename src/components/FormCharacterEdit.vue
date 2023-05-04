@@ -19,7 +19,7 @@
             validation="required"
         />
         <div>
-            <AttributeSpender :pointsToSpend="15" :attributes="attributes" />
+            <AttributeSpender :pointsToSpend="15" v-model:attributes="formData.attributes" />
         </div>
         <div class="flex gap-2">
             <button type="submit" class="btn btn-primary" :class="{ loading: isSaving}">
@@ -31,7 +31,7 @@
 </template>
 <script setup lang="ts">
 import { computed, defineAsyncComponent, ref } from 'vue';
-import { Weapon } from '../apis/vland.api';
+import { CharacterAttributes, Weapon } from '../apis/vland.api';
 import { FormKit } from '@formkit/vue';
 
 const ButtonDelete = defineAsyncComponent(() => import('../components/ButtonDelete.vue'))
@@ -40,14 +40,21 @@ const AttributeSpender = defineAsyncComponent(() => import('../components/Attrib
 const props = withDefaults(defineProps<{
     data?: {
         name: string,
-        weaponType: Weapon
+        weaponType: Weapon,
+        attributes: CharacterAttributes
     },
     isSaving?: boolean
 }>(),{
     data: () => {
         return {
             name: '',
-            weaponType: Weapon.Sword
+            weaponType: Weapon.Sword,
+            attributes: {
+                attackDamage: 0,
+                maxHealth: 0,
+                maxShield: 0,
+                moveSpeed: 0
+            }
         }
     },
     isSaving: false
@@ -61,25 +68,6 @@ const weaponTypeOptions = ref<Weapon[]>([
     Weapon.Spear,
     Weapon.Pistols,
     Weapon.Sniper
-])
-
-const attributes = ref([
-    {
-        label: 'Max Health',
-        value: 0
-    },
-    {
-        label: 'Max Shield',
-        value: 0
-    },
-    {
-        label: 'Attack Damage',
-        value: 0
-    },
-    {
-        label: 'Move Speed',
-        value: 0
-    }
 ])
 
 const emit = defineEmits<{

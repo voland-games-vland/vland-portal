@@ -3,13 +3,14 @@
         <div class="font-bold text-sm">Attributes</div>
         <div>Remainging Points: <span class="font-bold">{{ pointsRemaining }}</span></div>
         <AttributeSpenderBar
-            v-for="(attribute, index) in formAttributes"
-            :label="attribute.label"
-            :value="attribute.value"
+            v-for="(attribute, key, index) in formAttributes"
+            :label="(key as string)"
+            :value="attribute"
             :max="pointsToSpend"
-            @add="onAdd(index)"
-            @subtract="onSubtract(index)"
+            @add="onAdd(key as string)"
+            @subtract="onSubtract(key as string)"
             :disabledAdd="!pointsRemaining"
+            :key="key"
         />
     </div>
 </template>
@@ -21,22 +22,17 @@ const AttributeSpenderBar = defineAsyncComponent(() => import('../components/Att
 const props = withDefaults(defineProps<{
     pointsToSpend?: number,
     attributes?: {
-        label: string,
-        value: number
-    }[]
+        [key: string]: number
+    }
 }>(),{
     pointsToSpend: 15,
     attributes: () => {
-        return [
-            {
-                label: 'Max Shield',
-                value: 3
-            },
-            {
-                label: 'Max Health',
-                value: 12
-            }
-        ]
+        return {
+            maxHealth: 4,
+            maxShield: 3,
+            attackDamage: 2,
+            moveSpeed: 1
+        }
     }
 })
 
@@ -46,18 +42,29 @@ const emit = defineEmits<{
 
 const formAttributes = ref(props.attributes)
 
+const attributesAsArray = computed(() => {
+    const array = Object.keys(formAttributes.value).map((key) => {
+        return {
+            key: key,
+            value: formAttributes.value[key]
+        }
+    })
+    return array
+})
+
 const pointsRemaining = computed(() => {
-    const sumPointsSpent = formAttributes.value.reduce((partialSum, attribute) => partialSum + attribute.value, 0)
+    const sumPointsSpent = attributesAsArray.value.reduce((partialSum, attribute) => partialSum + attribute.value, 0)
     return props.pointsToSpend - sumPointsSpent
 })
 
-const onAdd = (index: number) => {
-    formAttributes.value[index].value++
+const onAdd = (key: string) => {
+    console.log('on add', key)
+    formAttributes.value[key]++
     emit('update:attributes', formAttributes.value)
 }
 
-const onSubtract = (index: number) => {
-    formAttributes.value[index].value--
+const onSubtract = (key: string) => {
+    formAttributes.value[key]--
     emit('update:attributes', formAttributes.value)
 }
 </script>
