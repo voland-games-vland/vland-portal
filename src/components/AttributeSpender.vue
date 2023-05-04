@@ -3,7 +3,7 @@
         <div class="font-bold text-sm">Attributes</div>
         <div>Remainging Points: <span class="font-bold">{{ pointsRemaining }}</span></div>
         <AttributeSpenderBar
-            v-for="(attribute, key, index) in formAttributes"
+            v-for="(attribute, key) in formAttributes"
             :label="(key as string)"
             :value="attribute"
             :max="pointsToSpend"
