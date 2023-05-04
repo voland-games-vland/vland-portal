@@ -292,6 +292,14 @@ export type Character = {
     userId: string
     name: string
     weaponType: Weapon
+    attributes: CharacterAttributes
+}
+
+export type CharacterAttributes = {
+    maxHealth: number
+    maxShield: number
+    attackDamage: number
+    moveSpeed: number
 }
 
 export type CharacterCreateDto = {
@@ -301,4 +309,5 @@ export type CharacterCreateDto = {
 export type CharacterPatchDto = {
     name?: string
     weaponType?: Weapon
+    attributes?: CharacterAttributes
 }
