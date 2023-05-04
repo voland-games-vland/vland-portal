@@ -11,6 +11,7 @@
             @subtract="onSubtract(key as string)"
             :disabledAdd="!pointsRemaining"
             :key="key"
+            :disabled="disabled"
         />
     </div>
 </template>
@@ -23,7 +24,8 @@ const props = withDefaults(defineProps<{
     pointsToSpend?: number,
     attributes?: {
         [key: string]: number
-    }
+    },
+    disabled?: boolean
 }>(),{
     pointsToSpend: 15,
     attributes: () => {

@@ -19,11 +19,14 @@
             validation="required"
         />
         <div>
-            <AttributeSpender :pointsToSpend="15" v-model:attributes="formData.attributes" />
+            <AttributeSpender :pointsToSpend="15" v-model:attributes="formData.attributes" :disabled="isSaving" />
         </div>
         <div class="flex gap-2">
             <button type="submit" class="btn btn-primary" :class="{ loading: isSaving}">
                 Save
+            </button>
+            <button type="button" class="btn btn-outline" :disabled="isSaving" @click="$emit('reset')">
+                Reset
             </button>
             <ButtonDelete :disabled="isSaving" @delete="$emit('delete')">Delete</ButtonDelete>
         </div>
@@ -73,7 +76,8 @@ const weaponTypeOptions = ref<Weapon[]>([
 const emit = defineEmits<{
     (e: 'update:data', data: typeof props.data): void,
     (e: 'submit'): void,
-    (e: 'delete'): void
+    (e: 'delete'): void,
+    (e: 'reset'): void
 }>()
 
 const formData = computed({

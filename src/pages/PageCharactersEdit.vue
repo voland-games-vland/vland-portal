@@ -2,7 +2,7 @@
     <div class="p-4 grid gap-4">
         <NavigationBack toBack="/characters">Characters_Edit</NavigationBack>
         <div class="grid w-full max-w-xs mx-auto" v-if="!isPageLoading">
-            <FormCharacterEdit v-model:data="formData" @delete="onDelete" @submit="onSubmit" :isSaving="isSaving" />
+            <FormCharacterEdit v-model:data="formData" @delete="onDelete" @submit="onSubmit" @reset="onReset" :isSaving="isSaving" />
         </div>
         <div class="grid" v-if="isPageLoading">
             <div v-if="isPageLoading" class="text-center font-bold m-auto grid gap-2">
@@ -49,14 +49,26 @@ const loadCharacter = async () => {
     character.value = response
     formData.value.name = response.name
     formData.value.weaponType = response.weaponType as Weapon
-    formData.value.attributes = response.attributes
+    formData.value.attributes = {...response.attributes}
     isPageLoading.value = false
 }
 
 const onSubmit = async () => {
     isSaving.value = true
-    await charactersStore.updateCharacter(characterId.value, formData.value)
-    router.push('/characters')
+    const response = await charactersStore.updateCharacter(characterId.value, formData.value)
+    if (!response) return
+    character.value = response
+    isSaving.value = false
+}
+
+const onReset = async () => {
+    if (!character.value) return
+    formData.value.name = character.value?.name
+    formData.value.weaponType = character.value?.weaponType
+    formData.value.attributes.maxHealth = character.value.attributes.maxHealth
+    formData.value.attributes.maxShield = character.value.attributes.maxShield
+    formData.value.attributes.attackDamage = character.value.attributes.attackDamage
+    formData.value.attributes.moveSpeed = character.value.attributes.moveSpeed
 }
 
 const onDelete = async () => {

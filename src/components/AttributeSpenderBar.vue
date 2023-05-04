@@ -8,8 +8,8 @@
                 <span class="w-[1px] h-2 bg-primary-focus first:bg-transparent last:bg-transparent" v-for="index in max + 1"></span>
             </div>
         </div>
-        <button type="button" class="btn btn-square btn-xs" @click="$emit('subtract')" :disabled="!value">-</button>
-        <button type="button" class="btn btn-square btn-xs" @click="$emit('add')" :disabled="disabledAdd">+</button>
+        <button type="button" class="btn btn-square btn-xs" @click="$emit('subtract')" :disabled="!value || disabled">-</button>
+        <button type="button" class="btn btn-square btn-xs" @click="$emit('add')" :disabled="disabledAdd || disabled">+</button>
     </div>
 </div>
 </template>
@@ -18,7 +18,8 @@ defineProps<{
     label: string,
     value: number,
     max: number,
-    disabledAdd: boolean
+    disabledAdd?: boolean
+    disabled?: boolean
 }>()
 
 defineEmits<{
