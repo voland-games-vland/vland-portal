@@ -242,15 +242,38 @@ export type BlockDeleteDto = {
 
 export type Building = {
     _id: string
-    type: BUILDING
     position: Position
     map: string
+    metadata: BuildingMetadata
+}
+
+export type BuildingMetadata = BuildingMetadataSpawner | BuildingMetadataSpawn | BuildingMetadataTeleporter | BuildingMetadataCaputerPoint
+
+export type BuildingMetadataSpawner = {
+    type: BUILDING.Spawner,
+    spawnRate: number
+}
+
+export type BuildingMetadataSpawn = {
+    type: BUILDING.Spawn,
+    team?: number
+}
+
+export type BuildingMetadataTeleporter = {
+    type: BUILDING.Teleporter,
+    team?: number
+    teleportTo: Position
+}
+
+export type BuildingMetadataCaputerPoint = {
+    type: BUILDING.CapturePoint,
+    team?: number
 }
 
 export type BuildingPutDto = {
-    type: BUILDING
     position: Position
     map: string
+    metadata: BuildingMetadata
 }
 
 export type BuildingDeleteDto = {

@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto, Building, Position, BuildingPutDto, BuildingDeleteDto } from '../apis/vland.api'
+import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto, Building, Position, BuildingPutDto, BuildingDeleteDto, BUILDING, BuildingMetadataSpawn, BuildingMetadataCaputerPoint, BuildingMetadataSpawner, BuildingMetadataTeleporter } from '../apis/vland.api'
 import { useMapEditorBlockbarStore } from './mapEditorBlockbar.store'
 import { Tools, useMapEditorToolbarStore } from './mapEditorToolbar.store'
 import { useMapEditorBuildingbarStore } from './mapEditorBuildingbar.store'
@@ -160,12 +160,45 @@ export const useMapEditGridStore = defineStore(
                 }
                 const keyBuildingsStore = getKeyFromPosition(position)
                 const currentBuilding = buildings.value[keyBuildingsStore]
-                if (!!currentBuilding && (currentBuilding.type == mapEditorBuildingbar.selectedBuilding)) return
-                const buildingPutDto: BuildingPutDto = {
-                    type: mapEditorBuildingbar.selectedBuilding,
-                    position: position,
-                    map: mapId.value
+                if (!!currentBuilding && (currentBuilding.metadata.type == mapEditorBuildingbar.selectedBuilding)) return
+                const getBuildingMetadata = (building: BUILDING) => {
+                    switch (building) {
+                        case BUILDING.Spawn:
+                            const buildingMetadataSpawn: BuildingMetadataSpawn = {
+                                type: BUILDING.Spawn
+                            }
+                            return buildingMetadataSpawn
+                        case BUILDING.CapturePoint:
+                            const buildingMetadataCapturePoint: BuildingMetadataCaputerPoint = {
+                                type: BUILDING.CapturePoint
+                            }
+                            return buildingMetadataCapturePoint
+                        
+                        case BUILDING.Spawner:
+                            const buildingMetadataSpawner: BuildingMetadataSpawner = {
+                                type: BUILDING.Spawner,
+                                spawnRate: 10
+                            }
+                            return buildingMetadataSpawner
+                        case BUILDING.Teleporter:
+                            const buildingMetadataTeleporter: BuildingMetadataTeleporter = {
+                                type: BUILDING.Teleporter,
+                                teleportTo: {
+                                    x: 0,
+                                    y: 0,
+                                    z: 0
+                                }
+                            }
+                            return buildingMetadataTeleporter
+                    }
                 }
+                const buildingPutDto: BuildingPutDto = {
+                    position: position,
+                    map: mapId.value,
+                    metadata: getBuildingMetadata(mapEditorBuildingbar.selectedBuilding)
+                }
+
+                console.log(buildingPutDto)
 
                 buildings.value[keyBuildingsStore] = {
                     ...buildingPutDto,

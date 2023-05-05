@@ -31,7 +31,7 @@
         <div v-for="(building, index) in mapEditGridStore.buildings" :key="index" :style="{
             gridColumn: building.position.z,
             gridRow: building.position.x
-        }" class="text-black z-[5] grid justify-center content-center font-bold pointer-events-none building" :class="building.type.toLocaleLowerCase()"></div>
+        }" class="text-black z-[5] grid justify-center content-center font-bold pointer-events-none building" :class="building.metadata.type.toLocaleLowerCase()"></div>
     </div>
 </template>
 <script lang="ts" setup>
