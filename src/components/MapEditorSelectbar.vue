@@ -24,12 +24,28 @@
                 <div class="font-bold">Floor Type:</div>
                 <div>{{ mapEditGridStore.selectedBlock?.type || 'None' }}</div>
                 <div class="font-bold">Building Type:</div>
-                <div>{{ mapEditGridStore.selectedBuilding?.type || 'None' }}</div>
+                <div>{{ mapEditGridStore.selectedBuilding?.metadata.type || 'None' }}</div>
+                <div class="text-sm">
+                    <div v-if="mapEditGridStore.selectedBuilding?.metadata.type == BUILDING.CapturePoint">
+                        <div>Team: <span>{{ mapEditGridStore.selectedBuilding?.metadata.team || 'None' }}</span></div>
+                    </div>
+                    <div v-if="mapEditGridStore.selectedBuilding?.metadata.type == BUILDING.Spawn">
+                        <div>Team: <span>{{ mapEditGridStore.selectedBuilding?.metadata.team || 'None' }}</span></div>
+                    </div>
+                    <div v-if="mapEditGridStore.selectedBuilding?.metadata.type == BUILDING.Teleporter">
+                        <div>Team: <span>{{ mapEditGridStore.selectedBuilding?.metadata.team || 'None' }}</span></div>
+                        <div>Teleport To: <span>{{ mapEditGridStore.selectedBuilding?.metadata.teleportTo.x }}, {{ mapEditGridStore.selectedBuilding?.metadata.teleportTo.z }}</span></div>
+                    </div>
+                    <div v-if="mapEditGridStore.selectedBuilding?.metadata.type == BUILDING.Spawner">
+                        <div>Spawn Rate: <span>{{ mapEditGridStore.selectedBuilding?.metadata.spawnRate  }}</span></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script lang="ts" setup>
+import { BUILDING } from '../apis/vland.api';
 import { useMapEditGridStore } from '../stores/mapEditGrid.store';
 
 const mapEditGridStore = useMapEditGridStore()

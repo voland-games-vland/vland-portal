@@ -198,8 +198,6 @@ export const useMapEditGridStore = defineStore(
                     metadata: getBuildingMetadata(mapEditorBuildingbar.selectedBuilding)
                 }
 
-                console.log(buildingPutDto)
-
                 buildings.value[keyBuildingsStore] = {
                     ...buildingPutDto,
                     _id: ''
