@@ -20,10 +20,7 @@
                         </svg>
                     </RouterLink>
                 </div>
-                <div class="font-bold text-sm bg-neutral text-neutral-content py-1 px-2 rounded-btn pointer-events-auto">
-                    <span v-if="mapEditGridStore.isOpeningEditGrid">Loading...</span>
-                    <span v-if="!mapEditGridStore.isOpeningEditGrid">{{ mapEditGridStore.map?.name}}</span>
-                </div>
+                <MapEditorButtonName :name="mapEditGridStore.map?.name" :isLoading="mapEditGridStore.isOpeningEditGrid" />
             </div>
             <div class="grid justify-center">
                 <div class="pointer-events-auto">
@@ -75,6 +72,8 @@ const MapEditorBuildingbar = defineAsyncComponent(() => import('../components/Ma
 const MapEditorButtonZoom = defineAsyncComponent(() => import('../components/MapEditorButtonZoom.vue'))
 const MapEditorGrid = defineAsyncComponent(() => import('../components/MapEditorGrid.vue'))
 const SpinnerRound = defineAsyncComponent(() => import('../components/SpinnerRound.vue'))
+const MapEditorButtonName = defineAsyncComponent(() => import('../components/MapEditorButtonName.vue'))
+
 const mapId = useRouteParams<string>('id')
 
 const mapEditGridStore = useMapEditGridStore()
