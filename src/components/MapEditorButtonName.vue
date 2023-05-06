@@ -1,5 +1,5 @@
 <template>
-<button class="btn btn-xs font-bold text-sm bg-neutral text-neutral-content rounded-btn pointer-events-auto" :disabled="isLoading" @click="isModalCharacterNewOpen = true">
+<button class="btn btn-xs font-bold text-sm bg-neutral text-neutral-content rounded-btn pointer-events-auto normal-case" :disabled="isLoading" @click="isModalCharacterNewOpen = true">
     <span v-if="isLoading">Loading...</span>
     <span v-if="!isLoading">{{ name }}</span>
     <teleport to="body">
