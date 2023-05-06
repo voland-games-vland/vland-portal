@@ -188,7 +188,8 @@ export enum BUILDING {
     Spawn = 'Spawn',
     CapturePoint = 'CapturePoint',
     Teleporter = 'Teleporter',
-    Spawner = 'Spawner'
+    Spawner = 'Spawner',
+    Pickup = 'Pickup'
 }
 
 export enum Weapon {
@@ -281,6 +282,21 @@ export type BuildingMetadataTeleporter = {
 export type BuildingMetadataCaputerPoint = {
     type: BUILDING.CapturePoint,
     team?: number
+}
+
+export enum Pickup {
+    Health = 'Health',
+    Armor = 'Armor',
+    Energy = 'Energy',
+}
+
+export type BuildingMetadataPickup = {
+    type: BUILDING.Pickup,
+    typePickup: Pickup,
+    amount: number,
+    health: number,
+    team?: number,
+    respawnTime?: number
 }
 
 export type BuildingPutDto = {
