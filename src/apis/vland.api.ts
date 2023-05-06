@@ -17,6 +17,14 @@ export default {
                 const { data } = await axios.get<Map>(`${baseUrl}/maps/${id}`)
                 return data
             },
+            patch: async (id: string, body: MapUpdateDto, token: string) => {
+                const { data } = await axios.patch<Map>(`${baseUrl}/maps/${id}`, body, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                return data
+            },
             delete: async (id: string, token: string) => {
                 const { data } = await axios.delete<Map>(`${baseUrl}/maps/${id}`, {
                     headers: {
@@ -198,6 +206,11 @@ export type MapCreateDto = {
     size: SIZE
 }
 
+export type MapUpdateDto = {
+    name?: string
+    settings?: Partial<MapSettings>
+}
+
 export type Map = {
     _id: string
     __v: string
@@ -305,7 +318,7 @@ export type Money = {
     updatedAt: string
     uid: string
     money: number
-} 
+}
 
 export type Character = {
     _id: string
