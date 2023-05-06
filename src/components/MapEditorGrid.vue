@@ -115,4 +115,7 @@ const isGridItemSelected = (index: number) => {
 .building.spawner::before {
     content: "SR";
 }
+.building.pickup::before {
+    content: "PU";
+}
 </style>

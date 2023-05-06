@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto, Building, Position, BuildingPutDto, BuildingDeleteDto, BUILDING, BuildingMetadataSpawn, BuildingMetadataCaputerPoint, BuildingMetadataSpawner, BuildingMetadataTeleporter } from '../apis/vland.api'
+import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto, Building, Position, BuildingPutDto, BuildingDeleteDto, BUILDING, BuildingMetadataSpawn, BuildingMetadataCaputerPoint, BuildingMetadataSpawner, BuildingMetadataTeleporter, BuildingMetadataPickup, Pickup } from '../apis/vland.api'
 import { useMapEditorBlockbarStore } from './mapEditorBlockbar.store'
 import { Tools, useMapEditorToolbarStore } from './mapEditorToolbar.store'
 import { useMapEditorBuildingbarStore } from './mapEditorBuildingbar.store'
@@ -190,6 +190,15 @@ export const useMapEditGridStore = defineStore(
                                 }
                             }
                             return buildingMetadataTeleporter
+                        case BUILDING.Pickup:
+                            const buildingMetadataPickup: BuildingMetadataPickup = {
+                                type: BUILDING.Pickup,
+                                typePickup: Pickup.Health,
+                                amount: 50,
+                                health: 500,
+                                respawnTime: 30,
+                            }
+                            return buildingMetadataPickup
                     }
                 }
                 const buildingPutDto: BuildingPutDto = {

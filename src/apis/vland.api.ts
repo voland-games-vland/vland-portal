@@ -261,7 +261,7 @@ export type Building = {
     metadata: BuildingMetadata
 }
 
-export type BuildingMetadata = BuildingMetadataSpawner | BuildingMetadataSpawn | BuildingMetadataTeleporter | BuildingMetadataCaputerPoint
+export type BuildingMetadata = BuildingMetadataSpawner | BuildingMetadataSpawn | BuildingMetadataTeleporter | BuildingMetadataCaputerPoint | BuildingMetadataPickup
 
 export type BuildingMetadataSpawner = {
     type: BUILDING.Spawner,

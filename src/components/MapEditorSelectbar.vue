@@ -39,6 +39,13 @@
                     <div v-if="mapEditGridStore.selectedBuilding?.metadata.type == BUILDING.Spawner">
                         <div>- Spawn Rate: <span>{{ mapEditGridStore.selectedBuilding?.metadata.spawnRate  }}</span></div>
                     </div>
+                    <div v-if="mapEditGridStore.selectedBuilding?.metadata.type == BUILDING.Pickup">
+                        <div>- Type: <span>{{ mapEditGridStore.selectedBuilding?.metadata.typePickup  }}</span></div>
+                        <div>- Amount: <span>{{ mapEditGridStore.selectedBuilding?.metadata.amount  }}</span></div>
+                        <div>- Health: <span>{{ mapEditGridStore.selectedBuilding?.metadata.health  }}</span></div>
+                        <div>- Team: <span>{{ mapEditGridStore.selectedBuilding?.metadata.team || 'None' }}</span></div>
+                        <div>- Respawn Time: <span>{{ mapEditGridStore.selectedBuilding?.metadata.respawnTime || 'None' }}</span></div>
+                    </div>
                 </div>
             </div>
         </div>

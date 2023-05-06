@@ -10,6 +10,7 @@ export const useMapEditorBuildingbarStore = defineStore(
         BUILDING.CapturePoint,
         BUILDING.Teleporter,
         BUILDING.Spawner,
+        BUILDING.Pickup
     ])
     const selectedBuilding = ref<BUILDING>(BUILDING.Spawn)
 
