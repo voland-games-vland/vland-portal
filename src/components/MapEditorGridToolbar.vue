@@ -86,23 +86,19 @@ import { Tools, useMapEditorToolbarStore } from '../stores/mapEditorToolbar.stor
 const mapEditorToolbarStore = useMapEditorToolbarStore()
 
 onKeyStroke('1', (e) => {
-  e.preventDefault()
   if (mapEditorToolbarStore.selectedTool == Tools.Select) return
   mapEditorToolbarStore.selectedTool = Tools.Select
 })
 onKeyStroke('2', (e) => {
-  e.preventDefault()
   if (mapEditorToolbarStore.selectedTool == Tools.Block) return
   mapEditorToolbarStore.selectedTool = Tools.Block
 })
 
 onKeyStroke('3', (e) => {
-  e.preventDefault()
   if (mapEditorToolbarStore.selectedTool == Tools.Object) return
   mapEditorToolbarStore.selectedTool = Tools.Object
 })
 onKeyStroke('0', (e) => {
-  e.preventDefault()
   if (mapEditorToolbarStore.selectedTool == Tools.Eraser) return
   mapEditorToolbarStore.selectedTool = Tools.Eraser
 })

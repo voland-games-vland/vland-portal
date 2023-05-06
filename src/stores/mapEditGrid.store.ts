@@ -266,6 +266,15 @@ export const useMapEditGridStore = defineStore(
         zoomLevel.value = 100
     }
 
+    const changeMapName = async (name: string) => {
+        const token = await auth.currentUser?.getIdToken()
+        if(!token) return
+        const response = await vlandApi.maps.id.patch(mapId.value, {
+            name: name
+        }, token)
+        map.value = response
+    }
+
     return {
         isOpeningEditGrid,
         loadingMessage,
@@ -288,7 +297,8 @@ export const useMapEditGridStore = defineStore(
         zoomReset,
         selectedField,
         selectedBlock,
-        selectedBuilding
+        selectedBuilding,
+        changeMapName
     }
   },
   {
