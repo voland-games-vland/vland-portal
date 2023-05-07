@@ -2,9 +2,11 @@
     <h3 class="text-lg font-bold pb-2">Game Settings</h3>
     <div>- Teams: {{ map?.settings.teams }}</div>
     <div>- Score To Win: {{ map?.settings.scoreToWin }}</div>
-    <div>- Time Limit: {{ timeLimitMinutesAndSeconds?.minutes }} Minutes<span
-            v-if="timeLimitMinutesAndSeconds?.seconds"> & {{ timeLimitMinutesAndSeconds?.seconds }}
-            Seconds</span></div>
+    <div>- Time Limit: {{ timeLimitMinutesAndSeconds?.minutes }} Minutes<span v-if="timeLimitMinutesAndSeconds?.seconds"> &
+            {{ timeLimitMinutesAndSeconds?.seconds }}
+            Seconds</span>
+    </div>
+    <div>- Daytime: {{ map?.settings.daytime }}</div>
     <br />
     <h3 class="text-lg font-bold pb-2">Editor Settings</h3>
     <div class="flex align-middle gap-2">
