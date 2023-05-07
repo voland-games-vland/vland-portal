@@ -202,6 +202,13 @@ export enum Weapon {
     Sniper = 'Sniper'
 }
 
+export enum Daytime {
+    Morning = 'Morning',
+    Afternoon = 'Afternoon',
+    Dawn = 'Dawn',
+    Night = 'Night',
+  }
+
 export type MapCreateDto = {
     name: string
     size: SIZE
@@ -228,6 +235,7 @@ export type MapSettings = {
     teams: number
     scoreToWin: number
     timeLimitInSeconds: number
+    daytime: Daytime
 }
 
 export type Position = {
