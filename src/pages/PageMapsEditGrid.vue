@@ -40,6 +40,7 @@
             <MapEditorSelectbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Select" />
             <MapEditorBlockbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Block" />
             <MapEditorBuildingbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Object" />
+            <MapEditorEraserbar v-if="mapEditorGridToolbarStore.selectedTool == Tools.Eraser" />
         </div>
         <div class="absolute bottom-4 left-4 z-10">
             <MapEditorButtonZoom />
@@ -69,6 +70,7 @@ const MapEditorButtonGridEditSettings = defineAsyncComponent(() => import('../co
 const MapEditorBlockbar = defineAsyncComponent(() => import('../components/MapEditorBlockbar.vue'))
 const MapEditorSelectbar = defineAsyncComponent(() => import('../components/MapEditorSelectbar.vue'))
 const MapEditorBuildingbar = defineAsyncComponent(() => import('../components/MapEditorBuildingbar.vue'))
+const MapEditorEraserbar = defineAsyncComponent(() => import('../components/MapEditorEraserbar.vue'))
 const MapEditorButtonZoom = defineAsyncComponent(() => import('../components/MapEditorButtonZoom.vue'))
 const MapEditorGrid = defineAsyncComponent(() => import('../components/MapEditorGrid.vue'))
 const SpinnerRound = defineAsyncComponent(() => import('../components/SpinnerRound.vue'))
