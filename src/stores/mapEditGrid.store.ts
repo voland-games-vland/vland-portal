@@ -5,6 +5,7 @@ import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto, Building, Pos
 import { useMapEditorBlockbarStore } from './mapEditorBlockbar.store'
 import { Tools, useMapEditorToolbarStore } from './mapEditorToolbar.store'
 import { useMapEditorBuildingbarStore } from './mapEditorBuildingbar.store'
+import { useMapEditorEraserbarStore } from './mapEditorEraserbar.store'
 
 export const useMapEditGridStore = defineStore(
   'mapEditGrid',
@@ -13,6 +14,7 @@ export const useMapEditGridStore = defineStore(
     const mapEditorToolbarStore = useMapEditorToolbarStore()
     const mapEditorBlockbarStore = useMapEditorBlockbarStore()
     const mapEditorBuildingbarStore = useMapEditorBuildingbarStore()
+    const mapEditorEraserbarStore = useMapEditorEraserbarStore()
 
     const mapId = ref('')
     const isOpeningEditGrid = ref(false)
@@ -225,7 +227,15 @@ export const useMapEditGridStore = defineStore(
                     y: 0,
                     z: axis.z
                 }
-                await Promise.all([eraseBlock(position), eraseBuilding(position)])
+                const deleteActions = []
+                if (mapEditorEraserbarStore.eraser.deleteFloor) {
+                    deleteActions.push(eraseBlock(position))
+                }
+                
+                if (mapEditorEraserbarStore.eraser.deleteBuilding) {
+                    deleteActions.push(eraseBuilding(position))
+                }
+                await Promise.all(deleteActions)
                 break;
             }
         }
