@@ -11,8 +11,8 @@ export const useMapEditGridStore = defineStore(
   () => {
     const auth = getAuth()
     const mapEditorToolbarStore = useMapEditorToolbarStore()
-    const mapEditorBlockbar = useMapEditorBlockbarStore()
-    const mapEditorBuildingbar = useMapEditorBuildingbarStore()
+    const mapEditorBlockbarStore = useMapEditorBlockbarStore()
+    const mapEditorBuildingbarStore = useMapEditorBuildingbarStore()
 
     const mapId = ref('')
     const isOpeningEditGrid = ref(false)
@@ -133,9 +133,9 @@ export const useMapEditGridStore = defineStore(
                 }
                 const keyBlocksStore = getKeyFromPosition(position)
                 const currentBlock = blocks.value[keyBlocksStore]
-                if (!!currentBlock && (currentBlock.type == mapEditorBlockbar.selectedBlock)) return
+                if (!!currentBlock && (currentBlock.type == mapEditorBlockbarStore.selectedBlock)) return
                 const blockPutDto: BlockPutDto = {
-                    type: mapEditorBlockbar.selectedBlock,
+                    type: mapEditorBlockbarStore.selectedBlock,
                     position: position,
                     map: mapId.value
                 }
@@ -160,7 +160,7 @@ export const useMapEditGridStore = defineStore(
                 }
                 const keyBuildingsStore = getKeyFromPosition(position)
                 const currentBuilding = buildings.value[keyBuildingsStore]
-                if (!!currentBuilding && (currentBuilding.metadata.type == mapEditorBuildingbar.selectedBuilding)) return
+                if (!!currentBuilding && (currentBuilding.metadata.type == mapEditorBuildingbarStore.selectedBuilding)) return
                 const getBuildingMetadata = (building: BUILDING) => {
                     switch (building) {
                         case BUILDING.Spawn:
@@ -204,7 +204,7 @@ export const useMapEditGridStore = defineStore(
                 const buildingPutDto: BuildingPutDto = {
                     position: position,
                     map: mapId.value,
-                    metadata: getBuildingMetadata(mapEditorBuildingbar.selectedBuilding)
+                    metadata: getBuildingMetadata(mapEditorBuildingbarStore.selectedBuilding)
                 }
 
                 buildings.value[keyBuildingsStore] = {

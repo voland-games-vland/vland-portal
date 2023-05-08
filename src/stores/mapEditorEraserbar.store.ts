@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-export const useMapEditorEraserStore = defineStore(
-  'mapEditorEraser',
+export const useMapEditorEraserbarStore = defineStore(
+  'mapEditorEraserbar',
   () => {
     const eraser = ref({
         deleteFloor: true,
