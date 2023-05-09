@@ -10,7 +10,7 @@ export const useCharactersMyStore = defineStore(
         const auth = getAuth()
         const userStore = useUserStore()
 
-        const characters = ref<Character[]>([])
+        const characters = ref<Character[] | null>(null)
 
         const loadMyCharacters = async () => {
             const userId = await userStore.loadUserId()

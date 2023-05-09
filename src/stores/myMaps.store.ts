@@ -10,7 +10,7 @@ export const useMyMapsStore = defineStore(
     const auth = getAuth()
     const userStore = useUserStore()
 
-    const maps = ref<Map[]>([])
+    const maps = ref<Map[] | null>(null)
     
     const loadMyMaps = async () => {
         const userId = await userStore.loadUserId()
