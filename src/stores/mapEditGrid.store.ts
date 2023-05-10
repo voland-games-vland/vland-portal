@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto, Building, Position, BuildingPutDto, BuildingDeleteDto, BUILDING, BuildingMetadataSpawn, BuildingMetadataCaputerPoint, BuildingMetadataSpawner, BuildingMetadataTeleporter, BuildingMetadataPickup, Pickup } from '../apis/vland.api'
+import vlandApi, { Block, BLOCK, BlockDeleteDto, Map, BlockPutDto, Building, Position, BuildingPutDto, BuildingDeleteDto, BUILDING, BuildingMetadataSpawn, BuildingMetadataCaputerPoint, BuildingMetadataSpawner, BuildingMetadataTeleporter, BuildingMetadataPickup, Pickup, MapSettings, MapUpdateDto } from '../apis/vland.api'
 import { useMapEditorBlockbarStore } from './mapEditorBlockbar.store'
 import { Tools, useMapEditorToolbarStore } from './mapEditorToolbar.store'
 import { useMapEditorBuildingbarStore } from './mapEditorBuildingbar.store'
@@ -285,12 +285,10 @@ export const useMapEditGridStore = defineStore(
         zoomLevel.value = 100
     }
 
-    const changeMapName = async (name: string) => {
+    const updateMap = async (mapUpdateDto: MapUpdateDto) => {
         const token = await auth.currentUser?.getIdToken()
         if(!token) return
-        const response = await vlandApi.maps.id.patch(mapId.value, {
-            name: name
-        }, token)
+        const response = await vlandApi.maps.id.patch(mapId.value, mapUpdateDto, token)
         map.value = response
     }
 
@@ -317,7 +315,7 @@ export const useMapEditGridStore = defineStore(
         selectedField,
         selectedBlock,
         selectedBuilding,
-        changeMapName
+        updateMap
     }
   },
   {

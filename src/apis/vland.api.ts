@@ -216,7 +216,7 @@ export type MapCreateDto = {
 
 export type MapUpdateDto = {
     name?: string
-    settings?: Partial<MapSettings>
+    settings?: MapSettings
 }
 
 export type Map = {

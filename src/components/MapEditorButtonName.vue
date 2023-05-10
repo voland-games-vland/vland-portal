@@ -50,7 +50,9 @@ const onReset = () => {
 
 const onSubmit = async () => {
     isSaving.value = true
-    await mapEditGridStore.changeMapName(formData.value.name)
+    await mapEditGridStore.updateMap({ 
+        name: formData.value.name
+    })
     isSaving.value = false
     isModalCharacterNewOpen.value = false
 }
