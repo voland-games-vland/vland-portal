@@ -26,17 +26,20 @@
                 <div class="flex gap-1 items-center">
                     <div>- Score To Win:</div>
                     <input type="number" class="input input-bordered input-xs"
-                        v-model="editGameSettingsFormData.settings.scoreToWin" />
+                        v-model="editGameSettingsFormData.settings.scoreToWin"
+                        :disabled="isSavingGameSettings" />
                 </div>
                 <div class="flex gap-1 items-center">
                     <div>- Time Limit:</div>
                     <input type="number" class="input input-bordered input-xs"
-                        v-model="editGameSettingsFormData.settings.timeLimitInSeconds" />
+                        v-model="editGameSettingsFormData.settings.timeLimitInSeconds"
+                        :disabled="isSavingGameSettings" />
                 </div>
                 <div class="flex gap-1 items-center">
                     <div>- Daytime:</div>
                     <select class="select select-bordered select-xs"
-                        v-model="editGameSettingsFormData.settings.daytime">
+                        v-model="editGameSettingsFormData.settings.daytime"
+                        :disabled="isSavingGameSettings">
                         <option v-for="option in optionSelectDaytime" :key="option" :value="option">{{ option }}</option>
                     </select>
                 </div>
