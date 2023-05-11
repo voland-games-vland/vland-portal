@@ -11,6 +11,26 @@
         <FormKit
             :disabled="isSaving"
             type="select"
+            label="Gender"
+            placeholder="Select a Gender"
+            name="gender"
+            v-model="formData.look.gender"
+            :options="optionsGender"
+            validation="required"
+        />
+        <FormKit
+            :disabled="isSaving"
+            type="select"
+            label="Skin"
+            placeholder="Select a Skin"
+            name="skin"
+            v-model="formData.look.skin"
+            :options="optionsSkin"
+            validation="required"
+        />
+        <FormKit
+            :disabled="isSaving"
+            type="select"
             label="Weapon Type"
             placeholder="Select a Weapon Type"
             name="weaponType"
@@ -34,18 +54,14 @@
 </template>
 <script setup lang="ts">
 import { computed, defineAsyncComponent, ref } from 'vue';
-import { CharacterAttributes, Weapon } from '../apis/vland.api';
+import { CharacterPatchDto, Gender, Skin, Weapon } from '../apis/vland.api';
 import { FormKit } from '@formkit/vue';
 
 const ButtonDelete = defineAsyncComponent(() => import('../components/ButtonDelete.vue'))
 const AttributeSpender = defineAsyncComponent(() => import('../components/AttributeSpender.vue'))
 
 const props = withDefaults(defineProps<{
-    data?: {
-        name: string,
-        weaponType: Weapon,
-        attributes: CharacterAttributes
-    },
+    data?: Required<CharacterPatchDto>,
     isSaving?: boolean
 }>(),{
     data: () => {
@@ -57,11 +73,28 @@ const props = withDefaults(defineProps<{
                 maxHealth: 0,
                 maxShield: 0,
                 moveSpeed: 0
+            },
+            look: {
+                gender: Gender.Female,
+                skin: Skin.Ninja
             }
         }
     },
     isSaving: false
 })
+
+const optionsGender = ref<Gender[]>([
+    Gender.Female,
+    Gender.Male
+])
+
+const optionsSkin = ref<Skin[]>([
+    Skin.Ninja,
+    Skin.Warrior,
+    Skin.Orc,
+    Skin.Mummy,
+    Skin.Skeleton
+])
 
 const weaponTypeOptions = ref<Weapon[]>([
     Weapon.Sword,
@@ -80,7 +113,7 @@ const emit = defineEmits<{
     (e: 'reset'): void
 }>()
 
-const formData = computed({
+const formData = computed<Required<CharacterPatchDto>>({
     get: () => props.data,
     set: (value) => emit('update:data', value)
 })

@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router';
 import { defineAsyncComponent, ref } from 'vue';
-import vlandApi, { Character, Weapon } from '../apis/vland.api';
+import vlandApi, { Character, CharacterPatchDto, Gender, Skin, Weapon } from '../apis/vland.api';
 import { useCharactersStore } from '../stores/characters.store';
 import { useRouter } from 'vue-router';
 
@@ -32,7 +32,7 @@ const isPageLoading = ref(true)
 
 const isSaving = ref(false)
 
-const formData = ref({
+const formData = ref<Required<CharacterPatchDto>>({
     name: '',
     weaponType: Weapon.Sword,
     attributes: {
@@ -40,6 +40,10 @@ const formData = ref({
         maxHealth: 0,
         maxShield: 0,
         moveSpeed: 0
+    },
+    look: {
+        gender: Gender.Female,
+        skin: Skin.Ninja
     }
 })
 
@@ -50,6 +54,7 @@ const loadCharacter = async () => {
     formData.value.name = response.name
     formData.value.weaponType = response.weaponType as Weapon
     formData.value.attributes = {...response.attributes}
+    formData.value.look = {...response.look}
     isPageLoading.value = false
 }
 
@@ -69,6 +74,8 @@ const onReset = async () => {
     formData.value.attributes.maxShield = character.value.attributes.maxShield
     formData.value.attributes.attackDamage = character.value.attributes.attackDamage
     formData.value.attributes.moveSpeed = character.value.attributes.moveSpeed
+    formData.value.look.gender = character.value.look.gender
+    formData.value.look.skin = character.value.look.skin
 }
 
 const onDelete = async () => {
