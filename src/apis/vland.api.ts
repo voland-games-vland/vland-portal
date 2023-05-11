@@ -207,7 +207,20 @@ export enum Daytime {
     Afternoon = 'Afternoon',
     Dawn = 'Dawn',
     Night = 'Night',
-  }
+}
+
+export enum Gender {
+    Male = 'Male',
+    Female = 'Female',
+}
+
+export enum Skin {
+    Ninja = 'Ninja',
+    Warrior = 'Warrior',
+    Mummy = 'Mummy',
+    Orc = 'Orc',
+    Skeleton = 'Skeleton'
+}
 
 export type MapCreateDto = {
     name: string
@@ -353,6 +366,7 @@ export type Character = {
     name: string
     weaponType: Weapon
     attributes: CharacterAttributes
+    look: CharacterLook
 }
 
 export type CharacterAttributes = {
@@ -360,6 +374,11 @@ export type CharacterAttributes = {
     maxShield: number
     attackDamage: number
     moveSpeed: number
+}
+
+export type CharacterLook = {
+    gender: Gender
+    skin: Skin
 }
 
 export type CharacterCreateDto = {
@@ -370,4 +389,5 @@ export type CharacterPatchDto = {
     name?: string
     weaponType?: Weapon
     attributes?: CharacterAttributes
+    look?: CharacterLook
 }
